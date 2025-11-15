@@ -1,0 +1,201 @@
+=== Cartesian Grid Communication ===
+Total processes: 16
+Grid dimensions: 4 x 4
+Process 8 (world 8) -> Grid coordinates: (2, 0)
+Process 9 (world 9) -> Grid coordinates: (2, 1)
+Process 10 (world 10) -> Grid coordinates: (2, 2)
+Process 11 (world 11) -> Grid coordinates: (2, 3)
+Process 12 (world 12) -> Grid coordinates: (3, 0)
+Process 13 (world 13) -> Grid coordinates: (3, 1)
+Process 14 (world 14) -> Grid coordinates: (3, 2)
+Process 15 (world 15) -> Grid coordinates: (3, 3)
+Process 0 (world 0) -> Grid coordinates: (0, 0)
+Process 1 (world 1) -> Grid coordinates: (0, 1)
+Process 2 (world 2) -> Grid coordinates: (0, 2)
+Process 4 (world 4) -> Grid coordinates: (1, 0)
+Process 5 (world 5) -> Grid coordinates: (1, 1)
+Process 6 (world 6) -> Grid coordinates: (1, 2)
+Process 7 (world 7) -> Grid coordinates: (1, 3)
+Process 3 (world 3) -> Grid coordinates: (0, 3)
+Process (2,3): row_rank=3/4, col_rank=2/4
+Process (3,0): row_rank=0/4, col_rank=3/4
+Process (3,1): row_rank=1/4, col_rank=3/4
+Process (3,2): row_rank=2/4, col_rank=3/4
+Process (0,3): row_rank=3/4, col_rank=0/4
+Process (0,0): row_rank=0/4, col_rank=0/4
+Process (0,1): row_rank=1/4, col_rank=0/4
+Process (1,3): row_rank=3/4, col_rank=1/4
+Process (0,2): row_rank=2/4, col_rank=0/4
+Process (1,0): row_rank=0/4, col_rank=1/4
+Process (1,1): row_rank=1/4, col_rank=1/4
+Process (1,2): row_rank=2/4, col_rank=1/4
+Process (2,0): row_rank=0/4, col_rank=2/4
+Process (2,1): row_rank=1/4, col_rank=2/4
+Process (2,2): row_rank=2/4, col_rank=2/4
+Process (3,3): row_rank=3/4, col_rank=3/4
+
+=== Testing Collective Operations ===
+Data size: 1000 doubles, Iterations: 100
+
+=== Performance Results ===
+WORLD Bcast:    0.004699 seconds
+ROW Bcast:      0.001573 seconds
+Ratio (WORLD/ROW): 2.99
+
+WORLD Reduce:   0.003868 seconds
+COL Reduce:     0.001810 seconds
+[g10:30422] *** An error occurred in MPI_Waitall
+[g10:30422] *** reported by process [3827761153,12]
+[g10:30422] *** on communicator MPI_COMM_WORLD
+[g10:30422] *** MPI_ERR_REQUEST: invalid request
+[g10:30422] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g10:30422] ***    and potentially your MPI job)
+[g10:30411:0:30411] Caught signal 11 (Segmentation fault: address not mapped to object at address (nil))
+[g10:30402:0:30402] Caught signal 11 (Segmentation fault: address not mapped to object at address (nil))
+==== backtrace (tid:  30402) ====
+ 0  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(ucs_handle_error+0xe4) [0x7fa4e679e404]
+ 1  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(+0x2772c) [0x7fa4e679e72c]
+ 2  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(+0x27994) [0x7fa4e679e994]
+=================================
+[g10:30403:0:30403] Caught signal 11 (Segmentation fault: address not mapped to object at address (nil))
+==== backtrace (tid:  30403) ====
+ 0  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(ucs_handle_error+0xe4) [0x7f3725f65404]
+ 1  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(+0x2772c) [0x7f3725f6572c]
+ 2  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(+0x27994) [0x7f3725f65994]
+=================================
+[g10:30403] *** Process received signal ***
+[g10:30403] Signal: Segmentation fault (11)
+[g10:30403] Signal code:  (-6)
+[g10:30403] Failing at address: 0x1429000076c3
+Ratio (WORLD/COL): 2.14
+[g10:30405:0:30405] Caught signal 11 (Segmentation fault: address not mapped to object at address (nil))
+==== backtrace (tid:  30405) ====
+ 0  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(ucs_handle_error+0xe4) [0x7f34910b0404]
+ 1  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(+0x2772c) [0x7f34910b072c]
+ 2  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(+0x27994) [0x7f34910b0994]
+=================================
+[g10:30405] *** Process received signal ***
+[g10:30405] Signal: Segmentation fault (11)
+[g10:30405] Signal code:  (-6)
+[g10:30405] Failing at address: 0x1429000076c5
+[g10:30405] [ 0] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libpthread.so.0(+0x13010)[0x7f3493a26010]
+[g10:30405] *** End of error message ***
+==== backtrace (tid:  30411) ====
+ 0  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(ucs_handle_error+0xe4) [0x7f26c7416404]
+ 1  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(+0x2772c) [0x7f26c741672c]
+ 2  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(+0x27994) [0x7f26c7416994]
+=================================
+[g10:30411] *** Process received signal ***
+[g10:30411] Signal: Segmentation fault (11)
+[g10:30411] Signal code:  (-6)
+[g10:30411] Failing at address: 0x1429000076cb
+[g10:30411] [ 0] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libpthread.so.0(+0x13010)[0x7f26cdd8b010]
+[g10:30411] *** End of error message ***
+[g10:30409:0:30409] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x448)
+==== backtrace (tid:  30409) ====
+ 0  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(ucs_handle_error+0xe4) [0x7f1f6c8b3404]
+ 1  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(+0x2772c) [0x7f1f6c8b372c]
+ 2  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(+0x27994) [0x7f1f6c8b3994]
+ 3  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libmpi.so.40(ompi_request_default_wait_all+0x86) [0x7f1f6f2a31a6]
+ 4  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libmpi.so.40(PMPI_Waitall+0x7f) [0x7f1f6f2f413f]
+ 5  ./cartesian_grid() [0x4019df]
+ 6  ./cartesian_grid() [0x4015dc]
+ 7  /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libc.so.6(__libc_start_main+0xed) [0x7f1f6f07aa6d]
+ 8  ./cartesian_grid() [0x40182a]
+=================================
+[g10:30409] *** Process received signal ***
+[g10:30409] Signal: Segmentation fault (11)
+[g10:30409] Signal code:  (-6)
+[g10:30409] Failing at address: 0x1429000076c9
+[g10:30409] [ 0] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libpthread.so.0(+0x13010)[0x7f1f6f228010]
+[g10:30409] [ 1] /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libmpi.so.40(ompi_request_default_wait_all+0x86)[0x7f1f6f2a31a6]
+[g10:30409] [ 2] /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libmpi.so.40(PMPI_Waitall+0x7f)[0x7f1f6f2f413f]
+[g10:30409] [ 3] ./cartesian_grid[0x4019df]
+[g10:30409] [ 4] ./cartesian_grid[0x4015dc]
+[g10:30409] [g10:30420:0:30420] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x448)
+==== backtrace (tid:  30420) ====
+ 0  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(ucs_handle_error+0xe4) [0x7f6e747d6404]
+ 1  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(+0x2772c) [0x7f6e747d672c]
+ 2  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(+0x27994) [0x7f6e747d6994]
+ 3  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libmpi.so.40(ompi_request_default_wait_all+0x86) [0x7f6e771c61a6]
+ 4  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libmpi.so.40(PMPI_Waitall+0x7f) [0x7f6e7721713f]
+ 5  ./cartesian_grid() [0x4019df]
+ 6  ./cartesian_grid() [0x4015dc]
+ 7  /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libc.so.6(__libc_start_main+0xed) [0x7f6e76f9da6d]
+ 8  ./cartesian_grid() [0x40182a]
+=================================
+[g10:30420] *** Process received signal ***
+[g10:30420] Signal: Segmentation fault (11)
+[g10:30420] Signal code:  (-6)
+[g10:30420] Failing at address: 0x1429000076d4
+[g10:30420] [ 0] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libpthread.so.0(+0x13010)[0x7f6e7714b010]
+[g10:30420] [ 1] /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libmpi.so.40(ompi_request_default_wait_all+0x86)[0x7f6e771c61a6]
+[g10:30420] [ 2] [g10:30402] *** Process received signal ***
+[g10:30402] Signal: Segmentation fault (11)
+[g10:30402] Signal code:  (-6)
+[g10:30402] Failing at address: 0x1429000076c2
+[g10:30402] [ 0] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libpthread.so.0(+0x13010)[0x7fa4ed117010]
+[g10:30402] *** End of error message ***
+[g10:30404:0:30404] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x448)
+==== backtrace (tid:  30404) ====
+ 0  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(ucs_handle_error+0xe4) [0x7f1400a7a404]
+ 1  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(+0x2772c) [0x7f1400a7a72c]
+ 2  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(+0x27994) [0x7f1400a7a994]
+ 3  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libmpi.so.40(ompi_request_default_wait_all+0x86) [0x7f140346b1a6]
+ 4  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libmpi.so.40(PMPI_Waitall+0x7f) [0x7f14034bc13f]
+ 5  ./cartesian_grid() [0x4019df]
+ 6  ./cartesian_grid() [0x4015dc]
+ 7  /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libc.so.6(__libc_start_main+0xed) [0x7f1403242a6d]
+ 8  ./cartesian_grid() [0x40182a]
+=================================
+[g10:30404] *** Process received signal ***
+[g10:30404] Signal: Segmentation fault (11)
+[g10:30404] Signal code:  (-6)
+[g10:30404] Failing at address: 0x1429000076c4
+[g10:30404] [ 0] [g10:30403] [ 0] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libpthread.so.0(+0x13010)[0x7f37288db010]
+[g10:30403] *** End of error message ***
+/gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libpthread.so.0(+0x13010)[0x7f14033f0010]
+[g10:30404] [ 1] /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libmpi.so.40(ompi_request_default_wait_all+0x86)[0x7f140346b1a6]
+[g10:30404] [ 2] /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libmpi.so.40(PMPI_Waitall+0x7f)[0x7f14034bc13f]
+[g10:30404] [ 3] ./cartesian_grid[0x4019df]
+[g10:30404] [ 4] ./cartesian_grid[0x4015dc]
+[g10:30404] [ 5] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libc.so.6(__libc_start_main+0xed)[0x7f1403242a6d]
+[g10:30404] [ 6] ./cartesian_grid[0x40182a]
+[g10:30404] *** End of error message ***
+[ 5] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libc.so.6(__libc_start_main+0xed)[0x7f1f6f07aa6d]
+[g10:30409] [ 6] ./cartesian_grid[0x40182a]
+[g10:30409] *** End of error message ***
+
+=== Neighbor Communication Test ===
+/gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libmpi.so.40(PMPI_Waitall+0x7f)[0x7f6e7721713f]
+[g10:30420] [ 3] ./cartesian_grid[0x4019df]
+[g10:30420] [ 4] ./cartesian_grid[0x4015dc]
+[g10:30420] [ 5] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libc.so.6(__libc_start_main+0xed)[0x7f6e76f9da6d]
+[g10:30420] [ 6] ./cartesian_grid[0x40182a]
+[g10:30420] *** End of error message ***
+[g10:30401:0:30401] Caught signal 11 (Segmentation fault: Sent by the kernel at address (nil))
+==== backtrace (tid:  30401) ====
+ 0  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(ucs_handle_error+0xe4) [0x7f32a60ab404]
+ 1  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(+0x2772c) [0x7f32a60ab72c]
+ 2  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(+0x27994) [0x7f32a60ab994]
+ 3  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libmpi.so.40(ompi_request_default_wait_all+0x86) [0x7f32a8a9b1a6]
+ 4  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libmpi.so.40(PMPI_Waitall+0x7f) [0x7f32a8aec13f]
+ 5  ./cartesian_grid() [0x4019df]
+ 6  ./cartesian_grid() [0x4015dc]
+ 7  /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libc.so.6(__libc_start_main+0xed) [0x7f32a8872a6d]
+ 8  ./cartesian_grid() [0x40182a]
+=================================
+[g10:30401] *** Process received signal ***
+[g10:30401] Signal: Segmentation fault (11)
+[g10:30401] Signal code:  (-6)
+[g10:30401] Failing at address: 0x1429000076c1
+[g10:30401] [ 0] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libpthread.so.0(+0x13010)[0x7f32a8a20010]
+[g10:30401] [ 1] /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libmpi.so.40(ompi_request_default_wait_all+0x86)[0x7f32a8a9b1a6]
+[g10:30401] [ 2] /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libmpi.so.40(PMPI_Waitall+0x7f)[0x7f32a8aec13f]
+[g10:30401] [ 3] ./cartesian_grid[0x4019df]
+[g10:30401] [ 4] ./cartesian_grid[0x4015dc]
+[g10:30401] [ 5] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libc.so.6(__libc_start_main+0xed)[0x7f32a8872a6d]
+[g10:30401] [ 6] ./cartesian_grid[0x40182a]
+[g10:30401] *** End of error message ***
+[g10:30397] 3 more processes have sent help message help-mpi-errors.txt / mpi_errors_are_fatal
+[g10:30397] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages

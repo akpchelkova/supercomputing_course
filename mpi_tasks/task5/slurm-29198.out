@@ -1,0 +1,3 @@
+Balance Test: compute=100000 us, comm_size=100000 bytes, iterations=10
+Processes: 8
+Total time: 1.1168 seconds

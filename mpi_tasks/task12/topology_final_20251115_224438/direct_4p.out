@@ -1,0 +1,17 @@
+=== MPI Topology Benchmark ===
+Processes: 4
+Start time: Sat 15 Nov 2025 10:44:41 PM MSK
+
+=== MPI Topology Test ===
+Total processes: 4
+1. Testing Cartesian topology...
+   Cartesian time: 0.001333 sec
+2. Testing Torus topology...
+   Torus time: 0.000077 sec
+3. Testing Graph topology...
+   Graph time: 0.000202 sec
+4. Testing Star topology...
+   Star time: 0.000074 sec
+=== Test Complete ===
+End time: Sat 15 Nov 2025 10:44:42 PM MSK
+=================================

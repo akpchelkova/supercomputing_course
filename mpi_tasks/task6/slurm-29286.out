@@ -1,0 +1,8 @@
+Matrix Band Multiplication - Mode: BUFFERED
+Matrix size: 1024x1024, Processes: 16
+[g5:07693] *** An error occurred in MPI_Bsend
+[g5:07693] *** reported by process [2366898177,0]
+[g5:07693] *** on communicator MPI_COMM_WORLD
+[g5:07693] *** MPI_ERR_BUFFER: invalid buffer pointer
+[g5:07693] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g5:07693] ***    and potentially your MPI job)

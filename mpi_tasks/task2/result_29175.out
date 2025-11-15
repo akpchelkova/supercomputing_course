@@ -1,0 +1,20 @@
+=== MPI Dot Product Computation ===
+Available processes: 2
+
+Vector size:     1000 | Processes:  2 | Time: 0.000232 sec
+Dot product result: 24220.904108
+Correctness check (size 1000): 24220.904108
+---
+Vector size:    10000 | Processes:  2 | Time: 0.000805 sec
+Dot product result: 250042.945055
+Correctness check (size 1000): 24220.904108
+---
+Vector size:   100000 | Processes:  2 | Time: 0.007881 sec
+Dot product result: 2494893.057079
+Correctness check (size 1000): 24220.904108
+---
+Vector size:  1000000 | Processes:  2 | Time: 0.071681 sec
+Dot product result: 24967173.011355
+Correctness check (size 1000): 24220.904108
+---
+All dot product experiments completed!

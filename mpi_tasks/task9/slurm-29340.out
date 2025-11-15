@@ -1,0 +1,152 @@
+=== Collective Operations Comparison ===
+Testing Bcast with data size 1, 4 processes
+MPI Bcast: 0.000097 seconds
+My Bcast:  0.000049 seconds
+Ratio (MPI/My): 1.98
+---
+Testing Bcast with data size 10, 4 processes
+MPI Bcast: 0.000091 seconds
+My Bcast:  0.000085 seconds
+Ratio (MPI/My): 1.08
+---
+Testing Bcast with data size 100, 4 processes
+MPI Bcast: 0.000314 seconds
+My Bcast:  0.000477 seconds
+Ratio (MPI/My): 0.66
+---
+Testing Bcast with data size 1000, 4 processes
+MPI Bcast: 0.001615 seconds
+My Bcast:  0.001956 seconds
+Ratio (MPI/My): 0.83
+---
+Testing Bcast with data size 10000, 4 processes
+MPI Bcast: 0.004769 seconds
+My Bcast:  0.006814 seconds
+Ratio (MPI/My): 0.70
+---
+Testing Reduce with data size 1, 4 processes
+MPI Reduce: 0.000177 seconds
+My Reduce:  0.000129 seconds
+Ratio (MPI/My): 1.37
+---
+Testing Reduce with data size 10, 4 processes
+MPI Reduce: 0.000193 seconds
+My Reduce:  0.000068 seconds
+Ratio (MPI/My): 2.84
+---
+Testing Reduce with data size 100, 4 processes
+MPI Reduce: 0.000421 seconds
+My Reduce:  0.000220 seconds
+Ratio (MPI/My): 1.91
+---
+Testing Reduce with data size 1000, 4 processes
+MPI Reduce: 0.001965 seconds
+My Reduce:  0.001235 seconds
+Ratio (MPI/My): 1.59
+---
+Testing Reduce with data size 10000, 4 processes
+MPI Reduce: 0.007358 seconds
+My Reduce:  0.008633 seconds
+Ratio (MPI/My): 0.85
+---
+Testing Scatter with data size 1, 4 processes
+MPI Scatter: 0.000051 seconds
+My Scatter:  0.000079 seconds
+Ratio (MPI/My): 0.64
+---
+Testing Scatter with data size 10, 4 processes
+MPI Scatter: 0.000086 seconds
+My Scatter:  0.000082 seconds
+Ratio (MPI/My): 1.05
+---
+Testing Scatter with data size 100, 4 processes
+MPI Scatter: 0.000314 seconds
+My Scatter:  0.000435 seconds
+Ratio (MPI/My): 0.72
+---
+Testing Scatter with data size 1000, 4 processes
+MPI Scatter: 0.001500 seconds
+My Scatter:  0.001558 seconds
+Ratio (MPI/My): 0.96
+---
+Testing Scatter with data size 10000, 4 processes
+MPI Scatter: 0.005806 seconds
+My Scatter:  0.006291 seconds
+Ratio (MPI/My): 0.92
+---
+Testing Gather with data size 1, 4 processes
+MPI Gather: 0.000121 seconds
+My Gather:  0.000087 seconds
+Ratio (MPI/My): 1.39
+---
+Testing Gather with data size 10, 4 processes
+MPI Gather: 0.000131 seconds
+My Gather:  0.000097 seconds
+Ratio (MPI/My): 1.35
+---
+Testing Gather with data size 100, 4 processes
+MPI Gather: 0.000219 seconds
+My Gather:  0.000302 seconds
+Ratio (MPI/My): 0.73
+---
+Testing Gather with data size 1000, 4 processes
+MPI Gather: 0.001222 seconds
+My Gather:  0.001093 seconds
+Ratio (MPI/My): 1.12
+---
+Testing Gather with data size 10000, 4 processes
+MPI Gather: 0.006217 seconds
+My Gather:  0.005921 seconds
+Ratio (MPI/My): 1.05
+---
+Testing Allgather with data size 1, 4 processes
+MPI Allgather: 0.000214 seconds
+My Allgather:  0.000228 seconds
+Ratio (MPI/My): 0.94
+---
+Testing Allgather with data size 10, 4 processes
+MPI Allgather: 0.000231 seconds
+My Allgather:  0.000466 seconds
+Ratio (MPI/My): 0.50
+---
+Testing Allgather with data size 100, 4 processes
+MPI Allgather: 0.000385 seconds
+My Allgather:  0.000778 seconds
+Ratio (MPI/My): 0.49
+---
+Testing Allgather with data size 1000, 4 processes
+MPI Allgather: 0.001998 seconds
+My Allgather:  0.004831 seconds
+Ratio (MPI/My): 0.41
+---
+Testing Allgather with data size 10000, 4 processes
+MPI Allgather: 0.012731 seconds
+My Allgather:  0.034843 seconds
+Ratio (MPI/My): 0.37
+---
+Testing Allreduce with data size 1, 4 processes
+MPI Allreduce: 0.000219 seconds
+My Allreduce:  0.000217 seconds
+Ratio (MPI/My): 1.01
+---
+Testing Allreduce with data size 10, 4 processes
+MPI Allreduce: 0.000229 seconds
+My Allreduce:  0.000288 seconds
+Ratio (MPI/My): 0.79
+---
+Testing Allreduce with data size 100, 4 processes
+MPI Allreduce: 0.000425 seconds
+My Allreduce:  0.000690 seconds
+Ratio (MPI/My): 0.62
+---
+Testing Allreduce with data size 1000, 4 processes
+MPI Allreduce: 0.002183 seconds
+My Allreduce:  0.003241 seconds
+Ratio (MPI/My): 0.67
+---
+Testing Allreduce with data size 10000, 4 processes
+MPI Allreduce: 0.009493 seconds
+My Allreduce:  0.018268 seconds
+Ratio (MPI/My): 0.52
+---
+All collective operations tests completed!

@@ -1,0 +1,26 @@
+Matrix Band Multiplication - Mode: READY
+Matrix size: 256x256, Processes: 4
+Execution time: 0.034789 seconds
+corrupted size vs. prev_size
+[g2:22886] *** Process received signal ***
+[g2:22886] Signal: Aborted (6)
+[g2:22886] Signal code:  (-6)
+[g2:22886] [ 0] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libpthread.so.0(+0x13010)[0x7faece8a8010]
+[g2:22886] [ 1] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libc.so.6(gsignal+0xca)[0x7faece70eaba]
+[g2:22886] [ 2] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libc.so.6(abort+0x165)[0x7faece70fbf5]
+[g2:22886] [ 3] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libc.so.6(+0x78c97)[0x7faece750c97]
+[g2:22886] [ 4] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libc.so.6(+0x7ffea)[0x7faece757fea]
+[g2:22886] [ 5] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libc.so.6(+0x80816)[0x7faece758816]
+[g2:22886] [ 6] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libc.so.6(+0x81c9b)[0x7faece759c9b]
+[g2:22886] [ 7] ./matrix_band_modes[0x401c0c]
+[g2:22886] [ 8] ./matrix_band_modes[0x401787]
+[g2:22886] [ 9] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libc.so.6(__libc_start_main+0xed)[0x7faece6faa6d]
+[g2:22886] [10] ./matrix_band_modes[0x401aca]
+[g2:22886] *** End of error message ***
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 22886 on node g2 exited on signal 6 (Aborted).
+--------------------------------------------------------------------------

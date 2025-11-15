@@ -1,0 +1,6 @@
+MPI Topology Performance Analysis
+Generated: Sat 15 Nov 2025 10:22:52 PM MSK
+=================================
+
+Configuration        | Procs    | Cartesian    | Torus        | Graph        | Star        
+----------------------------------------------------------------------------------------

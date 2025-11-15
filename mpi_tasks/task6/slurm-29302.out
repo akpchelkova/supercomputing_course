@@ -1,0 +1,7 @@
+Matrix Multiplication - Mode: BUFFERED, Size: 256x256, Processes: 4
+[g3:20511] *** An error occurred in MPI_Bsend
+[g3:20511] *** reported by process [2632712193,0]
+[g3:20511] *** on communicator MPI_COMM_WORLD
+[g3:20511] *** MPI_ERR_BUFFER: invalid buffer pointer
+[g3:20511] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g3:20511] ***    and potentially your MPI job)

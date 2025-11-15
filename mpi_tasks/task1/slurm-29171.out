@@ -1,0 +1,10 @@
+--------------------------------------------------------------------------
+mpirun was unable to launch the specified application as it could not access
+or execute an executable:
+
+Executable: ./mpi_min_max
+Node: g1
+
+while attempting to start process rank 0.
+--------------------------------------------------------------------------
+16 total processes failed to start

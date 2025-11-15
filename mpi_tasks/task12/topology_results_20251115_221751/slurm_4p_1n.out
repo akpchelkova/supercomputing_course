@@ -1,0 +1,35 @@
+=== MPI Topology Benchmark ===
+Processes: 4, Nodes: 1
+Start time: Sat 15 Nov 2025 10:17:51 PM MSK
+Host: g10
+SLURM nodes: g10
+Processes per node: 4
+
+=== MPI Topology Benchmark ===
+Total processes: 4
+
+1. Cartesian Topology:
+   Grid dimensions: [2 x 2]
+Topology communication time: 0.000052 seconds
+
+2. Torus Topology:
+   Torus neighbors test completed
+Topology communication time: 0.000013 seconds
+
+3. Graph Topology:
+   Complete graph created (0 neighbors per node)
+Topology communication time: 0.000008 seconds
+
+4. Star Topology:
+   Star topology created (center has 3 neighbors)
+Topology communication time: 0.000013 seconds
+
+=== Performance Results ===
+Cartesian creation time:  0.000890 sec
+Torus creation time:      0.000118 sec
+Graph creation time:      0.000134 sec
+Star creation time:       0.000108 sec
+Total execution time:     0.001324 sec
+============================
+End time: Sat 15 Nov 2025 10:17:53 PM MSK
+=================================

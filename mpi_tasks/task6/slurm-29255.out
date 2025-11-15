@@ -1,0 +1,73 @@
+Matrix Band Multiplication - Mode: STANDARD
+Matrix size: 256x256, Processes: 8
+[g4:14567:0:14567] Caught signal 11 (Segmentation fault: Sent by the kernel at address (nil))
+[g4:14570:0:14570] Caught signal 11 (Segmentation fault: Sent by the kernel at address (nil))
+==== backtrace (tid:  14567) ====
+ 0  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(ucs_handle_error+0xe4) [0x7fac64214404]
+ 1  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(+0x2772c) [0x7fac6421472c]
+ 2  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(+0x27994) [0x7fac64214994]
+ 3  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/openmpi/mca_pml_ob1.so(check_cantmatch_for_match+0x11) [0x7fac64aa1491]
+ 4  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/openmpi/mca_pml_ob1.so(+0x11b26) [0x7fac64aa1b26]
+ 5  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/openmpi/mca_btl_vader.so(mca_btl_vader_poll_handle_frag+0x7d) [0x7fac64ae2b2d]
+ 6  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/openmpi/mca_btl_vader.so(+0x5dcd) [0x7fac64ae2dcd]
+ 7  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libopen-pal.so.40(opal_progress+0x2c) [0x7fac6681ac3c]
+ 8  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/openmpi/mca_pml_ob1.so(mca_pml_ob1_recv+0x2ad) [0x7fac64a9a3cd]
+ 9  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libmpi.so.40(MPI_Recv+0x160) [0x7fac66bed9d0]
+10  ./matrix_band_modes() [0x401869]
+11  /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libc.so.6(__libc_start_main+0xed) [0x7fac66984a6d]
+12  ./matrix_band_modes() [0x401aca]
+=================================
+==== backtrace (tid:  14570) ====
+ 0  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(ucs_handle_error+0xe4) [0x7f9111595404]
+ 1  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(+0x2772c) [0x7f911159572c]
+ 2  /gnu/store/vil23w1cj0dy99a2n78265rrrli0rwwz-ucx-1.9.0/lib/libucs.so.0(+0x27994) [0x7f9111595994]
+ 3  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/openmpi/mca_pml_ob1.so(check_cantmatch_for_match+0x11) [0x7f9111e22491]
+ 4  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/openmpi/mca_pml_ob1.so(+0x11b26) [0x7f9111e22b26]
+ 5  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/openmpi/mca_btl_vader.so(mca_btl_vader_poll_handle_frag+0x7d) [0x7f9111e63b2d]
+ 6  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/openmpi/mca_btl_vader.so(+0x5dcd) [0x7f9111e63dcd]
+ 7  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libopen-pal.so.40(opal_progress+0x2c) [0x7f9113b9bc3c]
+ 8  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/openmpi/mca_pml_ob1.so(mca_pml_ob1_recv+0x2ad) [0x7f9111e1b3cd]
+ 9  /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libmpi.so.40(MPI_Recv+0x160) [0x7f9113f6e9d0]
+10  ./matrix_band_modes() [0x401869]
+11  /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libc.so.6(__libc_start_main+0xed) [0x7f9113d05a6d]
+12  ./matrix_band_modes() [0x401aca]
+=================================
+[g4:14570] *** Process received signal ***
+[g4:14570] Signal: Segmentation fault (11)
+[g4:14570] Signal code:  (-6)
+[g4:14570] Failing at address: 0x1429000038ea
+[g4:14570] [ 0] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libpthread.so.0(+0x13010)[0x7f9113eb3010]
+[g4:14570] [ 1] /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/openmpi/mca_pml_ob1.so(check_cantmatch_for_match+0x11)[0x7f9111e22491]
+[g4:14570] [ 2] /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/openmpi/mca_pml_ob1.so(+0x11b26)[0x7f9111e22b26]
+[g4:14570] [ 3] /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/openmpi/mca_btl_vader.so(mca_btl_vader_poll_handle_frag+0x7d)[0x7f9111e63b2d]
+[g4:14570] [ 4] /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/openmpi/mca_btl_vader.so(+0x5dcd)[0x7f9111e63dcd]
+[g4:14570] [ 5] /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libopen-pal.so.40(opal_progress+0x2c)[0x7f9113b9bc3c]
+[g4:14570] [ 6] /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/openmpi/mca_pml_ob1.so(mca_pml_ob1_recv+0x2ad)[0x7f9111e1b3cd]
+[g4:14570] [ 7] /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libmpi.so.40(MPI_Recv+0x160)[0x7f9113f6e9d0]
+[g4:14570] [ 8] ./matrix_band_modes[0x401869]
+[g4:14570] [ 9] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libc.so.6(__libc_start_main+0xed)[0x7f9113d05a6d]
+[g4:14570] [10] ./matrix_band_modes[0x401aca]
+[g4:14570] *** End of error message ***
+[g4:14567] *** Process received signal ***
+[g4:14567] Signal: Segmentation fault (11)
+[g4:14567] Signal code:  (-6)
+[g4:14567] Failing at address: 0x1429000038e7
+[g4:14567] [ 0] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libpthread.so.0(+0x13010)[0x7fac66b32010]
+[g4:14567] [ 1] /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/openmpi/mca_pml_ob1.so(check_cantmatch_for_match+0x11)[0x7fac64aa1491]
+[g4:14567] [ 2] /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/openmpi/mca_pml_ob1.so(+0x11b26)[0x7fac64aa1b26]
+[g4:14567] [ 3] /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/openmpi/mca_btl_vader.so(mca_btl_vader_poll_handle_frag+0x7d)[0x7fac64ae2b2d]
+[g4:14567] [ 4] /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/openmpi/mca_btl_vader.so(+0x5dcd)[0x7fac64ae2dcd]
+[g4:14567] [ 5] /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libopen-pal.so.40(opal_progress+0x2c)[0x7fac6681ac3c]
+[g4:14567] [ 6] /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/openmpi/mca_pml_ob1.so(mca_pml_ob1_recv+0x2ad)[0x7fac64a9a3cd]
+[g4:14567] [ 7] /gnu/store/5jr225ab8j3i9799rbpr2cj6yrmxjh7j-openmpi-4.1.1/lib/libmpi.so.40(MPI_Recv+0x160)[0x7fac66bed9d0]
+[g4:14567] [ 8] ./matrix_band_modes[0x401869]
+[g4:14567] [ 9] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libc.so.6(__libc_start_main+0xed)[0x7fac66984a6d]
+[g4:14567] [10] ./matrix_band_modes[0x401aca]
+[g4:14567] *** End of error message ***
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 6 with PID 14570 on node g4 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------

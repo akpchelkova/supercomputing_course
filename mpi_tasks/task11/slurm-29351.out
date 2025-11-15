@@ -1,0 +1,36 @@
+=== Cartesian Grid Communication ===
+Total processes: 8
+Grid dimensions: 4 x 2
+Process 2 (world 2) -> Grid coordinates: (1, 0)
+Process 3 (world 3) -> Grid coordinates: (1, 1)
+Process 4 (world 4) -> Grid coordinates: (2, 0)
+Process 5 (world 5) -> Grid coordinates: (2, 1)
+Process 6 (world 6) -> Grid coordinates: (3, 0)
+Process 7 (world 7) -> Grid coordinates: (3, 1)
+Process 0 (world 0) -> Grid coordinates: (0, 0)
+Process 1 (world 1) -> Grid coordinates: (0, 1)
+Process (0,0): row_rank=0/2, col_rank=0/4
+
+=== Testing Collective Operations ===
+Data size: 1000 doubles, Iterations: 100
+Process (3,1): row_rank=1/2, col_rank=3/4
+Process (1,0): row_rank=0/2, col_rank=1/4
+Process (1,1): row_rank=1/2, col_rank=1/4
+Process (2,0): row_rank=0/2, col_rank=2/4
+Process (2,1): row_rank=1/2, col_rank=2/4
+Process (3,0): row_rank=0/2, col_rank=3/4
+Process (0,1): row_rank=1/2, col_rank=0/4
+
+=== Performance Results ===
+WORLD Bcast:    0.001947 seconds
+ROW Bcast:      0.000490 seconds
+Ratio (WORLD/ROW): 3.97
+
+WORLD Reduce:   0.002826 seconds
+COL Reduce:     0.002043 seconds
+Ratio (WORLD/COL): 1.38
+
+=== Summary ===
+Sub-communicators (rows/columns) are 1.4-4.0 times faster than WORLD communicator
+
+Cartesian grid tests completed successfully!

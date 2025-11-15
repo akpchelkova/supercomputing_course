@@ -1,0 +1,58 @@
+MPI Topology Performance Analysis
+Generated: Sat 15 Nov 2025 10:39:39 PM MSK
+=================================
+
+Test            | Processes | Cartesian    | Torus        | Graph        | Star        
+-------------------------------------------------------------------------------
+direct_2p       | 2        | 0.000754     | 0.000379     |              | 0.000061    
+direct_4p       | 4        | 0.001301     | 0.000076     | 0.000193     | 0.000078    
+direct_8p       | 8        | 0.001237     | 0.000401     | 0.000291     | 0.000299    
+
+Detailed Results:
+================
+
+File: direct_2p.out
+----------------------------------------
+=== MPI Topology Benchmark ===
+Start time: Sat 15 Nov 2025 10:39:28 PM MSK
+=== MPI Topology Test ===
+Total processes: 2
+1. Testing Cartesian topology...
+   Cartesian time: 0.000754 sec
+2. Testing Torus topology...
+   Torus time: 0.000379 sec
+4. Testing Star topology...
+   Star time: 0.000061 sec
+End time: Sat 15 Nov 2025 10:39:30 PM MSK
+
+File: direct_4p.out
+----------------------------------------
+=== MPI Topology Benchmark ===
+Start time: Sat 15 Nov 2025 10:39:32 PM MSK
+=== MPI Topology Test ===
+Total processes: 4
+1. Testing Cartesian topology...
+   Cartesian time: 0.001301 sec
+2. Testing Torus topology...
+   Torus time: 0.000076 sec
+3. Testing Graph topology...
+   Graph time: 0.000193 sec
+4. Testing Star topology...
+   Star time: 0.000078 sec
+End time: Sat 15 Nov 2025 10:39:33 PM MSK
+
+File: direct_8p.out
+----------------------------------------
+=== MPI Topology Benchmark ===
+Start time: Sat 15 Nov 2025 10:39:35 PM MSK
+=== MPI Topology Test ===
+Total processes: 8
+1. Testing Cartesian topology...
+   Cartesian time: 0.001237 sec
+2. Testing Torus topology...
+   Torus time: 0.000401 sec
+3. Testing Graph topology...
+   Graph time: 0.000291 sec
+4. Testing Star topology...
+   Star time: 0.000299 sec
+End time: Sat 15 Nov 2025 10:39:37 PM MSK
