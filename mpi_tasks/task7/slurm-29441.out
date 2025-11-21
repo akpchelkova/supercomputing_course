@@ -1,0 +1,12 @@
+=== Non-blocking Balance Experiment ===
+Total compute: 4.00 s, Bytes/sec: 1000000, Iterations: 10
+Processes: 4, Local compute: 1000000 us, Comm size: 1000000 bytes
+Iteration 0: compute=1.0002s, comm=0.0012s, total=1.0014s
+
+=== RESULTS ===
+Total time: 10.0198 s
+Total compute time: 10.0017 s
+Total communication time: 0.0075 s
+Ideal time (compute + comm): 10.0092 s
+Overlap efficiency: 99.9%
+Compute-bound: communications are well hidden

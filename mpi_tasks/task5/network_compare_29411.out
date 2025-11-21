@@ -1,0 +1,12 @@
+=== Network Communication Comparison ===
+1. LOCAL: 8 processes on 1 node
+Submitted batch job 29412
+2. DISTRIBUTED: 8 processes on 4 nodes
+Submitted batch job 29413
+3. LOCAL: 16 processes on 1 node
+Submitted batch job 29414
+4. DISTRIBUTED: 16 processes on 8 nodes
+Submitted batch job 29415
+5. NETWORK HEAVY: 8 processes on 4 nodes, low ratio
+Submitted batch job 29416
+All network experiments submitted!

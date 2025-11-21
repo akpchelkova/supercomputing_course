@@ -1,0 +1,50 @@
+Starting MPI experiments...
+EXPERIMENT: processes=1, vector_size=1000, time=0.000050
+RESULTS: min=1.98, max=999.60
+---
+EXPERIMENT: processes=1, vector_size=10000, time=0.000379
+RESULTS: min=0.05, max=999.60
+---
+EXPERIMENT: processes=1, vector_size=100000, time=0.003680
+RESULTS: min=0.00, max=999.99
+---
+EXPERIMENT: processes=1, vector_size=1000000, time=0.035206
+RESULTS: min=0.00, max=1000.00
+---
+EXPERIMENT: processes=2, vector_size=1000, time=0.000074
+RESULTS: min=1.98, max=999.60
+---
+EXPERIMENT: processes=2, vector_size=10000, time=0.000388
+RESULTS: min=0.05, max=999.60
+---
+EXPERIMENT: processes=2, vector_size=100000, time=0.003641
+RESULTS: min=0.00, max=999.99
+---
+EXPERIMENT: processes=2, vector_size=1000000, time=0.034236
+RESULTS: min=0.00, max=1000.00
+---
+EXPERIMENT: processes=4, vector_size=1000, time=0.000160
+RESULTS: min=1.98, max=999.60
+---
+EXPERIMENT: processes=4, vector_size=10000, time=0.000392
+RESULTS: min=0.05, max=999.60
+---
+EXPERIMENT: processes=4, vector_size=100000, time=0.003204
+RESULTS: min=0.00, max=999.99
+---
+EXPERIMENT: processes=4, vector_size=1000000, time=0.032452
+RESULTS: min=0.00, max=1000.00
+---
+EXPERIMENT: processes=8, vector_size=1000, time=0.000179
+RESULTS: min=1.98, max=999.60
+---
+EXPERIMENT: processes=8, vector_size=10000, time=0.000373
+RESULTS: min=0.05, max=999.60
+---
+EXPERIMENT: processes=8, vector_size=100000, time=0.003208
+RESULTS: min=0.00, max=999.99
+---
+EXPERIMENT: processes=8, vector_size=1000000, time=0.033144
+RESULTS: min=0.00, max=1000.00
+---
+All experiments completed.

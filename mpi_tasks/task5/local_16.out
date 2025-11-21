@@ -1,0 +1,15 @@
+=== BALANCE EXPERIMENT (CORRECTED) ===
+Total compute time (1 process): 2.00 s
+Bytes per second of compute: 1000000 B/s
+Processes: 16
+Local compute time per process: 0.1250 s (125000 us)
+Communication size per process: 125000 bytes
+Compute/Comm ratio (N/M): 2.000000
+Iterations: 5
+
+=== RESULTS ===
+Sequential time (estimated): 10.0000 s
+Parallel time: 0.6361 s
+Speedup: 15.72
+Efficiency: 98.2%
+================

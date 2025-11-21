@@ -1,0 +1,25 @@
+=== MPI Message Exchange with Sendrecv ===
+Total processes: 2
+Node distribution:
+Process 0: g10
+Process 1: g10
+
+Testing message exchange performance with MPI_Sendrecv
+Exchanges per test: 1000
+Message Size (bytes) | Time per exchange (ms) | Bandwidth (MB/s)
+---------------------|------------------------|------------------
+                  1 |                0.000467 |             4.08
+                 16 |                0.000519 |            58.75
+                 64 |                0.000502 |           243.31
+                256 |                0.000600 |           814.03
+               1024 |                0.001026 |          1903.62
+               4096 |                0.003762 |          2076.50
+              16384 |                0.006243 |          5005.91
+              65536 |                0.016906 |          7393.78
+             262144 |                0.052870 |          9457.16
+            1048576 |                0.207396 |          9643.40
+            4194304 |                1.667556 |          4797.44
+
+=== Comparative Test: Send/Recv vs Sendrecv ===
+mpirun: Forwarding signal 18 to job
+slurmstepd: error: *** JOB 29460 ON g10 CANCELLED AT 2025-11-21T16:05:47 ***

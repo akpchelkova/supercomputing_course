@@ -24,3 +24,5 @@ Message Size (bytes) | Time per exchange (ms) | Bandwidth (MB/s)
 
 === Cross-node communication test ===
 Testing cross-node communication with process 2
+slurmstepd: error: *** JOB 29338 ON g1 CANCELLED AT 2025-11-16T21:38:40 DUE TO TIME LIMIT ***
+mpirun: Forwarding signal 18 to job

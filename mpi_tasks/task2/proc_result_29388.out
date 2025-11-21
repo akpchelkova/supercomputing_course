@@ -1,0 +1,15 @@
+Testing different process counts with vector size 1M:
+=== Processes: 1 ===
+---
+=== Processes: 2 ===
+2 total processes failed to start
+---
+=== Processes: 4 ===
+4 total processes failed to start
+---
+=== Processes: 8 ===
+8 total processes failed to start
+---
+=== Processes: 16 ===
+16 total processes failed to start
+---

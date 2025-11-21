@@ -1,0 +1,47 @@
+=== Final Matrix Multiplication Test ===
+--- 1 process ---
+Size 64:
+Band: 0.0021
+Cannon: 0.0040
+Size 128:
+Band: 0.0233
+Cannon: 0.0352
+Size 256:
+Band: 0.1956
+Cannon: 0.2807
+Size 512:
+Band: 1.4970
+Cannon: 2.2511
+--- 4 processes ---
+Size 64:
+Band: 0.0010
+Cannon: 0.0040
+Size 128:
+Band: 0.0062
+Cannon: 0.0104
+Size 256:
+Band: 0.0573
+Cannon: 0.0710
+Size 512:
+Band: 0.3880
+Cannon: 0.5561
+--- 9 processes ---
+Size 192:
+Band: 0.0187
+Cannon: 0.0288
+Size 384:
+Band: 0.1475
+Cannon: 0.1673
+Size 768:
+Band: 1.1939
+Cannon: 1.3914
+--- 16 processes ---
+Size 256:
+Band: 0.0309
+Cannon: 0.0401
+Size 512:
+Band: 0.2519
+Cannon: 0.2272
+Size 1024:
+Band: 1.9012
+Cannon: 1.9360

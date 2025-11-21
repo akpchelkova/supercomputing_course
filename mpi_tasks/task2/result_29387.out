@@ -1,0 +1,29 @@
+=== MPI Dot Product Computation ===
+Total processes: 8
+Node distribution:
+Process 0: g10
+Process 1: g10
+Process 2: g10
+Process 3: g10
+Process 4: g10
+Process 5: g10
+Process 6: g10
+Process 7: g10
+
+Vector size:     1000 | Processes:  8 | Time: 0.002370 sec
+Dot product result: 24394.305921
+Correctness check (size 1000): 24394.305921
+---
+Vector size:    10000 | Processes:  8 | Time: 0.003516 sec
+Dot product result: 250203.125253
+Correctness check (size 1000): 24394.305921
+---
+Vector size:   100000 | Processes:  8 | Time: 0.007370 sec
+Dot product result: 2497344.909607
+Correctness check (size 1000): 24394.305921
+---
+Vector size:  1000000 | Processes:  8 | Time: 0.072140 sec
+Dot product result: 24981188.479985
+Correctness check (size 1000): 24394.305921
+---
+All dot product experiments completed!

@@ -1,0 +1,26 @@
+--------------------------------------------------------------------------
+ORTE has lost communication with a remote daemon.
+
+  HNP daemon   : [[62182,0],0] on node g1
+  Remote daemon: [[62182,0],1] on node g2
+
+This is usually due to either a failure of the TCP network
+connection to the node, or possibly an internal failure of
+the daemon itself. We cannot recover from this failure, and
+therefore will terminate the job.
+--------------------------------------------------------------------------
+slurmstepd: error: *** JOB 29392 ON g1 CANCELLED AT 2025-11-21T16:00:25 DUE TO TIME LIMIT ***
+mpirun: abort is already in progress...hit ctrl-c again to forcibly terminate
+
+mpirun: Forwarding signal 18 to job
+[g1:26874] *** Process received signal ***
+[g1:26874] Signal: Segmentation fault (11)
+[g1:26874] Signal code: Address not mapped (1)
+[g1:26874] Failing at address: 0x30
+[g1:26874] [ 0] /gnu/store/fa6wj5bxkj5ll1d7292a70knmyl7a0cr-glibc-2.31/lib/libpthread.so.0(+0x13010)[0x7f2bc04c4010]
+[g1:26874] [ 1] /gnu/store/ifqp241jhmwril2jpdsib1irmix3s7f6-openmpi-4.0.2/lib/openmpi/mca_pmix_pmix3x.so(OPAL_MCA_PMIX3X_PMIx_Finalize+0x4f7)[0x7f2bc0167807]
+[g1:26874] [ 2] /gnu/store/ifqp241jhmwril2jpdsib1irmix3s7f6-openmpi-4.0.2/lib/openmpi/mca_pmix_pmix3x.so(pmix3x_client_finalize+0x39a)[0x7f2bc01104aa]
+[g1:26874] [ 3] /gnu/store/ifqp241jhmwril2jpdsib1irmix3s7f6-openmpi-4.0.2/lib/openmpi/mca_ess_hnp.so(+0x487a)[0x7f2bc02bb87a]
+[g1:26874] [ 4] /gnu/store/9xrm7734li5pyr1r2qa7dgj6sfl8hx3k-libevent-2.1.11/lib/libevent-2.1.so.7(+0x230c5)[0x7f2bc05150c5]
+[g1:26874] [ 5] /gnu/store/9xrm7734li5pyr1r2qa7dgj6sfl8hx3k-libevent-2.1.11/lib/libevent-2.1.so.7(event_base_loop+0x50f)[0x7f2bc05158df]
+[g1:26874] 

@@ -1,0 +1,23 @@
+=== MPI Message Exchange with Sendrecv ===
+Total processes: 2
+Node distribution:
+Process 0: g1
+Process 1: g1
+
+Testing message exchange performance with MPI_Sendrecv
+Exchanges per test: 1000
+Message Size (bytes) | Time per exchange (ms) | Bandwidth (MB/s)
+---------------------|------------------------|------------------
+                  1 |                0.000461 |             4.13
+                 16 |                0.000450 |            67.76
+                 64 |                0.000495 |           246.70
+                256 |                0.000585 |           834.41
+               1024 |                0.001041 |          1875.72
+               4096 |                0.003654 |          2138.16
+              16384 |                0.006058 |          5158.64
+              65536 |                0.015902 |          7860.64
+             262144 |                0.052635 |          9499.37
+            1048576 |                0.208490 |          9592.78
+            4194304 |                1.641360 |          4874.01
+
+=== Comparative Test: Send/Recv vs Sendrecv ===

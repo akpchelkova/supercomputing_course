@@ -1,0 +1,20 @@
+=== MPI Topology Benchmark ===
+Processes: 32, Nodes: 4
+Start time: Sun 16 Nov 2025 09:34:23 PM MSK
+Host: g3
+SLURM nodes: g[3-4,7-8]
+Processes per node: 8(x4)
+
+=== MPI Topology Test ===
+Total processes: 32
+1. Testing Cartesian topology...
+   Cartesian time: 0.036379 sec
+2. Testing Torus topology...
+   Torus time: 0.034276 sec
+3. Testing Graph topology...
+   Graph time: 0.034462 sec
+4. Testing Star topology...
+   Star time: 0.034208 sec
+=== Test Complete ===
+End time: Sun 16 Nov 2025 09:34:25 PM MSK
+=================================

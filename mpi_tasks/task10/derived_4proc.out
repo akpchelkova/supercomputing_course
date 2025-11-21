@@ -1,0 +1,39 @@
+=== Derived Data Types Comparison ===
+Testing three methods of sending structured data
+Structure: Particle { int id; double values[3]; char name[20]; }
+Total size per particle: 56 bytes
+Processes: 4
+
+
+--- Testing with 1 particles ---
+Derived type: 0.000629 seconds for 1 particles, 100 iterations
+Packing:      0.000595 seconds for 1 particles, 100 iterations
+Ratio (Packing/Derived): 0.95
+Separate:     0.001186 seconds for 1 particles, 100 iterations
+Ratio (Separate/Derived): 1.89
+
+--- Testing with 10 particles ---
+Derived type: 0.006579 seconds for 10 particles, 100 iterations
+Packing:      0.001602 seconds for 10 particles, 100 iterations
+Ratio (Packing/Derived): 0.24
+Separate:     0.014147 seconds for 10 particles, 100 iterations
+Ratio (Separate/Derived): 2.15
+
+--- Testing with 100 particles ---
+Derived type: 0.003085 seconds for 100 particles, 100 iterations
+Packing:      0.007805 seconds for 100 particles, 100 iterations
+Ratio (Packing/Derived): 2.53
+Separate:     0.133165 seconds for 100 particles, 100 iterations
+Ratio (Separate/Derived): 43.17
+
+--- Testing with 1000 particles ---
+Derived type: 0.232733 seconds for 1000 particles, 100 iterations
+Packing:      0.285570 seconds for 1000 particles, 100 iterations
+Ratio (Packing/Derived): 1.23
+Separate:     1.212140 seconds for 1000 particles, 100 iterations
+Ratio (Separate/Derived): 5.21
+
+=== Testing Contiguous Type ===
+Contiguous type (5 doubles): 0.000261 seconds for 1000 iterations
+
+All derived type tests completed!

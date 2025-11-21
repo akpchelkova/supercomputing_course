@@ -1,0 +1,41 @@
+=== Proper Matrix Multiplication Test ===
+--- 1 process ---
+Size 64:
+Band: 0.0028
+Cannon: 0.0050
+Size 128:
+Band: 0.0251
+Cannon: 0.0354
+Size 256:
+Band: 0.1876
+Cannon: 0.2689
+Size 512:
+Band: 1.4992
+Cannon: 2.2414
+--- 4 processes ---
+Size 64:
+Band: 0.0010
+Cannon: 0.0026
+Size 128:
+Band: 0.0062
+Cannon: 0.0103
+Size 256:
+Band: 0.0572
+Cannon: 0.0687
+Size 512:
+Band: 0.3931
+Cannon: 0.5584
+--- 9 processes ---
+Size 192:
+Band: 0.0564
+Cannon: 0.1262
+Size 384:
+Band: 0.1325
+Cannon: 0.2349
+--- 16 processes ---
+Size 256:
+Band: 0.1110
+Cannon: 0.2495
+Size 512:
+Band: 0.5163
+Cannon: 0.4992

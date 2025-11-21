@@ -1,0 +1,145 @@
+gcc: error: dot_product_simple.c: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+srun: error: g10: task 0: Exited with exit code 2
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+srun: error: g10: task 0: Exited with exit code 2
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+srun: error: g10: task 0: Exited with exit code 2
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+srun: error: g10: task 0: Exited with exit code 2
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+srun: error: g10: tasks 0-1: Exited with exit code 2
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+srun: error: g10: tasks 0-1: Exited with exit code 2
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+srun: error: g10: tasks 0-1: Exited with exit code 2
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+srun: error: g10: tasks 0-1: Exited with exit code 2
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+srun: error: g10: tasks 0-3: Exited with exit code 2
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+srun: error: g10: tasks 0-3: Exited with exit code 2
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+srun: error: g10: tasks 0-3: Exited with exit code 2
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+srun: error: g10: tasks 0-3: Exited with exit code 2
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+srun: error: g10: tasks 0-7: Exited with exit code 2
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+srun: error: g10: tasks 0-7: Exited with exit code 2
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+srun: error: g10: tasks 0-7: Exited with exit code 2
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+srun: error: g10: tasks 0-7: Exited with exit code 2
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+srun: error: g10: tasks 0-15: Exited with exit code 2
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+srun: error: g10: tasks 0-15: Exited with exit code 2
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+srun: error: g10: tasks 0-15: Exited with exit code 2
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+slurmstepd: error: execve(): /home/Beelike/supercomputing_course/mpi_tasks/task2/./dot_product_simple: No such file or directory
+srun: error: g10: tasks 0-15: Exited with exit code 2

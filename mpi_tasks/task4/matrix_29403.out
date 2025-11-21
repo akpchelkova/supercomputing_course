@@ -1,0 +1,47 @@
+=== Comparing Band vs Cannon ===
+=== 4 processes ===
+Band 64:
+Time: 0.0011 seconds
+Cannon 64:
+Time: 0.0040 seconds
+
+Band 128:
+Time: 0.0102 seconds
+Cannon 128:
+Time: 0.0156 seconds
+
+Band 256:
+Time: 0.0491 seconds
+Cannon 256:
+Time: 0.0766 seconds
+
+=== 9 processes ===
+Band 256:
+Time: 0.0452 seconds
+Cannon 256:
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[33314,1],0]
+  Exit code:    1
+--------------------------------------------------------------------------
+
+Band 512:
+Time: 0.3668 seconds
+Cannon 512:
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[33680,1],4]
+  Exit code:    1
+--------------------------------------------------------------------------

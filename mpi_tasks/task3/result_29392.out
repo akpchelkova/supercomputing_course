@@ -1,0 +1,26 @@
+=== MPI Message Exchange Performance ===
+Total processes: 4
+Node distribution:
+Process 0: g1
+Process 1: g1
+Process 2: g2
+Process 3: g2
+
+Testing message exchange performance
+Exchanges per test: 1000
+Message Size (bytes) | Time per exchange (ms) | Bandwidth (MB/s)
+---------------------|------------------------|------------------
+                  1 |                0.007270 |             0.26
+                 16 |                0.004368 |             6.99
+                 64 |                0.004375 |            27.90
+                256 |                0.004911 |            99.42
+               1024 |                0.004848 |           402.88
+               4096 |                0.006483 |          1205.04
+              16384 |                0.013668 |          2286.36
+              65536 |                0.036710 |          3405.02
+             262144 |                0.094319 |          5301.15
+            1048576 |                0.338723 |          5904.53
+            4194304 |                2.258446 |          3542.26
+
+=== Cross-node communication test ===
+Testing cross-node communication with process 2

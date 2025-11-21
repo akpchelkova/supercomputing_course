@@ -1,0 +1,26 @@
+=== Full Matrix Multiplication Test ===
+--- Testing with 1 processes ---
+Size: 64
+Band: 0.0029
+Cannon: 0.0050
+
+Size: 128
+Band: 0.0236
+Cannon: 0.0353
+
+Size: 256
+Band: 0.1975
+Cannon: 0.2806
+
+Size: 512
+Band: 1.5028
+Cannon: 2.2373
+
+Size: 1024
+Band: 11.9399
+Cannon: 15.8749
+
+================================
+--- Testing with 4 processes ---
+/var/lib/slurm/spool/job29404/slurm_script: line 19: bc: command not found
+/var/lib/slurm/spool/job29404/slurm_script: line 19: size % : syntax error: operand expected (error token is "% ")

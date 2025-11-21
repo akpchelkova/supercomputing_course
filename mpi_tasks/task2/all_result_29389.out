@@ -1,0 +1,47 @@
+Testing ALL process counts with different vector sizes:
+=== PROCESSES: 1 ===
+Size: 1000
+Size: 10000
+Size: 100000
+Size: 1000000
+---
+=== PROCESSES: 2 ===
+Size: 1000
+2 total processes failed to start
+Size: 10000
+2 total processes failed to start
+Size: 100000
+2 total processes failed to start
+Size: 1000000
+2 total processes failed to start
+---
+=== PROCESSES: 4 ===
+Size: 1000
+4 total processes failed to start
+Size: 10000
+4 total processes failed to start
+Size: 100000
+4 total processes failed to start
+Size: 1000000
+4 total processes failed to start
+---
+=== PROCESSES: 8 ===
+Size: 1000
+8 total processes failed to start
+Size: 10000
+8 total processes failed to start
+Size: 100000
+8 total processes failed to start
+Size: 1000000
+8 total processes failed to start
+---
+=== PROCESSES: 16 ===
+Size: 1000
+16 total processes failed to start
+Size: 10000
+16 total processes failed to start
+Size: 100000
+16 total processes failed to start
+Size: 1000000
+16 total processes failed to start
+---

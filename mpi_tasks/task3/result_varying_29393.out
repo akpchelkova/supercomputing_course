@@ -1,0 +1,132 @@
+=== Running with 2 processes ===
+=== MPI Message Exchange Performance ===
+Total processes: 2
+Node distribution:
+Process 0: g10
+Process 1: g10
+
+Testing message exchange performance
+Exchanges per test: 1000
+Message Size (bytes) | Time per exchange (ms) | Bandwidth (MB/s)
+---------------------|------------------------|------------------
+                  1 |                0.000707 |             2.70
+                 16 |                0.000703 |            43.42
+                 64 |                0.000920 |           132.70
+                256 |                0.001527 |           319.71
+               1024 |                0.001755 |          1113.04
+               4096 |                0.003525 |          2216.61
+              16384 |                0.010279 |          3040.09
+              65536 |                0.028413 |          4399.41
+             262144 |                0.090891 |          5501.11
+            1048576 |                0.338030 |          5916.64
+            4194304 |                2.328819 |          3435.22
+
+All message exchange tests completed!
+[1763643663.949400] [g10:1148 :0]          mpool.c:43   UCX  WARN  object 0x7f23f16c4fc0 was not returned to mpool ucp_am_bufs
+
+=== Running with 4 processes ===
+=== MPI Message Exchange Performance ===
+Total processes: 4
+Node distribution:
+Process 0: g10
+Process 1: g10
+Process 2: g10
+Process 3: g10
+
+Testing message exchange performance
+Exchanges per test: 1000
+Message Size (bytes) | Time per exchange (ms) | Bandwidth (MB/s)
+---------------------|------------------------|------------------
+                  1 |                0.003751 |             0.51
+                 16 |                0.001717 |            17.77
+                 64 |                0.002172 |            56.20
+                256 |                0.003060 |           159.58
+               1024 |                0.003541 |           551.61
+               4096 |                0.005577 |          1400.91
+              16384 |                0.012223 |          2556.63
+              65536 |                0.035995 |          3472.74
+             262144 |                0.091189 |          5483.10
+            1048576 |                0.337164 |          5931.83
+            4194304 |                1.305851 |          6126.27
+
+=== Cross-node communication test ===
+No remote node found for cross-node test
+
+All message exchange tests completed!
+
+=== Running with 8 processes ===
+=== MPI Message Exchange Performance ===
+Total processes: 8
+Node distribution:
+Process 0: g10
+Process 1: g10
+Process 2: g10
+Process 3: g10
+Process 4: g10
+Process 5: g10
+Process 6: g10
+Process 7: g10
+
+Testing message exchange performance
+Exchanges per test: 1000
+Message Size (bytes) | Time per exchange (ms) | Bandwidth (MB/s)
+---------------------|------------------------|------------------
+                  1 |                0.004999 |             0.38
+                 16 |                0.001730 |            17.64
+                 64 |                0.002173 |            56.16
+                256 |                0.003089 |           158.07
+               1024 |                0.003665 |           532.94
+               4096 |                0.005716 |          1366.78
+              16384 |                0.012444 |          2511.33
+              65536 |                0.035964 |          3475.67
+             262144 |                0.091599 |          5458.58
+            1048576 |                0.334360 |          5981.57
+            4194304 |                1.308248 |          6115.05
+
+=== Cross-node communication test ===
+No remote node found for cross-node test
+
+All message exchange tests completed!
+
+=== Running with 16 processes ===
+=== MPI Message Exchange Performance ===
+Total processes: 16
+Node distribution:
+Process 0: g10
+Process 1: g10
+Process 2: g10
+Process 3: g10
+Process 4: g10
+Process 5: g10
+Process 6: g10
+Process 7: g10
+Process 8: g10
+Process 9: g10
+Process 10: g10
+Process 11: g10
+Process 12: g10
+Process 13: g10
+Process 14: g10
+Process 15: g10
+
+Testing message exchange performance
+Exchanges per test: 1000
+Message Size (bytes) | Time per exchange (ms) | Bandwidth (MB/s)
+---------------------|------------------------|------------------
+                  1 |                0.003144 |             0.61
+                 16 |                0.002679 |            11.39
+                 64 |                0.000969 |           126.01
+                256 |                0.001692 |           288.52
+               1024 |                0.002115 |           923.41
+               4096 |                0.003476 |          2247.53
+              16384 |                0.009392 |          3327.13
+              65536 |                0.028224 |          4428.86
+             262144 |                0.119958 |          4168.14
+            1048576 |                0.436432 |          4582.61
+            4194304 |                2.932706 |          2727.86
+
+=== Cross-node communication test ===
+No remote node found for cross-node test
+
+All message exchange tests completed!
+

@@ -1,0 +1,28 @@
+=== Testing different MPI communication modes ===
+Exchanges per test: 1000
+
+--- Message size: 64 bytes ---
+Sync mode: 64 bytes - 0.256526 ms/exchange
+Ready mode: 64 bytes - 0.197544 ms/exchange
+Buffered mode: 64 bytes - 0.228324 ms/exchange
+
+--- Message size: 1024 bytes ---
+Sync mode: 1024 bytes - 0.270652 ms/exchange
+Ready mode: 1024 bytes - 0.285089 ms/exchange
+Buffered mode: 1024 bytes - 0.280337 ms/exchange
+
+--- Message size: 4096 bytes ---
+Sync mode: 4096 bytes - 0.348571 ms/exchange
+Ready mode: 4096 bytes - 0.304769 ms/exchange
+Buffered mode: 4096 bytes - 0.307454 ms/exchange
+
+--- Message size: 16384 bytes ---
+Sync mode: 16384 bytes - 0.662420 ms/exchange
+Ready mode: 16384 bytes - 0.643219 ms/exchange
+Buffered mode: 16384 bytes - 0.677178 ms/exchange
+
+--- Message size: 65536 bytes ---
+Sync mode: 65536 bytes - 1.639074 ms/exchange
+Ready mode: 65536 bytes - 1.560008 ms/exchange
+Buffered mode: 65536 bytes - 1.642980 ms/exchange
+

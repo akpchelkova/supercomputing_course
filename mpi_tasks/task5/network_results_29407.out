@@ -1,0 +1,6 @@
+=== LOCAL: 8 processes on 1 node ===
+Submitted batch job 29408
+=== DISTRIBUTED: 8 processes on 4 nodes ===
+Submitted batch job 29409
+=== EXTREME NETWORK: 16 processes on 8 nodes ===
+Submitted batch job 29410
