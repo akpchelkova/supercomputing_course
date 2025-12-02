@@ -17,29 +17,29 @@ int main(int argc, char *argv[]) {
         printf("Total processes: %d\n", size);
     }
     
-    MPI_Barrier(MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);  // синхронизация всех процессов
     
-    // 1. Декартова топология
+    // 1. декартова топология (2D решетка)
     if (rank == 0) printf("1. Testing Cartesian topology...\n");
-    start_time = MPI_Wtime();
+    start_time = MPI_Wtime();  // начинаем замер времени
     
     int dims[2] = {0, 0};
-    MPI_Dims_create(size, 2, dims);
-    int periods[2] = {0, 0};
-    MPI_Cart_create(MPI_COMM_WORLD, 2, dims, periods, 1, &temp_comm);
+    MPI_Dims_create(size, 2, dims);  // автоматически определяем размеры решетки
+    int periods[2] = {0, 0};  // непериодические границы
+    MPI_Cart_create(MPI_COMM_WORLD, 2, dims, periods, 1, &temp_comm);  // создаем декартову топологию
     
     if (temp_comm != MPI_COMM_NULL) {
-        MPI_Comm_free(&temp_comm);
+        MPI_Comm_free(&temp_comm);  // освобождаем коммуникатор
     }
     end_time = MPI_Wtime();
     if (rank == 0) printf("   Cartesian time: %.6f sec\n", end_time - start_time);
     
-    // 2. Топология тора  
+    // 2. топология тора (периодическая декартова решетка)
     if (rank == 0) printf("2. Testing Torus topology...\n");
     start_time = MPI_Wtime();
     
-    int torus_periods[2] = {1, 1};
-    MPI_Cart_create(MPI_COMM_WORLD, 2, dims, torus_periods, 1, &temp_comm);
+    int torus_periods[2] = {1, 1};  // периодические границы по обеим осям
+    MPI_Cart_create(MPI_COMM_WORLD, 2, dims, torus_periods, 1, &temp_comm);  // создаем тор
     
     if (temp_comm != MPI_COMM_NULL) {
         MPI_Comm_free(&temp_comm);
@@ -47,16 +47,16 @@ int main(int argc, char *argv[]) {
     end_time = MPI_Wtime();
     if (rank == 0) printf("   Torus time: %.6f sec\n", end_time - start_time);
     
-    // 3. Топология графа (только если процессов >= 3)
+    // 3. топология графа (произвольная связность, требуется минимум 3 процесса)
     if (size >= 3) {
         if (rank == 0) printf("3. Testing Graph topology...\n");
         start_time = MPI_Wtime();
         
         MPI_Comm graph_comm;
-        int index[3];
-        int edges[6];
+        int index[3];  // массив индексов для каждого узла
+        int edges[6];  // массив ребер графа
         
-        // Простой граф: 0-1-2
+        // создаем простой линейный граф: 0-1-2
         index[0] = 1;  // узел 0 имеет 1 соседа
         index[1] = 2;  // узел 1 имеет 2 соседа  
         index[2] = 3;  // узел 2 имеет 1 соседа
@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) {
         edges[2] = 2;  // 1->2
         edges[3] = 1;  // 2->1
         
-        MPI_Graph_create(MPI_COMM_WORLD, 3, index, edges, 0, &graph_comm);
+        MPI_Graph_create(MPI_COMM_WORLD, 3, index, edges, 0, &graph_comm);  // создаем графовую топологию
         
         if (graph_comm != MPI_COMM_NULL) {
             MPI_Comm_free(&graph_comm);
@@ -76,29 +76,29 @@ int main(int argc, char *argv[]) {
         if (rank == 0) printf("3. Graph topology: skipped (need >= 3 processes)\n");
     }
     
-    // 4. Топология звезды
+    // 4. топология звезды (центральный узел соединен со всеми остальными)
     if (rank == 0) printf("4. Testing Star topology...\n");
     start_time = MPI_Wtime();
     
     if (size >= 2) {
         MPI_Comm star_comm;
-        int index[size];
-        int edges[2 * (size - 1)];
+        int index[size];        // массив индексов для каждого узла
+        int edges[2 * (size - 1)];  // массив ребер (в обе стороны)
         int i;
         
-        // Центральный узел 0 соединен со всеми
-        index[0] = size - 1;
+        // центральный узел 0 соединен со всеми остальными
+        index[0] = size - 1;  // у центрального узла (size-1) соседей
         for (i = 1; i < size; i++) {
-            index[i] = index[i-1] + 1;
+            index[i] = index[i-1] + 1;  // каждый следующий узел имеет на 1 соседа больше
         }
         
-        // Создание ребер
+        // создание ребер: двусторонние связи между центром и периферийными узлами
         for (i = 0; i < size - 1; i++) {
-            edges[i] = i + 1;           // из 0 в другие
-            edges[size - 1 + i] = 0;    // из других в 0
+            edges[i] = i + 1;           // из центра 0 в периферийные узлы
+            edges[size - 1 + i] = 0;    // из периферийных узлов в центр 0
         }
         
-        MPI_Graph_create(MPI_COMM_WORLD, size, index, edges, 1, &star_comm);
+        MPI_Graph_create(MPI_COMM_WORLD, size, index, edges, 1, &star_comm);  // создаем звездную топологию
         
         if (star_comm != MPI_COMM_NULL) {
             MPI_Comm_free(&star_comm);

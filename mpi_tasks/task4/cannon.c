@@ -12,7 +12,8 @@ int main(int argc, char** argv) {
     
     if (argc > 1) N = atoi(argv[1]);
     
-    // Проверяем квадратное число процессов
+    // проверяем что количество процессов - квадрат целого числа
+    // так как алгоритм Кэннона требует квадратную сетку процессов
     int q = (int)sqrt(size);
     if (q * q != size) {
         if (rank == 0) {
@@ -23,6 +24,7 @@ int main(int argc, char** argv) {
         return 1;
     }
     
+    // проверяем что размер матрицы делится на размер сетки процессов
     int block_size = N / q;
     if (block_size * q != N) {
         if (rank == 0) {
@@ -36,7 +38,7 @@ int main(int argc, char** argv) {
     double *A = NULL, *B = NULL, *C = NULL;
     double *local_A, *local_B, *local_C;
     
-    // Главный процесс создает матрицы
+    // главный процесс создает и инициализирует матрицы
     if (rank == 0) {
         A = malloc(N * N * sizeof(double));
         B = malloc(N * N * sizeof(double));
@@ -52,28 +54,31 @@ int main(int argc, char** argv) {
         start_time = MPI_Wtime();
     }
     
+    // рассылаем размеры матрицы и блоков всем процессам
     MPI_Bcast(&N, 1, MPI_INT, 0, MPI_COMM_WORLD);
     MPI_Bcast(&block_size, 1, MPI_INT, 0, MPI_COMM_WORLD);
     
-    // Локальные блоки
+    // выделяем память под локальные блоки матриц
     int block_elements = block_size * block_size;
     local_A = malloc(block_elements * sizeof(double));
     local_B = malloc(block_elements * sizeof(double));
+    // инициализируем локальную матрицу C нулями
     local_C = calloc(block_elements, sizeof(double));
     
-    // Создаем декартову топологию
+    // создаем декартову топологию - сетку процессов q x q
     MPI_Comm grid_comm;
     int dims[2] = {q, q};
-    int periods[2] = {1, 1}; // циклическая
+    int periods[2] = {1, 1}; // циклическая граница для реализации циркуляции
     MPI_Cart_create(MPI_COMM_WORLD, 2, dims, periods, 0, &grid_comm);
     
+    // получаем координаты текущего процесса в сетке
     int coords[2];
     MPI_Cart_coords(grid_comm, rank, 2, coords);
     int my_i = coords[0], my_j = coords[1];
     
-    // Распределяем данные - каждый процесс получает свой блок
+    // распределяем блоки матриц по процессам
     if (rank == 0) {
-        // Главный процесс отправляет блоки другим процессам
+        // главный процесс отправляет блоки другим процессам
         for (int i = 0; i < q; i++) {
             for (int j = 0; j < q; j++) {
                 if (i == 0 && j == 0) continue; // себе не отправляем
@@ -82,14 +87,14 @@ int main(int argc, char** argv) {
                 int dest_coords[2] = {i, j};
                 MPI_Cart_rank(grid_comm, dest_coords, &dest_rank);
                 
-                // Отправляем блок A[i,j]
+                // отправляем блок A[i,j] построчно
                 for (int x = 0; x < block_size; x++) {
                     int src_row = i * block_size + x;
                     MPI_Send(&A[src_row * N + j * block_size], block_size, MPI_DOUBLE, 
                             dest_rank, 0, MPI_COMM_WORLD);
                 }
                 
-                // Отправляем блок B[i,j]  
+                // отправляем блок B[i,j] построчно  
                 for (int x = 0; x < block_size; x++) {
                     int src_row = i * block_size + x;
                     MPI_Send(&B[src_row * N + j * block_size], block_size, MPI_DOUBLE,
@@ -98,7 +103,7 @@ int main(int argc, char** argv) {
             }
         }
         
-        // Главный процесс копирует свои блоки
+        // главный процесс копирует свои блоки (левый верхний угол)
         for (int x = 0; x < block_size; x++) {
             int src_row = x;
             for (int y = 0; y < block_size; y++) {
@@ -107,7 +112,7 @@ int main(int argc, char** argv) {
             }
         }
     } else {
-        // Остальные процессы получают свои блоки
+        // остальные процессы получают свои блоки
         for (int x = 0; x < block_size; x++) {
             MPI_Recv(&local_A[x * block_size], block_size, MPI_DOUBLE, 
                     0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
@@ -116,21 +121,21 @@ int main(int argc, char** argv) {
         }
     }
     
-    // Начальная перестановка A (сдвиг влево на i позиций)
+    // начальная перестановка блоков матрицы A (сдвиг влево на i позиций)
     int left_rank, right_rank;
     MPI_Cart_shift(grid_comm, 1, -my_i, &left_rank, &right_rank);
     MPI_Sendrecv_replace(local_A, block_elements, MPI_DOUBLE,
                         left_rank, 0, right_rank, 0, grid_comm, MPI_STATUS_IGNORE);
     
-    // Начальная перестановка B (сдвиг вверх на j позиций)  
+    // начальная перестановка блоков матрицы B (сдвиг вверх на j позиций)  
     int up_rank, down_rank;
     MPI_Cart_shift(grid_comm, 0, -my_j, &up_rank, &down_rank);
     MPI_Sendrecv_replace(local_B, block_elements, MPI_DOUBLE,
                         up_rank, 0, down_rank, 0, grid_comm, MPI_STATUS_IGNORE);
     
-    // Основной цикл алгоритма Кэннона
+    // основной цикл алгоритма Кэннона
     for (int step = 0; step < q; step++) {
-        // Локальное умножение матриц
+        // локальное умножение блоков матриц
         for (int i = 0; i < block_size; i++) {
             for (int j = 0; j < block_size; j++) {
                 for (int k = 0; k < block_size; k++) {
@@ -140,24 +145,27 @@ int main(int argc, char** argv) {
             }
         }
         
-        // Циркуляция блоков (кроме последней итерации)
+        // циркуляция блоков (кроме последней итерации)
         if (step < q - 1) {
+            // сдвиг блоков A влево
             MPI_Sendrecv_replace(local_A, block_elements, MPI_DOUBLE,
                                 left_rank, 0, right_rank, 0, grid_comm, MPI_STATUS_IGNORE);
+            // сдвиг блоков B вверх
             MPI_Sendrecv_replace(local_B, block_elements, MPI_DOUBLE,
                                 up_rank, 0, down_rank, 0, grid_comm, MPI_STATUS_IGNORE);
         }
     }
     
-    // Сбор результатов
+    // сбор результатов на главном процессе
     if (rank == 0) {
-        // Главный процесс собирает результаты
+        // главный процесс собирает результаты
         for (int x = 0; x < block_size; x++) {
             for (int y = 0; y < block_size; y++) {
                 C[x * N + y] = local_C[x * block_size + y];
             }
         }
         
+        // получаем блоки от других процессов
         for (int i = 0; i < q; i++) {
             for (int j = 0; j < q; j++) {
                 if (i == 0 && j == 0) continue;
@@ -169,6 +177,7 @@ int main(int argc, char** argv) {
                 double* temp_block = malloc(block_elements * sizeof(double));
                 MPI_Recv(temp_block, block_elements, MPI_DOUBLE, src_rank, 2, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
                 
+                // размещаем полученный блок в результирующей матрице
                 for (int x = 0; x < block_size; x++) {
                     for (int y = 0; y < block_size; y++) {
                         int dest_row = i * block_size + x;
@@ -180,11 +189,11 @@ int main(int argc, char** argv) {
             }
         }
     } else {
-        // Остальные процессы отправляют свои результаты
+        // остальные процессы отправляют свои результаты главному процессу
         MPI_Send(local_C, block_elements, MPI_DOUBLE, 0, 2, MPI_COMM_WORLD);
     }
     
-    // Вывод времени
+    // вывод результатов на главном процессе
     if (rank == 0) {
         double time = MPI_Wtime() - start_time;
         printf("Time: %.4f seconds\n", time);
@@ -193,6 +202,7 @@ int main(int argc, char** argv) {
         free(A); free(B); free(C);
     }
     
+    // освобождаем локальную память
     free(local_A); free(local_B); free(local_C);
     MPI_Comm_free(&grid_comm);
     

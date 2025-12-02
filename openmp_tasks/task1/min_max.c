@@ -3,105 +3,109 @@
 #include <omp.h>
 #include <time.h>
 
-// Функция для заполнения массива случайными числами
+// функция для заполнения массива случайными числами
 void fill_array(double *arr, int size) {
     for (int i = 0; i < size; i++) {
-        arr[i] = (double)rand() / RAND_MAX * 1000.0;  // числа от 0 до 1000
+        arr[i] = (double)rand() / RAND_MAX * 1000.0;  // генерируем числа от 0 до 1000
     }
 }
 
 int main(int argc, char *argv[]) {
-    // Размер массива можно передавать как аргумент
-    int size = 1000000;  // 1 миллион элементов по умолчанию
+    // размер массива можно передавать как аргумент командной строки
+    int size = 1000000;  // значение по умолчанию - 1 миллион элементов
     if (argc > 1) {
-        size = atoi(argv[1]);
+        size = atoi(argv[1]);  // преобразуем строковый аргумент в число
     }
     
-    // Выделяем память под массив
+    // выделяем память под массив типа double
     double *array = (double*)malloc(size * sizeof(double));
     if (array == NULL) {
-        printf("Ошибка выделения памяти!\n");
+        printf("ошибка выделения памяти!\n");
         return 1;
     }
     
-    // Инициализируем генератор случайных чисел
+    // инициализируем генератор случайных чисел текущим временем
     srand(time(NULL));
-    fill_array(array, size);
+    fill_array(array, size);  // заполняем массив случайными значениями
     
-    printf("Размер массива: %d элементов\n", size);
+    printf("размер массива: %d элементов\n", size);
     
-    // Здесь будем добавлять разные версии алгоритмов
+    // здесь будем добавлять разные версии алгоритмов
 
-        // ПОСЛЕДОВАТЕЛЬНАЯ ВЕРСИЯ
-    double seq_min = array[0];
-    double seq_max = array[0];
-    double seq_start = omp_get_wtime();
+        // последовательная версия поиска минимума и максимума
+    double seq_min = array[0];  // начальное значение минимума - первый элемент
+    double seq_max = array[0];  // начальное значение максимума - первый элемент
+    double seq_start = omp_get_wtime();  // засекаем время начала выполнения
     
+    // последовательный перебор всех элементов массива
     for (int i = 0; i < size; i++) {
-        if (array[i] < seq_min) seq_min = array[i];
-        if (array[i] > seq_max) seq_max = array[i];
+        if (array[i] < seq_min) seq_min = array[i];  // обновляем минимум если нашли меньший элемент
+        if (array[i] > seq_max) seq_max = array[i];  // обновляем максимум если нашли больший элемент
     }
     
-    double seq_time = omp_get_wtime() - seq_start;
+    double seq_time = omp_get_wtime() - seq_start;  // вычисляем время выполнения
     
-    printf("Последовательная версия:\n");
-    printf("  Минимум: %.2f, Максимум: %.2f\n", seq_min, seq_max);
-    printf("  Время: %.4f секунд\n", seq_time);
+    printf("последовательная версия:\n");
+    printf("  минимум: %.2f, максимум: %.2f\n", seq_min, seq_max);
+    printf("  время: %.4f секунд\n", seq_time);
 
-        // ПАРАЛЛЕЛЬНАЯ ВЕРСИЯ С РЕДУКЦИЕЙ
-    double red_min = array[0];
-    double red_max = array[0];
-    double red_start = omp_get_wtime();
+        // параллельная версия с использованием редукции
+    double red_min = array[0];  // начальное значение минимума
+    double red_max = array[0];  // начальное значение максимума
+    double red_start = omp_get_wtime();  // засекаем время начала
     
+    // директива openmp для параллельного цикла с редукцией
     #pragma omp parallel for reduction(min:red_min) reduction(max:red_max)
     for (int i = 0; i < size; i++) {
-        if (array[i] < red_min) red_min = array[i];
-        if (array[i] > red_max) red_max = array[i];
+        if (array[i] < red_min) red_min = array[i];  // каждый поток находит локальный минимум
+        if (array[i] > red_max) red_max = array[i];  // каждый поток находит локальный максимум
     }
+    // openmp автоматически объединяет результаты всех потоков
     
-    double red_time = omp_get_wtime() - red_start;
+    double red_time = omp_get_wtime() - red_start;  // вычисляем время выполнения
     
-    printf("\nПараллельная версия (редукция):\n");
-    printf("  Минимум: %.2f, Максимум: %.2f\n", red_min, red_max);
-    printf("  Время: %.4f секунд\n", red_time);
-    printf("  Ускорение: %.2fx\n", seq_time / red_time);
+    printf("\nпараллельная версия (редукция):\n");
+    printf("  минимум: %.2f, максимум: %.2f\n", red_min, red_max);
+    printf("  время: %.4f секунд\n", red_time);
+    printf("  ускорение: %.2fx\n", seq_time / red_time);  // вычисляем ускорение
 
-        // ПАРАЛЛЕЛЬНАЯ ВЕРСИЯ БЕЗ РЕДУКЦИИ (критические секции)
-    double crit_min = array[0];
-    double crit_max = array[0];
-    double crit_start = omp_get_wtime();
+        // параллельная версия без редукции с использованием критических секций
+    double crit_min = array[0];  // начальное значение минимума
+    double crit_max = array[0];  // начальное значение максимума
+    double crit_start = omp_get_wtime();  // засекаем время начала
     
     #pragma omp parallel
     {
-        double local_min = array[0];
-        double local_max = array[0];
+        double local_min = array[0];  // локальный минимум для каждого потока
+        double local_max = array[0];  // локальный максимум для каждого потока
         
-        // Каждый поток находит минимум/максимум в своей части массива
+        // распределяем итерации цикла между потоками
         #pragma omp for
         for (int i = 0; i < size; i++) {
-            if (array[i] < local_min) local_min = array[i];
-            if (array[i] > local_max) local_max = array[i];
+            if (array[i] < local_min) local_min = array[i];  // поток находит минимум в своей части
+            if (array[i] > local_max) local_max = array[i];  // поток находит максимум в своей части
         }
         
-        // Обновляем глобальные значения через критические секции
+        // критическая секция для безопасного обновления глобального минимума
         #pragma omp critical
         {
-            if (local_min < crit_min) crit_min = local_min;
+            if (local_min < crit_min) crit_min = local_min;  // обновляем если нашли меньший минимум
         }
         
+        // критическая секция для безопасного обновления глобального максимума
         #pragma omp critical
         {
-            if (local_max > crit_max) crit_max = local_max;
+            if (local_max > crit_max) crit_max = local_max;  // обновляем если нашли больший максимум
         }
     }
     
-    double crit_time = omp_get_wtime() - crit_start;
+    double crit_time = omp_get_wtime() - crit_start;  // вычисляем время выполнения
     
-    printf("\nПараллельная версия (критические секции):\n");
-    printf("  Минимум: %.2f, Максимум: %.2f\n", crit_min, crit_max);
-    printf("  Время: %.4f секунд\n", crit_time);
-    printf("  Ускорение: %.2fx\n", seq_time / crit_time);
+    printf("\nпараллельная версия (критические секции):\n");
+    printf("  минимум: %.2f, максимум: %.2f\n", crit_min, crit_max);
+    printf("  время: %.4f секунд\n", crit_time);
+    printf("  ускорение: %.2fx\n", seq_time / crit_time);  // вычисляем ускорение
 
-    free(array);
+    free(array);  // освобождаем память, выделенную под массив
     return 0;
 }

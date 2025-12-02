@@ -1,11 +1,11 @@
 #!/bin/bash
 echo "=== MPI Task 10: Derived Data Types Testing ==="
 
-# Компиляция
+# компиляция программы с оптимизацией
 echo "Compiling derived_types.c..."
 mpicc -O2 derived_types.c -o derived_types
 
-# Тестируем разные конфигурации
+# тестируем разные конфигурации кластера
 echo "1. Testing with 2 processes (1 node)"
 sbatch -n 2 -N 1 -J derived_2proc -o derived_2proc.out --wrap="mpirun ./derived_types"
 

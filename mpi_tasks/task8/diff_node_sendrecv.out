@@ -24,3 +24,5 @@ Message Size (bytes) | Time per exchange (ms) | Bandwidth (MB/s)
 
 === Cross-node communication test with Sendrecv ===
 Testing cross-node communication with process 2 using Sendrecv
+slurmstepd: error: *** JOB 29464 ON g4 CANCELLED AT 2025-11-22T16:06:27 DUE TO TIME LIMIT ***
+mpirun: Forwarding signal 18 to job

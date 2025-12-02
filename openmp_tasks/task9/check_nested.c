@@ -2,26 +2,26 @@
 #include <omp.h>
 
 int main() {
-    printf("ПРОВЕРКА ПОДДЕРЖКИ ВЛОЖЕННОГО ПАРАЛЛЕЛИЗМА\n");
+    printf("проверка поддержки вложенного параллелизма\n");
     printf("==========================================\n");
     
     int nested_before = omp_get_nested();
-    printf("Вложенный параллелизм до omp_set_nested(1): %s\n", 
-           nested_before ? "ДА" : "НЕТ");
+    printf("вложенный параллелизм до omp_set_nested(1): %s\n", 
+           nested_before ? "да" : "нет");
     
     omp_set_nested(1);
     
     int nested_after = omp_get_nested();
-    printf("Вложенный параллелизм после omp_set_nested(1): %s\n", 
-           nested_after ? "ДА" : "НЕТ");
+    printf("вложенный параллелизм после omp_set_nested(1): %s\n", 
+           nested_after ? "да" : "нет");
     
     int max_levels = omp_get_max_active_levels();
-    printf("Максимальное количество активных уровней: %d\n", max_levels);
+    printf("максимальное количество активных уровней: %d\n", max_levels);
     
     if (nested_after) {
-        printf("\n✅ Вложенный параллелизм ПОДДЕРЖИВАЕТСЯ\n");
+        printf("\nвложенный параллелизм поддерживается\n");
     } else {
-        printf("\n❌ Вложенный параллелизм НЕ ПОДДЕРЖИВАЕТСЯ\n");
+        printf("\nвложенный параллелизм не поддерживается\n");
     }
     
     return 0;

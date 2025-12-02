@@ -1,14 +1,14 @@
 #!/bin/bash
 echo "=== MPI Task 7: Non-blocking Communication Experiments ==="
 
-# Компилируем программу
+# компилируем программу
 echo "Compiling balance_nonblocking.c..."
 mpicc -o balance_nonblocking balance_nonblocking.c -lm
 
-# Очищаем предыдущие результаты
+# очищаем предыдущие результаты и записываем заголовок
 echo "processes,total_compute,bytes_per_second,compute_time,comm_time,total_time,overlap_efficiency" > nonblocking_results.csv
 
-# Функция для запуска эксперимента
+# функция для запуска одного эксперимента
 run_experiment() {
     local processes=$1
     local compute=$2
@@ -19,8 +19,9 @@ run_experiment() {
     echo "Running: $comment"
     echo "  Processes: $processes, Compute: ${compute}s, Bytes/sec: $bytes, Iterations: $iterations"
     
+    # отправляем задание в slurm и ждем его завершения
     sbatch --wait -n $processes --wrap="mpirun -np $processes ./balance_nonblocking $compute $bytes $iterations"
-    sleep 2
+    sleep 2 # небольшая пауза между заданиями
 }
 
 echo "1. Testing different computation/communication ratios (4 processes, 1M bytes/sec)"

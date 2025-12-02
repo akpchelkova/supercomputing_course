@@ -1,15 +1,16 @@
 #!/bin/bash
-echo "Сравнение прямоугольных матриц (4 потока):"
+echo "сравнение прямоугольных матриц (4 потока):"
 echo "=========================================="
 
+# тестируем производительность для прямоугольных матриц разной формы
 echo "--- 1000x100 ---"
-OMP_NUM_THREADS=4 ./matrix_min_max 1000 100
+OMP_NUM_THREADS=4 ./matrix_min_max 1000 100  # много строк, мало столбцов
 echo ""
 
 echo "--- 100x1000 ---"
-OMP_NUM_THREADS=4 ./matrix_min_max 100 1000
+OMP_NUM_THREADS=4 ./matrix_min_max 100 1000  # мало строк, много столбцов
 echo ""
 
 echo "--- 2000x500 ---"
-OMP_NUM_THREADS=4 ./matrix_min_max 2000 500
+OMP_NUM_THREADS=4 ./matrix_min_max 2000 500  # большая прямоугольная матрица
 echo ""

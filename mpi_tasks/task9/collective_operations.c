@@ -5,63 +5,63 @@
 #include <math.h>
 #include <time.h>
 
-// Собственная реализация Broadcast через бинарное дерево
+// собственная реализация Broadcast через последовательную отправку от корня ко всем
 void my_bcast(void* buffer, int count, MPI_Datatype datatype, int root, MPI_Comm comm) {
     int rank, size;
     MPI_Comm_rank(comm, &rank);
     MPI_Comm_size(comm, &size);
     
     if (rank == root) {
-        // Корень отправляет всем остальным
+        // корень отправляет данные всем остальным процессам
         for (int i = 0; i < size; i++) {
             if (i != root) {
                 MPI_Send(buffer, count, datatype, i, 0, comm);
             }
         }
     } else {
-        // Остальные получают от корня
+        // все остальные процессы получают данные от корня
         MPI_Recv(buffer, count, datatype, root, 0, comm, MPI_STATUS_IGNORE);
     }
 }
 
-// Собственная реализация Reduce через бинарное дерево
+// собственная реализация Reduce через бинарное дерево
 void my_reduce(void* sendbuf, void* recvbuf, int count, MPI_Datatype datatype, 
                MPI_Op op, int root, MPI_Comm comm) {
     int rank, size;
     MPI_Comm_rank(comm, &rank);
     MPI_Comm_size(comm, &size);
     
-    // Сначала все копируют данные в recvbuf
+    // сначала все процессы копируют свои данные в буфер приема
     if (sendbuf != recvbuf) {
         memcpy(recvbuf, sendbuf, count * sizeof(double)); // предполагаем double для простоты
     }
     
-    // Дерево редукции: листья отправляют родителям
+    // реализация редукции через бинарное дерево
     int mask = 1;
     while (mask < size) {
         if ((rank & mask) == 0) {
-            // Этот процесс получает данные
+            // процесс получает данные от дочерних процессов
             int source = rank | mask;
             if (source < size) {
                 double temp[count];
                 MPI_Recv(temp, count, MPI_DOUBLE, source, 0, comm, MPI_STATUS_IGNORE);
                 
-                // Применяем операцию (для простоты - сложение)
+                // применяем операцию редукции (для простоты - сложение)
                 for (int i = 0; i < count; i++) {
                     ((double*)recvbuf)[i] += temp[i];
                 }
             }
         } else {
-            // Этот процесс отправляет данные
+            // процесс отправляет данные родительскому процессу
             int dest = rank & ~mask;
             MPI_Send(recvbuf, count, MPI_DOUBLE, dest, 0, comm);
-            break; // после отправки выходим
+            break; // после отправки выходим из цикла
         }
-        mask <<= 1;
+        mask <<= 1; // переходим к следующему уровню дерева
     }
 }
 
-// Собственная реализация Scatter
+// собственная реализация Scatter
 void my_scatter(void* sendbuf, int sendcount, MPI_Datatype datatype,
                void* recvbuf, int recvcount, int root, MPI_Comm comm) {
     int rank, size;
@@ -69,23 +69,25 @@ void my_scatter(void* sendbuf, int sendcount, MPI_Datatype datatype,
     MPI_Comm_size(comm, &size);
     
     if (rank == root) {
-        // Корень отправляет каждому процессу его часть
+        // корень отправляет каждому процессу его часть данных
         for (int i = 0; i < size; i++) {
             if (i == root) {
+                // для себя просто копируем данные
                 memcpy(recvbuf, (char*)sendbuf + i * sendcount * sizeof(double), 
                        recvcount * sizeof(double));
             } else {
+                // другим процессам отправляем их часть данных
                 MPI_Send((char*)sendbuf + i * sendcount * sizeof(double), 
                         sendcount, datatype, i, 0, comm);
             }
         }
     } else {
-        // Остальные получают от корня
+        // остальные процессы получают свою часть данных от корня
         MPI_Recv(recvbuf, recvcount, datatype, root, 0, comm, MPI_STATUS_IGNORE);
     }
 }
 
-// Собственная реализация Gather
+// собственная реализация Gather
 void my_gather(void* sendbuf, int sendcount, MPI_Datatype datatype,
               void* recvbuf, int recvcount, int root, MPI_Comm comm) {
     int rank, size;
@@ -93,57 +95,60 @@ void my_gather(void* sendbuf, int sendcount, MPI_Datatype datatype,
     MPI_Comm_size(comm, &size);
     
     if (rank == root) {
-        // Корень получает от всех процессов
+        // корень получает данные от всех процессов
         for (int i = 0; i < size; i++) {
             if (i == root) {
+                // от себя просто копируем данные
                 memcpy((char*)recvbuf + i * recvcount * sizeof(double), 
                        sendbuf, sendcount * sizeof(double));
             } else {
+                // от других процессов получаем данные
                 MPI_Recv((char*)recvbuf + i * recvcount * sizeof(double), 
                         recvcount, datatype, i, 0, comm, MPI_STATUS_IGNORE);
             }
         }
     } else {
-        // Остальные отправляют корню
+        // остальные процессы отправляют свои данные корню
         MPI_Send(sendbuf, sendcount, datatype, root, 0, comm);
     }
 }
 
-// Собственная реализация Allgather через Gather + Broadcast
+// собственная реализация Allgather через комбинацию Gather + Broadcast
 void my_allgather(void* sendbuf, int sendcount, MPI_Datatype datatype,
                  void* recvbuf, int recvcount, MPI_Comm comm) {
     int rank, size;
     MPI_Comm_rank(comm, &rank);
     MPI_Comm_size(comm, &size);
     
-    // Сначала собираем все данные в процесс 0
+    // сначала собираем все данные в процесс 0 через gather
     my_gather(sendbuf, sendcount, datatype, recvbuf, recvcount, 0, comm);
     
-    // Затем рассылаем всем
+    // затем рассылаем собранные данные всем процессам через broadcast
     my_bcast(recvbuf, size * recvcount, datatype, 0, comm);
 }
 
-// Собственная реализация Allreduce через Reduce + Broadcast
+// собственная реализация Allreduce через комбинацию Reduce + Broadcast  
 void my_allreduce(void* sendbuf, void* recvbuf, int count, MPI_Datatype datatype,
                  MPI_Op op, MPI_Comm comm) {
-    // Сначала выполняем reduce в процесс 0
+    // сначала выполняем reduce в процесс 0
     my_reduce(sendbuf, recvbuf, count, datatype, op, 0, comm);
     
-    // Затем рассылаем результат всем
+    // затем рассылаем результат всем процессам через broadcast
     my_bcast(recvbuf, count, datatype, 0, comm);
 }
 
-// Тестирующая функция
+// функция для тестирования коллективных операций
 void test_collective(const char* operation, int data_size, int num_trials, MPI_Comm comm) {
     int rank, size;
     MPI_Comm_rank(comm, &rank);
     MPI_Comm_size(comm, &size);
     
+    // выделяем память для данных
     double* send_data = malloc(data_size * sizeof(double));
     double* recv_data = malloc(data_size * size * sizeof(double));
     double* temp_data = malloc(data_size * size * sizeof(double));
     
-    // Инициализация данных
+    // инициализация тестовых данных случайными числами
     srand(time(NULL) + rank);
     for (int i = 0; i < data_size; i++) {
         send_data[i] = (double)rand() / RAND_MAX * 100.0;
@@ -154,11 +159,12 @@ void test_collective(const char* operation, int data_size, int num_trials, MPI_C
                operation, data_size, size);
     }
     
-    // Тест MPI реализации
-    MPI_Barrier(comm);
-    double mpi_start = MPI_Wtime();
+    // тестируем стандартную MPI реализацию
+    MPI_Barrier(comm); // синхронизация перед началом измерения
+    double mpi_start = MPI_Wtime(); // начинаем замер времени
     
     for (int trial = 0; trial < num_trials; trial++) {
+        // выполняем соответствующую MPI операцию много раз для точности измерения
         if (strcmp(operation, "Bcast") == 0) {
             MPI_Bcast(send_data, data_size, MPI_DOUBLE, 0, comm);
         } else if (strcmp(operation, "Reduce") == 0) {
@@ -177,14 +183,15 @@ void test_collective(const char* operation, int data_size, int num_trials, MPI_C
         }
     }
     
-    double mpi_end = MPI_Wtime();
-    double mpi_time = mpi_end - mpi_start;
+    double mpi_end = MPI_Wtime(); // заканчиваем замер времени
+    double mpi_time = mpi_end - mpi_start; // вычисляем общее время
     
-    // Тест собственной реализации
-    MPI_Barrier(comm);
-    double my_start = MPI_Wtime();
+    // тестируем собственную реализацию
+    MPI_Barrier(comm); // синхронизация перед началом измерения
+    double my_start = MPI_Wtime(); // начинаем замер времени
     
     for (int trial = 0; trial < num_trials; trial++) {
+        // выполняем соответствующую собственную операцию много раз
         if (strcmp(operation, "Bcast") == 0) {
             my_bcast(send_data, data_size, MPI_DOUBLE, 0, comm);
         } else if (strcmp(operation, "Reduce") == 0) {
@@ -203,35 +210,33 @@ void test_collective(const char* operation, int data_size, int num_trials, MPI_C
         }
     }
     
-    double my_end = MPI_Wtime();
-    double my_time = my_end - my_start;
+    double my_end = MPI_Wtime(); // заканчиваем замер времени
+    double my_time = my_end - my_start; // вычисляем общее время
     
-    // Вывод результатов
+    // вывод результатов и сохранение в файл
     if (rank == 0) {
         printf("MPI %s: %.6f seconds\n", operation, mpi_time);
         printf("My %s:  %.6f seconds\n", operation, my_time);
         printf("Ratio (MPI/My): %.2f\n", mpi_time / my_time);
         printf("---\n");
         
-        // Сохраняем в файл
+        // сохраняем результаты в csv файл
         FILE* fp = fopen("collective_results.csv", "a");
         if (fp != NULL) {
-            if (ftell(fp) == 0) {
-                fprintf(fp, "operation,data_size,processes,mpi_time,my_time,ratio\n");
-            }
             fprintf(fp, "%s,%d,%d,%.6f,%.6f,%.2f\n", 
                    operation, data_size, size, mpi_time, my_time, mpi_time/my_time);
             fclose(fp);
         }
     }
     
+    // освобождаем выделенную память
     free(send_data);
     free(recv_data);
     free(temp_data);
 }
 
 int main(int argc, char** argv) {
-    MPI_Init(&argc, &argv);
+    MPI_Init(&argc, &argv); // инициализация MPI
     
     int rank;
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
@@ -240,19 +245,19 @@ int main(int argc, char** argv) {
         printf("=== Collective Operations Comparison ===\n");
     }
     
-    // Размеры данных для тестирования
+    // определяем размеры данных для тестирования
     int data_sizes[] = {1, 10, 100, 1000, 10000};
     int num_sizes = sizeof(data_sizes) / sizeof(data_sizes[0]);
     
-    // Операции для тестирования
+    // определяем операции для тестирования
     const char* operations[] = {
         "Bcast", "Reduce", "Scatter", "Gather", "Allgather", "Allreduce"
     };
     int num_operations = sizeof(operations) / sizeof(operations[0]);
     
-    const int NUM_TRIALS = 100;
+    const int NUM_TRIALS = 100; // количество повторений для каждого теста
     
-    // Тестируем все операции для разных размеров данных
+    // тестируем все комбинации операций и размеров данных
     for (int op_idx = 0; op_idx < num_operations; op_idx++) {
         for (int size_idx = 0; size_idx < num_sizes; size_idx++) {
             test_collective(operations[op_idx], data_sizes[size_idx], 
@@ -264,6 +269,6 @@ int main(int argc, char** argv) {
         printf("All collective operations tests completed!\n");
     }
     
-    MPI_Finalize();
+    MPI_Finalize(); // завершение работы с MPI
     return 0;
 }

@@ -10,11 +10,12 @@ int main(int argc, char *argv[]) {
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
 
+    // получаем имя узла для диагностики распределения процессов
     char processor_name[MPI_MAX_PROCESSOR_NAME];
     int name_len;
     MPI_Get_processor_name(processor_name, &name_len);
 
-    // Диагностика распределения процессов по узлам
+    // диагностика распределения процессов по узлам
     if (rank == 0) {
         printf("=== MPI Message Exchange with Sendrecv ===\n");
         printf("Total processes: %d\n", size);
@@ -22,6 +23,7 @@ int main(int argc, char *argv[]) {
         printf("Node distribution:\n");
         printf("Process %d: %s\n", rank, processor_name);
 
+        // собираем информацию о всех процессах
         for (int i = 1; i < size; i++) {
             char other_name[MPI_MAX_PROCESSOR_NAME];
             MPI_Recv(other_name, MPI_MAX_PROCESSOR_NAME, MPI_CHAR, i, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
@@ -29,10 +31,11 @@ int main(int argc, char *argv[]) {
         }
         printf("\n");
     } else {
+        // отправляем свое имя процессу 0
         MPI_Send(processor_name, name_len + 1, MPI_CHAR, 0, 0, MPI_COMM_WORLD);
     }
 
-    // Для этого эксперимента нужно минимум 2 процесса
+    // проверяем что процессов достаточно для тестирования
     if (size < 2) {
         if (rank == 0) {
             printf("ERROR: This program requires at least 2 processes!\n");
@@ -42,7 +45,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    // Размеры сообщений для тестирования (в байтах)
+    // размеры сообщений для тестирования (от 1 байта до 4 МБ)
     int message_sizes[] = {
         1,           // 1 байт
         16,          // 16 байт
@@ -58,7 +61,7 @@ int main(int argc, char *argv[]) {
     };
 
     int num_sizes = sizeof(message_sizes) / sizeof(message_sizes[0]);
-    const int NUM_EXCHANGES = 1000; // Количество обменов для усреднения
+    const int NUM_EXCHANGES = 1000; // количество обменов для усреднения
 
     if (rank == 0) {
         printf("Testing message exchange performance with MPI_Sendrecv\n");
@@ -67,12 +70,13 @@ int main(int argc, char *argv[]) {
         printf("---------------------|------------------------|------------------\n");
     }
 
+    // тестируем для каждого размера сообщения с использованием MPI_Sendrecv
     for (int s_idx = 0; s_idx < num_sizes; s_idx++) {
         int msg_size = message_sizes[s_idx];
         char *send_buffer = (char *)malloc(msg_size * sizeof(char));
         char *recv_buffer = (char *)malloc(msg_size * sizeof(char));
 
-        // Инициализация буферов
+        // инициализация буферов тестовыми данными
         for (int i = 0; i < msg_size; i++) {
             send_buffer[i] = (char)(i % 256);
         }
@@ -80,15 +84,17 @@ int main(int argc, char *argv[]) {
         MPI_Barrier(MPI_COMM_WORLD);
         double start_time = MPI_Wtime();
 
-        // Многократный обмен сообщениями между процессами 0 и 1 с использованием MPI_Sendrecv
+        // многократный обмен сообщениями между процессами 0 и 1 с использованием MPI_Sendrecv
         if (rank == 0) {
             for (int exchange = 0; exchange < NUM_EXCHANGES; exchange++) {
+                // одновременная отправка и прием в одной операции
                 MPI_Sendrecv(send_buffer, msg_size, MPI_CHAR, 1, 0,
                             recv_buffer, msg_size, MPI_CHAR, 1, 1,
                             MPI_COMM_WORLD, MPI_STATUS_IGNORE);
             }
         } else if (rank == 1) {
             for (int exchange = 0; exchange < NUM_EXCHANGES; exchange++) {
+                // одновременная отправка и прием в одной операции
                 MPI_Sendrecv(send_buffer, msg_size, MPI_CHAR, 0, 1,
                             recv_buffer, msg_size, MPI_CHAR, 0, 0,
                             MPI_COMM_WORLD, MPI_STATUS_IGNORE);
@@ -97,7 +103,7 @@ int main(int argc, char *argv[]) {
 
         double end_time = MPI_Wtime();
 
-        // Проверка корректности данных
+        // проверка корректности полученных данных
         if (rank == 0 || rank == 1) {
             int correct = 1;
             for (int i = 0; i < msg_size; i++) {
@@ -111,6 +117,7 @@ int main(int argc, char *argv[]) {
             }
         }
 
+        // процесс 0 выводит результаты
         if (rank == 0) {
             double total_time = end_time - start_time;
             double time_per_exchange = (total_time / NUM_EXCHANGES) * 1000.0; // в миллисекундах
@@ -125,11 +132,11 @@ int main(int argc, char *argv[]) {
         MPI_Barrier(MPI_COMM_WORLD);
     }
 
-    // Дополнительный тест: обмен между процессами на разных узлах с Sendrecv
+    // дополнительный тест: обмен между процессами на разных узлах с использованием Sendrecv
     if (size >= 4 && rank == 0) {
         printf("\n=== Cross-node communication test with Sendrecv ===\n");
 
-        // Найдем процесс на другом узле
+        // ищем процесс на другом узле
         int remote_rank = -1;
         for (int i = 1; i < size; i++) {
             char other_name[MPI_MAX_PROCESSOR_NAME];
@@ -147,7 +154,7 @@ int main(int argc, char *argv[]) {
             char *send_buf = (char *)malloc(test_size * sizeof(char));
             char *recv_buf = (char *)malloc(test_size * sizeof(char));
 
-            // Инициализация
+            // инициализация буферов
             for (int i = 0; i < test_size; i++) {
                 send_buf[i] = (char)(i % 256);
             }
@@ -155,6 +162,7 @@ int main(int argc, char *argv[]) {
             MPI_Barrier(MPI_COMM_WORLD);
             double cross_start = MPI_Wtime();
 
+            // тестируем межУЗЛОВую связь с использованием Sendrecv
             for (int exchange = 0; exchange < 100; exchange++) {
                 MPI_Sendrecv(send_buf, test_size, MPI_CHAR, remote_rank, 0,
                             recv_buf, test_size, MPI_CHAR, remote_rank, 1,
@@ -174,10 +182,11 @@ int main(int argc, char *argv[]) {
             printf("No remote node found for cross-node test\n");
         }
     } else if (rank > 0) {
+        // процессы отправляют свои имена процессу 0 для проверки распределения по узлам
         MPI_Send(processor_name, name_len + 1, MPI_CHAR, 0, 2, MPI_COMM_WORLD);
     }
 
-    // Сравнительный тест: Send/Recv vs Sendrecv для одного размера
+    // сравнительный тест: Send/Recv vs Sendrecv для одного размера сообщения
     if (rank == 0) {
         printf("\n=== Comparative Test: Send/Recv vs Sendrecv ===\n");
         
@@ -185,7 +194,7 @@ int main(int argc, char *argv[]) {
         char *buf1 = malloc(comp_size);
         char *buf2 = malloc(comp_size);
         
-        // Тест Send/Recv
+        // тест отдельных операций Send/Recv
         MPI_Barrier(MPI_COMM_WORLD);
         double start1 = MPI_Wtime();
         for (int i = 0; i < 500; i++) {
@@ -194,7 +203,7 @@ int main(int argc, char *argv[]) {
         }
         double end1 = MPI_Wtime();
         
-        // Тест Sendrecv
+        // тест комбинированной операции Sendrecv
         MPI_Barrier(MPI_COMM_WORLD);
         double start2 = MPI_Wtime();
         for (int i = 0; i < 500; i++) {
@@ -206,22 +215,24 @@ int main(int argc, char *argv[]) {
         
         printf("Send/Recv: %.4f seconds for 500 exchanges\n", end1 - start1);
         printf("Sendrecv:  %.4f seconds for 500 exchanges\n", end2 - start2);
+        // вычисляем процент улучшения
         printf("Improvement: %.1f%%\n", ((end1 - start1) - (end2 - start2)) / (end1 - start1) * 100.0);
         
         free(buf1);
         free(buf2);
     } else if (rank == 1) {
+        // процесс 1 участвует в сравнительном тесте
         int comp_size = 65536;
         char *buf1 = malloc(comp_size);
         char *buf2 = malloc(comp_size);
         
-        // Для Send/Recv
+        // для теста отдельных Send/Recv
         for (int i = 0; i < 500; i++) {
             MPI_Recv(buf1, comp_size, MPI_CHAR, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
             MPI_Send(buf2, comp_size, MPI_CHAR, 0, 1, MPI_COMM_WORLD);
         }
         
-        // Для Sendrecv
+        // для теста Sendrecv
         for (int i = 0; i < 500; i++) {
             MPI_Sendrecv(buf1, comp_size, MPI_CHAR, 0, 1,
                         buf2, comp_size, MPI_CHAR, 0, 0,

@@ -5,7 +5,7 @@
 
 #define MATRIX_SIZE 2000
 
-// Заполнение матрицы случайными числами
+// заполнение матрицы случайными числами
 void fill_matrix(double **matrix, int size) {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
@@ -14,7 +14,7 @@ void fill_matrix(double **matrix, int size) {
     }
 }
 
-// 1. ПОСЛЕДОВАТЕЛЬНАЯ ВЕРСИЯ (базовая)
+// 1. последовательная версия (базовая)
 double sequential_version(double **matrix, int size) {
     double max_of_min = -1.0;
     
@@ -33,7 +33,7 @@ double sequential_version(double **matrix, int size) {
     return max_of_min;
 }
 
-// 2. ТОЛЬКО ВНЕШНИЙ ПАРАЛЛЕЛИЗМ
+// 2. только внешний параллелизм
 double outer_parallel_only(double **matrix, int size) {
     double max_of_min = -1.0;
     
@@ -65,7 +65,7 @@ double outer_parallel_only(double **matrix, int size) {
     return max_of_min;
 }
 
-// 3. ВЛОЖЕННЫЙ ПАРАЛЛЕЛИЗМ (оба цикла параллельны)
+// 3. вложенный параллелизм (оба цикла параллельны)
 double nested_parallel_both(double **matrix, int size) {
     double max_of_min = -1.0;
     
@@ -77,7 +77,7 @@ double nested_parallel_both(double **matrix, int size) {
         for (int i = 0; i < size; i++) {
             double row_min = matrix[i][0];
             
-            // ВЛОЖЕННЫЙ ПАРАЛЛЕЛИЗМ - внутренний цикл
+            // вложенный параллелизм - внутренний цикл
             #pragma omp parallel for reduction(min:row_min)
             for (int j = 0; j < size; j++) {
                 if (matrix[i][j] < row_min) {
@@ -101,7 +101,7 @@ double nested_parallel_both(double **matrix, int size) {
     return max_of_min;
 }
 
-// 4. ВЛОЖЕННЫЙ ПАРАЛЛЕЛИЗМ С ОГРАНИЧЕНИЕМ ПОТОКОВ
+// 4. вложенный параллелизм с ограничением потоков
 double nested_parallel_controlled(double **matrix, int size) {
     double max_of_min = -1.0;
     
@@ -113,7 +113,7 @@ double nested_parallel_controlled(double **matrix, int size) {
         for (int i = 0; i < size; i++) {
             double row_min = matrix[i][0];
             
-            // Вложенный параллелизм с ограничением потоков
+            // вложенный параллелизм с ограничением потоков
             #pragma omp parallel for reduction(min:row_min) num_threads(2)
             for (int j = 0; j < size; j++) {
                 if (matrix[i][j] < row_min) {
@@ -142,65 +142,65 @@ int main() {
     double **matrix;
     double start_time, end_time;
     
-    // Выделение памяти
+    // выделение памяти под матрицу
     matrix = (double**)malloc(size * sizeof(double*));
     for (int i = 0; i < size; i++) {
         matrix[i] = (double*)malloc(size * sizeof(double));
     }
     
-    // Заполнение матрицы
+    // заполнение матрицы случайными числами
     srand(time(NULL));
     fill_matrix(matrix, size);
     
-    printf("СРАВНЕНИЕ СТРАТЕГИЙ ПАРАЛЛЕЛИЗМА ДЛЯ ЗАДАЧИ 4\n");
+    printf("сравнение стратегий параллелизма для задачи 4\n");
     printf("=============================================\n");
-    printf("Задача: максимум среди минимумов строк матрицы\n");
-    printf("Размер матрицы: %d x %d\n", size, size);
-    printf("Количество потоков (внешних): 4\n\n");
+    printf("задача: максимум среди минимумов строк матрицы\n");
+    printf("размер матрицы: %d x %d\n", size, size);
+    printf("количество потоков (внешних): 4\n\n");
     
-    // Включаем вложенный параллелизм
+    // включаем вложенный параллелизм
     omp_set_nested(1);
     omp_set_num_threads(4);
     
     double result;
     
-    // ТЕСТ 1: Последовательная версия
-    printf("1. ПОСЛЕДОВАТЕЛЬНАЯ ВЕРСИЯ:\n");
+    // тест 1: последовательная версия
+    printf("1. последовательная версия:\n");
     start_time = omp_get_wtime();
     result = sequential_version(matrix, size);
     end_time = omp_get_wtime();
-    printf("   Результат: %.2f\n", result);
-    printf("   Время: %.4f сек\n\n", end_time - start_time);
+    printf("   результат: %.2f\n", result);
+    printf("   время: %.4f сек\n\n", end_time - start_time);
     double seq_time = end_time - start_time;
     
-    // ТЕСТ 2: Только внешний параллелизм
-    printf("2. ТОЛЬКО ВНЕШНИЙ ПАРАЛЛЕЛИЗМ:\n");
+    // тест 2: только внешний параллелизм
+    printf("2. только внешний параллелизм:\n");
     start_time = omp_get_wtime();
     result = outer_parallel_only(matrix, size);
     end_time = omp_get_wtime();
-    printf("   Результат: %.2f\n", result);
-    printf("   Время: %.4f сек\n", end_time - start_time);
-    printf("   Ускорение: %.2fx\n\n", seq_time / (end_time - start_time));
+    printf("   результат: %.2f\n", result);
+    printf("   время: %.4f сек\n", end_time - start_time);
+    printf("   ускорение: %.2fx\n\n", seq_time / (end_time - start_time));
     
-    // ТЕСТ 3: Вложенный параллелизм (оба цикла)
-    printf("3. ВЛОЖЕННЫЙ ПАРАЛЛЕЛИЗМ (оба цикла):\n");
+    // тест 3: вложенный параллелизм (оба цикла)
+    printf("3. вложенный параллелизм (оба цикла):\n");
     start_time = omp_get_wtime();
     result = nested_parallel_both(matrix, size);
     end_time = omp_get_wtime();
-    printf("   Результат: %.2f\n", result);
-    printf("   Время: %.4f сек\n", end_time - start_time);
-    printf("   Ускорение: %.2fx\n\n", seq_time / (end_time - start_time));
+    printf("   результат: %.2f\n", result);
+    printf("   время: %.4f сек\n", end_time - start_time);
+    printf("   ускорение: %.2fx\n\n", seq_time / (end_time - start_time));
     
-    // ТЕСТ 4: Вложенный параллелизм с контролем
-    printf("4. ВЛОЖЕННЫЙ ПАРАЛЛЕЛИЗМ (контролируемый):\n");
+    // тест 4: вложенный параллелизм с контролем
+    printf("4. вложенный параллелизм (контролируемый):\n");
     start_time = omp_get_wtime();
     result = nested_parallel_controlled(matrix, size);
     end_time = omp_get_wtime();
-    printf("   Результат: %.2f\n", result);
-    printf("   Время: %.4f сек\n", end_time - start_time);
-    printf("   Ускорение: %.2fx\n\n", seq_time / (end_time - start_time));
+    printf("   результат: %.2f\n", result);
+    printf("   время: %.4f сек\n", end_time - start_time);
+    printf("   ускорение: %.2fx\n\n", seq_time / (end_time - start_time));
     
-    // Освобождение памяти
+    // освобождение памяти
     for (int i = 0; i < size; i++) {
         free(matrix[i]);
     }

@@ -10,11 +10,12 @@ int main(int argc, char *argv[]) {
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
     
+    // получаем имя узла для диагностики распределения процессов
     char processor_name[MPI_MAX_PROCESSOR_NAME];
     int name_len;
     MPI_Get_processor_name(processor_name, &name_len);
     
-    // Диагностика распределения процессов по узлам
+    // диагностика распределения процессов по узлам
     if (rank == 0) {
         printf("=== MPI Message Exchange Performance ===\n");
         printf("Total processes: %d\n", size);
@@ -22,6 +23,7 @@ int main(int argc, char *argv[]) {
         printf("Node distribution:\n");
         printf("Process %d: %s\n", rank, processor_name);
         
+        // собираем информацию о всех процессах
         for (int i = 1; i < size; i++) {
             char other_name[MPI_MAX_PROCESSOR_NAME];
             MPI_Recv(other_name, MPI_MAX_PROCESSOR_NAME, MPI_CHAR, i, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
@@ -29,10 +31,11 @@ int main(int argc, char *argv[]) {
         }
         printf("\n");
     } else {
+        // отправляем свое имя процессу 0
         MPI_Send(processor_name, name_len + 1, MPI_CHAR, 0, 0, MPI_COMM_WORLD);
     }
     
-    // Для этого эксперимента нужно минимум 2 процесса
+    // проверяем что процессов достаточно для тестирования
     if (size < 2) {
         if (rank == 0) {
             printf("ERROR: This program requires at least 2 processes!\n");
@@ -42,7 +45,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
     
-    // Размеры сообщений для тестирования (в байтах)
+    // размеры сообщений для тестирования (от 1 байта до 4 МБ)
     int message_sizes[] = {
         1,           // 1 байт
         16,          // 16 байт
@@ -58,7 +61,7 @@ int main(int argc, char *argv[]) {
     };
     
     int num_sizes = sizeof(message_sizes) / sizeof(message_sizes[0]);
-    const int NUM_EXCHANGES = 1000; // Количество обменов для усреднения
+    const int NUM_EXCHANGES = 1000; // количество обменов для усреднения
     
     if (rank == 0) {
         printf("Testing message exchange performance\n");
@@ -67,35 +70,41 @@ int main(int argc, char *argv[]) {
         printf("---------------------|------------------------|------------------\n");
     }
     
+    // тестируем для каждого размера сообщения
     for (int s_idx = 0; s_idx < num_sizes; s_idx++) {
         int msg_size = message_sizes[s_idx];
         char *send_buffer = (char *)malloc(msg_size * sizeof(char));
         char *recv_buffer = (char *)malloc(msg_size * sizeof(char));
         
-        // Инициализация буферов
+        // инициализация буферов тестовыми данными
         for (int i = 0; i < msg_size; i++) {
             send_buffer[i] = (char)(i % 256);
         }
         
+        // синхронизация перед началом замера времени
         MPI_Barrier(MPI_COMM_WORLD);
         double start_time = MPI_Wtime();
         
-        // Многократный обмен сообщениями между процессами 0 и 1
+        // многократный обмен сообщениями между процессами 0 и 1 с использованием отдельных Send/Recv
         if (rank == 0) {
             for (int exchange = 0; exchange < NUM_EXCHANGES; exchange++) {
+                // отдельная отправка сообщения процессу 1
                 MPI_Send(send_buffer, msg_size, MPI_CHAR, 1, 0, MPI_COMM_WORLD);
+                // отдельный прием сообщения от процесса 1
                 MPI_Recv(recv_buffer, msg_size, MPI_CHAR, 1, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
             }
         } else if (rank == 1) {
             for (int exchange = 0; exchange < NUM_EXCHANGES; exchange++) {
+                // отдельный прием сообщения от процесса 0
                 MPI_Recv(recv_buffer, msg_size, MPI_CHAR, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+                // отдельная отправка сообщения процессу 0
                 MPI_Send(send_buffer, msg_size, MPI_CHAR, 0, 1, MPI_COMM_WORLD);
             }
         }
         
         double end_time = MPI_Wtime();
         
-        // Проверка корректности данных (только для процесса 1)
+        // проверка корректности полученных данных (только для процесса 1)
         if (rank == 1) {
             int correct = 1;
             for (int i = 0; i < msg_size; i++) {
@@ -109,9 +118,11 @@ int main(int argc, char *argv[]) {
             }
         }
         
+        // процесс 0 выводит результаты
         if (rank == 0) {
             double total_time = end_time - start_time;
             double time_per_exchange = (total_time / NUM_EXCHANGES) * 1000.0; // в миллисекундах
+            // вычисляем пропускную способность: общий объем данных / время
             double bandwidth = (msg_size * 2.0 * NUM_EXCHANGES) / (total_time * 1024.0 * 1024.0); // MB/s
             
             printf("%19d | %23.6f | %16.2f\n", 
@@ -123,14 +134,14 @@ int main(int argc, char *argv[]) {
         MPI_Barrier(MPI_COMM_WORLD);
     }
     
-    // Дополнительный тест: обмен между процессами на разных узлах
+    // дополнительный тест: обмен между процессами на разных узлах
     if (size >= 4 && rank == 0) {
         printf("\n=== Cross-node communication test ===\n");
         
-        // Найдем процесс на другом узле
+        // ищем процесс на другом узле
         int remote_rank = -1;
         for (int i = 1; i < size; i++) {
-            // Простой способ: если имя узла отличается, значит на другом узле
+            // простой способ: если имя узла отличается, значит на другом узле
             char other_name[MPI_MAX_PROCESSOR_NAME];
             MPI_Recv(other_name, MPI_MAX_PROCESSOR_NAME, MPI_CHAR, i, 2, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
             if (strcmp(processor_name, other_name) != 0) {
@@ -148,6 +159,7 @@ int main(int argc, char *argv[]) {
             MPI_Barrier(MPI_COMM_WORLD);
             double cross_start = MPI_Wtime();
             
+            // тестируем межУЗЛОВую связь с использованием отдельных Send/Recv
             for (int exchange = 0; exchange < 100; exchange++) {
                 MPI_Send(test_buffer, test_size, MPI_CHAR, remote_rank, 0, MPI_COMM_WORLD);
                 MPI_Recv(test_buffer, test_size, MPI_CHAR, remote_rank, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
@@ -165,6 +177,7 @@ int main(int argc, char *argv[]) {
             printf("No remote node found for cross-node test\n");
         }
     } else if (rank > 0) {
+        // процессы отправляют свои имена процессу 0 для проверки распределения по узлам
         MPI_Send(processor_name, name_len + 1, MPI_CHAR, 0, 2, MPI_COMM_WORLD);
     }
     

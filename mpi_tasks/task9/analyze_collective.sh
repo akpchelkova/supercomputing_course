@@ -1,14 +1,14 @@
 #!/bin/bash
 echo "=== MPI Task 9: Collective Operations Comprehensive Analysis ==="
 
-# Компиляция
+# компиляция MPI программы
 echo "Compiling collective operations..."
 mpicc -O2 collective_operations.c -o collective_operations -lm
 
-# Очищаем файл результатов
+# очищаем файл результатов и записываем заголовок
 echo "operation,data_size,processes,mpi_time,my_time,ratio" > collective_results.csv
 
-# Расширенное тестирование с разными конфигурациями
+# расширенное тестирование с разными конфигурациями кластера
 echo "1. Testing intra-node communication (4 processes, 1 node)"
 sbatch --wait -n 4 -N 1 -J intra_node_collective -o intra_node_%j.out --wrap="mpirun ./collective_operations"
 
@@ -21,17 +21,17 @@ sbatch --wait -n 16 -N 4 -J multi_node_collective -o multi_node_%j.out --wrap="m
 echo "All collective operations tests completed!"
 echo "Generating analysis..."
 
-# Анализ результатов
+# анализ результатов с помощью Python скрипта
 echo "=== Collective Operations Analysis ==="
 python3 << 'EOF'
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Загрузка данных
+# загрузка данных из csv файла
 df = pd.read_csv('collective_results.csv')
 
-# Группировка по операциям и количеству процессов
+# группировка данных по операциям и количеству процессов для статистики
 summary = df.groupby(['operation', 'processes']).agg({
     'ratio': ['mean', 'std', 'min', 'max'],
     'mpi_time': 'mean',
@@ -41,11 +41,11 @@ summary = df.groupby(['operation', 'processes']).agg({
 print("Summary Statistics:")
 print(summary)
 
-# Сохранение сводной таблицы
+# сохранение сводной таблицы в отдельный файл
 summary.to_csv('collective_summary.csv')
 print("\nDetailed summary saved to collective_summary.csv")
 
-# Анализ эффективности по операциям
+# анализ эффективности по операциям
 operations = df['operation'].unique()
 process_counts = df['processes'].unique()
 

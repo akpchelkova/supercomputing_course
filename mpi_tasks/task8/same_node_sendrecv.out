@@ -21,3 +21,5 @@ Message Size (bytes) | Time per exchange (ms) | Bandwidth (MB/s)
             4194304 |                1.641360 |          4874.01
 
 === Comparative Test: Send/Recv vs Sendrecv ===
+slurmstepd: error: *** JOB 29462 ON g1 CANCELLED AT 2025-11-22T16:06:28 DUE TO TIME LIMIT ***
+mpirun: Forwarding signal 18 to job
