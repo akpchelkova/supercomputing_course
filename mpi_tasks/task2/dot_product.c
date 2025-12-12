@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <mpi.h>        // библиотека для mpi
+#include <mpi.h>        
 #include <time.h>
-#include <math.h>       // библиотека для математических функций
+#include <math.h>       
 
 // функция генерации случайного вектора
 void generate_vector(double *vector, int size, int seed) {
