@@ -1,0 +1,5 @@
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 31476 ON g5 CANCELLED AT 2025-12-13T12:05:48 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 31476.3 ON g5 CANCELLED AT 2025-12-13T12:05:48 DUE TO TIME LIMIT ***
+srun: got SIGCONT
+srun: forcing job termination

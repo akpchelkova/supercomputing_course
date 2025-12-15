@@ -1,0 +1,73 @@
+==========================================
+FINAL MATRIX MULTIPLICATION COMPARISON
+Start: Sat 13 Dec 2025 12:08:06 PM MSK
+==========================================
+
+Compiling programs...
+Compilation complete.
+
+TEST 1: Performance scaling with fixed size (2048x2048)
+------------------------------------------------------
+
+--- 1 Processes ---
+=== Band: 1 processes, N=2048 ===
+FAILED with exit code 1
+
+Cannon: N/A (configuration not valid)
+
+--- 4 Processes ---
+=== Band: 4 processes, N=2048 ===
+FAILED with exit code 1
+
+Cannon: N/A (configuration not valid)
+
+--- 9 Processes ---
+Band: N/A (2048 not divisible by 9)
+Cannon: N/A (configuration not valid)
+
+--- 16 Processes ---
+=== Band: 16 processes, N=2048 ===
+FAILED with exit code 1
+
+Cannon: N/A (configuration not valid)
+
+TEST 2: Large matrix (4096x4096) with optimal process counts
+------------------------------------------------------------
+
+=== Band: 4 processes, N=4096 ===
+FAILED with exit code 1
+
+Cannon 4 processes: N/A (configuration not valid)
+
+=== Band: 16 processes, N=4096 ===
+FAILED with exit code 1
+
+Cannon 16 processes: N/A (configuration not valid)
+
+TEST 3: Small/Medium sizes for algorithm comparison
+---------------------------------------------------
+
+--- Size: 512x512 ---
+
+  1 processes:
+    Band: 
+  4 processes:
+    Band: 
+--- Size: 1024x1024 ---
+
+  1 processes:
+    Band: 
+  4 processes:
+    Band: 
+TEST 4: Speedup calculation
+---------------------------
+Matrix: 2048x2048
+Reference (1 process Band):
+  Time:  seconds
+  Band 4 processes:  sec, Speedup: 0.00x
+  Band 16 processes:  sec, Speedup: 0.00x
+
+==========================================
+End: Sat 13 Dec 2025 12:08:08 PM MSK
+Results saved to: final_results_31478.out
+==========================================

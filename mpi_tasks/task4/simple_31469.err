@@ -1,0 +1,2 @@
+slurmstepd: error: *** JOB 31469 ON g3 CANCELLED AT 2025-12-13T11:18:47 DUE TO TIME LIMIT ***
+mpirun: Forwarding signal 18 to job

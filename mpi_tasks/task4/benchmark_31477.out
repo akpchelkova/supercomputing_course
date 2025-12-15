@@ -1,0 +1,29 @@
+Compiling with optimizations...
+TEST 1: Large matrices (4096x4096)
+
+=== BRIEF RESULTS ===
+Matrix Multiplication Benchmark Results
+Job ID: 31477
+Date: Sat 13 Dec 2025 11:55:27 AM MSK
+========================================
+TEST 1: Large matrices (4096x4096)
+16 processes:
+Band: 10.9416
+Cannon: 
+9 processes:
+Band: 16.1986
+Cannon: 
+4 processes:
+Band: 29.5093
+Cannon: 
+
+TEST 2: Scalability (2048x2048)
+1 processes:
+Band Time: 119.0871
+
+TEST 3: Performance in MFLOPS (4096x4096)
+16 processes:
+Band: 12566.24
+Cannon: 
+Benchmark complete!
+Detailed results in: benchmark_31477.out

@@ -1,0 +1,31 @@
+===============================================
+   ФИНАЛЬНОЕ СРАВНЕНИЕ BAND vs CANNON
+===============================================
+Запущено: Sat 13 Dec 2025 11:35:38 AM MSK
+
+ТЕСТ 1: 4 ПРОЦЕССА
+-----------------
+1. Матрица 512x512:
+=== band на 4 процессах, размер 512 x 512 ===
+Band Matrix Multiplication: 512x512, 4 processes
+Time: 0.2404 seconds
+Performance: 1116.48 MFLOPS
+
+---
+
+=== cannon на 4 процессах, размер 512 x 512 ===
+Cannon Algorithm: 512x512, 4 processes (2x2 grid)
+Time: 0.3479 seconds
+Performance: 771.50 MFLOPS
+
+---
+
+2. Матрица 1024x1024:
+=== band на 4 процессах, размер 1024 x 1024 ===
+Band Matrix Multiplication: 1024x1024, 4 processes
+Time: 1.2618 seconds
+Performance: 1701.95 MFLOPS
+
+---
+
+=== cannon на 4 процессах, размер 1024 x 1024 ===

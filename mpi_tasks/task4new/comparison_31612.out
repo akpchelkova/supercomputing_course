@@ -1,0 +1,1075 @@
+=== КОМПИЛЯЦИЯ ПРОГРАММ ===
+Компиляция завершена
+
+
+=== НАЧАЛО ТЕСТИРОВАНИЯ ===
+
+========== ЛЕНТОЧНЫЙ АЛГОРИТМ ==========
+Размер матрицы: 240x240
+--------------------------------------------------
+ТЕСТ: band 240x240, P=1, узлы=1
+УСПЕХ: время = 0.031281s, проверка = YES
+  Пропуск: P=1 < узлов=2
+  Пропуск: P=1 < узлов=4
+--------------------------------------------------
+ТЕСТ: band 240x240, P=2, узлы=1
+УСПЕХ: время = 0.016316s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 240x240, P=2, узлы=2
+УСПЕХ: время = 0.013132s, проверка = YES
+  Пропуск: P=2 < узлов=4
+--------------------------------------------------
+ТЕСТ: band 240x240, P=4, узлы=1
+УСПЕХ: время = 0.007005s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 240x240, P=4, узлы=2
+УСПЕХ: время = 0.006648s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 240x240, P=4, узлы=4
+УСПЕХ: время = 0.007072s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 240x240, P=8, узлы=1
+УСПЕХ: время = 0.008429s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 240x240, P=8, узлы=2
+УСПЕХ: время = 0.003293s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 240x240, P=8, узлы=4
+УСПЕХ: время = 0.003319s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 240x240, P=16, узлы=1
+УСПЕХ: время = 0.004482s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 240x240, P=16, узлы=2
+УСПЕХ: время = 0.004392s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 240x240, P=16, узлы=4
+УСПЕХ: время = 0.001896s, проверка = YES
+Размер матрицы: 480x480
+--------------------------------------------------
+ТЕСТ: band 480x480, P=1, узлы=1
+УСПЕХ: время = 0.300513s, проверка = YES
+  Пропуск: P=1 < узлов=2
+  Пропуск: P=1 < узлов=4
+--------------------------------------------------
+ТЕСТ: band 480x480, P=2, узлы=1
+УСПЕХ: время = 0.155863s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 480x480, P=2, узлы=2
+УСПЕХ: время = 0.157748s, проверка = YES
+  Пропуск: P=2 < узлов=4
+--------------------------------------------------
+ТЕСТ: band 480x480, P=4, узлы=1
+УСПЕХ: время = 0.078372s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 480x480, P=4, узлы=2
+УСПЕХ: время = 0.077176s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 480x480, P=4, узлы=4
+УСПЕХ: время = 0.078629s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 480x480, P=8, узлы=1
+УСПЕХ: время = 0.044987s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 480x480, P=8, узлы=2
+УСПЕХ: время = 0.039932s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 480x480, P=8, узлы=4
+УСПЕХ: время = 0.037763s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 480x480, P=16, узлы=1
+УСПЕХ: время = 0.151545s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 480x480, P=16, узлы=2
+УСПЕХ: время = 0.021939s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 480x480, P=16, узлы=4
+УСПЕХ: время = 0.020596s, проверка = YES
+Размер матрицы: 720x720
+--------------------------------------------------
+ТЕСТ: band 720x720, P=1, узлы=1
+УСПЕХ: время = 0.939692s, проверка = YES
+  Пропуск: P=1 < узлов=2
+  Пропуск: P=1 < узлов=4
+--------------------------------------------------
+ТЕСТ: band 720x720, P=2, узлы=1
+УСПЕХ: время = 0.473780s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 720x720, P=2, узлы=2
+УСПЕХ: время = 0.473575s, проверка = YES
+  Пропуск: P=2 < узлов=4
+--------------------------------------------------
+ТЕСТ: band 720x720, P=4, узлы=1
+УСПЕХ: время = 0.895589s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 720x720, P=4, узлы=2
+УСПЕХ: время = 0.236886s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 720x720, P=4, узлы=4
+УСПЕХ: время = 0.243226s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 720x720, P=8, узлы=1
+УСПЕХ: время = 0.480412s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 720x720, P=8, узлы=2
+УСПЕХ: время = 0.446259s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 720x720, P=8, узлы=4
+УСПЕХ: время = 0.497988s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 720x720, P=16, узлы=1
+УСПЕХ: время = 0.383494s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 720x720, P=16, узлы=2
+УСПЕХ: время = 0.252686s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 720x720, P=16, узлы=4
+УСПЕХ: время = 0.384225s, проверка = YES
+Размер матрицы: 960x960
+--------------------------------------------------
+ТЕСТ: band 960x960, P=1, узлы=1
+УСПЕХ: время = 2.481302s, проверка = YES
+  Пропуск: P=1 < узлов=2
+  Пропуск: P=1 < узлов=4
+--------------------------------------------------
+ТЕСТ: band 960x960, P=2, узлы=1
+УСПЕХ: время = 1.269114s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 960x960, P=2, узлы=2
+УСПЕХ: время = 1.330849s, проверка = YES
+  Пропуск: P=2 < узлов=4
+--------------------------------------------------
+ТЕСТ: band 960x960, P=4, узлы=1
+УСПЕХ: время = 0.828426s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 960x960, P=4, узлы=2
+УСПЕХ: время = 0.698659s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 960x960, P=4, узлы=4
+УСПЕХ: время = 0.665919s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 960x960, P=8, узлы=1
+УСПЕХ: время = 0.823501s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 960x960, P=8, узлы=2
+УСПЕХ: время = 0.432773s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 960x960, P=8, узлы=4
+УСПЕХ: время = 0.349195s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 960x960, P=16, узлы=1
+УСПЕХ: время = 0.850347s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 960x960, P=16, узлы=2
+УСПЕХ: время = 0.424365s, проверка = YES
+--------------------------------------------------
+ТЕСТ: band 960x960, P=16, узлы=4
+УСПЕХ: время = 0.217030s, проверка = YES
+
+========== АЛГОРИТМ SUMMA ==========
+Размер матрицы: 240x240
+--------------------------------------------------
+ТЕСТ: summa 240x240, P=1, узлы=1
+УСПЕХ: время = 0.031902s, проверка = YES
+  Пропуск: P=1 < узлов=2
+  Пропуск: P=1 < узлов=4
+--------------------------------------------------
+ТЕСТ: summa 240x240, P=2, узлы=1
+ОШИБКА: запуск не удался
+Вывод ошибки: [g1:24423] *** An error occurred in MPI_Bcast
+[g1:24423] *** reported by process [2071724081,0]
+[g1:24423] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:24423] *** MPI_ERR_ROOT: invalid root
+[g1:24423] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:24423] ***    and potentially your MPI job)
+[g1:24424] *** An error occurred in MPI_Bcast
+[g1:24424] *** reported by process [2071724081,1]
+[g1:24424] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:24424] *** MPI_ERR_ROOT: invalid root
+[g1:24424] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:24424] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+In: PMI_Abort(8, N/A)
+slurmstepd: error: *** STEP 31612.49 ON g1 CANCELLED AT 2025-12-15T18:25:23 ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: g1: tasks 0-1: Exited with exit code 8
+--------------------------------------------------
+ТЕСТ: summa 240x240, P=2, узлы=2
+ОШИБКА: запуск не удался
+Вывод ошибки: [g2:06679] *** An error occurred in MPI_Bcast
+[g2:06679] *** reported by process [2071724082,1]
+[g2:06679] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:06679] *** MPI_ERR_ROOT: invalid root
+[g2:06679] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:06679] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g1:24458] *** An error occurred in MPI_Bcast
+[g1:24458] *** reported by process [2071724082,0]
+[g1:24458] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:24458] *** MPI_ERR_ROOT: invalid root
+[g1:24458] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:24458] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+slurmstepd: error: *** STEP 31612.50 ON g1 CANCELLED AT 2025-12-15T18:25:23 ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: g1: task 0: Exited with exit code 8
+srun: error: g2: task 1: Exited with exit code 8
+  Пропуск: P=2 < узлов=4
+--------------------------------------------------
+ТЕСТ: summa 240x240, P=4, узлы=1
+УСПЕХ: время = 0.011558s, проверка = YES
+--------------------------------------------------
+ТЕСТ: summa 240x240, P=4, узлы=2
+УСПЕХ: время = 0.022691s, проверка = YES
+--------------------------------------------------
+ТЕСТ: summa 240x240, P=4, узлы=4
+УСПЕХ: время = 0.037195s, проверка = YES
+--------------------------------------------------
+ТЕСТ: summa 240x240, P=8, узлы=1
+ОШИБКА: запуск не удался
+Вывод ошибки: [g1:24612] *** An error occurred in MPI_Bcast
+[g1:24612] *** reported by process [2071724086,0]
+[g1:24612] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:24612] *** MPI_ERR_ROOT: invalid root
+[g1:24612] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:24612] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g1:24613] *** An error occurred in MPI_Bcast
+[g1:24613] *** reported by process [2071724086,1]
+[g1:24613] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:24613] *** MPI_ERR_ROOT: invalid root
+[g1:24613] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:24613] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g1:24615] *** An error occurred in MPI_Bcast
+[g1:24615] *** reported by process [2071724086,3]
+[g1:24615] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:24615] *** MPI_ERR_ROOT: invalid root
+[g1:24615] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:24615] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g1:24619] *** An error occurred in MPI_Bcast
+[g1:24619] *** reported by process [2071724086,7]
+[g1:24619] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:24619] *** MPI_ERR_ROOT: invalid root
+[g1:24619] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:24619] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g1:24614] *** An error occurred in MPI_Bcast
+[g1:24614] *** reported by process [2071724086,2]
+[g1:24614] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:24614] *** MPI_ERR_ROOT: invalid root
+[g1:24614] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:24614] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g1:24616] *** An error occurred in MPI_Bcast
+[g1:24616] *** reported by process [2071724086,4]
+[g1:24616] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:24616] *** MPI_ERR_ROOT: invalid root
+[g1:24616] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:24616] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g1:24617] *** An error occurred in MPI_Bcast
+[g1:24617] *** reported by process [2071724086,5]
+[g1:24617] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:24617] *** MPI_ERR_ROOT: invalid root
+[g1:24617] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:24617] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g1:24618] *** An error occurred in MPI_Bcast
+[g1:24618] *** reported by process [2071724086,6]
+[g1:24618] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:24618] *** MPI_ERR_ROOT: invalid root
+[g1:24618] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:24618] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+slurmstepd: error: *** STEP 31612.54 ON g1 CANCELLED AT 2025-12-15T18:25:29 ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: g1: tasks 0-7: Exited with exit code 8
+--------------------------------------------------
+ТЕСТ: summa 240x240, P=8, узлы=2
+ОШИБКА: запуск не удался
+Вывод ошибки: [g2:06723] *** An error occurred in MPI_Bcast
+[g2:06723] *** reported by process [2071724087,4]
+[g2:06723] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:06723] *** MPI_ERR_ROOT: invalid root
+[g2:06723] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:06723] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g2:06724] *** An error occurred in MPI_Bcast
+[g2:06724] *** reported by process [2071724087,5]
+[g2:06724] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:06724] *** MPI_ERR_ROOT: invalid root
+[g2:06724] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:06724] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g2:06725] *** An error occurred in MPI_Bcast
+[g2:06725] *** reported by process [2071724087,6]
+[g2:06725] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:06725] *** MPI_ERR_ROOT: invalid root
+[g2:06725] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:06725] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g2:06726] *** An error occurred in MPI_Bcast
+[g2:06726] *** reported by process [2071724087,7]
+[g2:06726] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:06726] *** MPI_ERR_ROOT: invalid root
+[g2:06726] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:06726] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+slurmstepd: error: *** STEP 31612.55 ON g1 CANCELLED AT 2025-12-15T18:25:30 ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: g2: tasks 4,7: Killed
+srun: error: g2: tasks 5-6: Exited with exit code 8
+srun: error: g1: tasks 0-3: Killed
+--------------------------------------------------
+ТЕСТ: summa 240x240, P=8, узлы=4
+ОШИБКА: запуск не удался
+Вывод ошибки: [g4:16525] *** An error occurred in MPI_Bcast
+[g4:16525] *** reported by process [2071724088,7]
+[g4:16525] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g4:16525] *** MPI_ERR_ROOT: invalid root
+[g4:16525] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g4:16525] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+[g4:16524] *** An error occurred in MPI_Bcast
+[g4:16524] *** reported by process [2071724088,6]
+[g4:16524] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g4:16524] *** MPI_ERR_ROOT: invalid root
+[g4:16524] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g4:16524] ***    and potentially your MPI job)
+slurmstepd: error: *** STEP 31612.56 ON g1 CANCELLED AT 2025-12-15T18:25:31 ***
+In: PMI_Abort(8, N/A)
+srun: error: g4: tasks 6-7: Exited with exit code 8
+srun: error: g3: tasks 4-5: Killed
+srun: error: g1: tasks 0-1: Killed
+srun: error: g2: tasks 2-3: Killed
+--------------------------------------------------
+ТЕСТ: summa 240x240, P=16, узлы=1
+УСПЕХ: время = 0.002983s, проверка = YES
+--------------------------------------------------
+ТЕСТ: summa 240x240, P=16, узлы=2
+УСПЕХ: время = 1.063229s, проверка = YES
+--------------------------------------------------
+ТЕСТ: summa 240x240, P=16, узлы=4
+УСПЕХ: время = 0.082322s, проверка = YES
+Размер матрицы: 480x480
+--------------------------------------------------
+ТЕСТ: summa 480x480, P=1, узлы=1
+УСПЕХ: время = 0.296700s, проверка = YES
+  Пропуск: P=1 < узлов=2
+  Пропуск: P=1 < узлов=4
+--------------------------------------------------
+ТЕСТ: summa 480x480, P=2, узлы=1
+ОШИБКА: запуск не удался
+Вывод ошибки: [g1:24962] *** An error occurred in MPI_Bcast
+[g1:24962] *** reported by process [2071724093,0]
+[g1:24962] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:24962] *** MPI_ERR_ROOT: invalid root
+[g1:24962] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:24962] ***    and potentially your MPI job)
+[g1:24963] *** An error occurred in MPI_Bcast
+[g1:24963] *** reported by process [2071724093,1]
+[g1:24963] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:24963] *** MPI_ERR_ROOT: invalid root
+[g1:24963] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:24963] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+In: PMI_Abort(8, N/A)
+slurmstepd: error: *** STEP 31612.61 ON g1 CANCELLED AT 2025-12-15T18:25:41 ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: g1: tasks 0-1: Exited with exit code 8
+--------------------------------------------------
+ТЕСТ: summa 480x480, P=2, узлы=2
+ОШИБКА: запуск не удался
+Вывод ошибки: [g2:06820] *** An error occurred in MPI_Bcast
+[g2:06820] *** reported by process [2071724094,1]
+[g2:06820] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:06820] *** MPI_ERR_ROOT: invalid root
+[g2:06820] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:06820] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g1:24997] *** An error occurred in MPI_Bcast
+[g1:24997] *** reported by process [2071724094,0]
+[g1:24997] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:24997] *** MPI_ERR_ROOT: invalid root
+[g1:24997] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:24997] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 31612.62 ON g1 CANCELLED AT 2025-12-15T18:25:42 ***
+srun: error: g2: task 1: Exited with exit code 8
+srun: error: g1: task 0: Exited with exit code 8
+  Пропуск: P=2 < узлов=4
+--------------------------------------------------
+ТЕСТ: summa 480x480, P=4, узлы=1
+УСПЕХ: время = 0.054447s, проверка = YES
+--------------------------------------------------
+ТЕСТ: summa 480x480, P=4, узлы=2
+УСПЕХ: время = 0.121461s, проверка = YES
+--------------------------------------------------
+ТЕСТ: summa 480x480, P=4, узлы=4
+УСПЕХ: время = 0.162195s, проверка = YES
+--------------------------------------------------
+ТЕСТ: summa 480x480, P=8, узлы=1
+ОШИБКА: запуск не удался
+Вывод ошибки: [g1:25159] *** An error occurred in MPI_Bcast
+[g1:25159] *** reported by process [2071724098,7]
+[g1:25159] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:25159] *** MPI_ERR_ROOT: invalid root
+[g1:25159] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:25159] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g1:25157] *** An error occurred in MPI_Bcast
+[g1:25157] *** reported by process [2071724098,5]
+[g1:25157] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:25157] *** MPI_ERR_ROOT: invalid root
+[g1:25157] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:25157] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 31612.66 ON g1 CANCELLED AT 2025-12-15T18:25:50 ***
+[g1:25156] *** An error occurred in MPI_Bcast
+[g1:25156] *** reported by process [2071724098,4]
+[g1:25156] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:25156] *** MPI_ERR_ROOT: invalid root
+[g1:25156] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:25156] ***    and potentially your MPI job)
+[g1:25158] *** An error occurred in MPI_Bcast
+[g1:25158] *** reported by process [2071724098,6]
+[g1:25158] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:25158] *** MPI_ERR_ROOT: invalid root
+[g1:25158] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:25158] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+In: PMI_Abort(8, N/A)
+[g1:25152] *** An error occurred in MPI_Bcast
+[g1:25152] *** reported by process [2071724098,0]
+[g1:25152] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:25152] *** MPI_ERR_ROOT: invalid root
+[g1:25152] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:25152] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g1:25153] *** An error occurred in MPI_Bcast
+[g1:25153] *** reported by process [2071724098,1]
+[g1:25153] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:25153] *** MPI_ERR_ROOT: invalid root
+[g1:25153] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:25153] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g1:25154] *** An error occurred in MPI_Bcast
+[g1:25154] *** reported by process [2071724098,2]
+[g1:25154] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:25154] *** MPI_ERR_ROOT: invalid root
+[g1:25154] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:25154] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g1:25155] *** An error occurred in MPI_Bcast
+[g1:25155] *** reported by process [2071724098,3]
+[g1:25155] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:25155] *** MPI_ERR_ROOT: invalid root
+[g1:25155] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:25155] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+srun: error: g1: tasks 0,2,4-7: Exited with exit code 8
+srun: error: g1: tasks 1,3: Killed
+--------------------------------------------------
+ТЕСТ: summa 480x480, P=8, узлы=2
+ОШИБКА: запуск не удался
+Вывод ошибки: [g2:06862] *** An error occurred in MPI_Bcast
+[g2:06862] *** reported by process [2071724099,4]
+[g2:06862] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:06862] *** MPI_ERR_ROOT: invalid root
+[g2:06862] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:06862] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g2:06863] *** An error occurred in MPI_Bcast
+[g2:06863] *** reported by process [2071724099,5]
+[g2:06863] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:06863] *** MPI_ERR_ROOT: invalid root
+[g2:06863] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:06863] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g2:06864] *** An error occurred in MPI_Bcast
+[g2:06864] *** reported by process [2071724099,6]
+[g2:06864] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:06864] *** MPI_ERR_ROOT: invalid root
+[g2:06864] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:06864] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g2:06865] *** An error occurred in MPI_Bcast
+[g2:06865] *** reported by process [2071724099,7]
+[g2:06865] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:06865] *** MPI_ERR_ROOT: invalid root
+[g2:06865] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:06865] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+slurmstepd: error: *** STEP 31612.67 ON g1 CANCELLED AT 2025-12-15T18:25:51 ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: g2: tasks 4-7: Exited with exit code 8
+srun: error: g1: tasks 0-3: Killed
+--------------------------------------------------
+ТЕСТ: summa 480x480, P=8, узлы=4
+ОШИБКА: запуск не удался
+Вывод ошибки: [g4:16577] *** An error occurred in MPI_Bcast
+[g4:16577] *** reported by process [2071724100,7]
+[g4:16577] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g4:16577] *** MPI_ERR_ROOT: invalid root
+[g4:16577] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g4:16577] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g4:16576] *** An error occurred in MPI_Bcast
+[g4:16576] *** reported by process [2071724100,6]
+[g4:16576] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g4:16576] *** MPI_ERR_ROOT: invalid root
+[g4:16576] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g4:16576] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 31612.68 ON g1 CANCELLED AT 2025-12-15T18:25:52 ***
+[g2:06895] *** An error occurred in MPI_Bcast
+[g2:06895] *** reported by process [2071724100,3]
+[g2:06895] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:06895] *** MPI_ERR_ROOT: invalid root
+[g2:06895] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:06895] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+srun: error: g4: tasks 6-7: Exited with exit code 8
+srun: error: g3: tasks 4-5: Killed
+srun: error: g1: tasks 0-1: Killed
+srun: error: g2: tasks 2-3: Killed
+--------------------------------------------------
+ТЕСТ: summa 480x480, P=16, узлы=1
+УСПЕХ: время = 0.022123s, проверка = YES
+--------------------------------------------------
+ТЕСТ: summa 480x480, P=16, узлы=2
+УСПЕХ: время = 0.062148s, проверка = YES
+--------------------------------------------------
+ТЕСТ: summa 480x480, P=16, узлы=4
+УСПЕХ: время = 0.085186s, проверка = YES
+Размер матрицы: 720x720
+--------------------------------------------------
+ТЕСТ: summa 720x720, P=1, узлы=1
+УСПЕХ: время = 0.970332s, проверка = YES
+  Пропуск: P=1 < узлов=2
+  Пропуск: P=1 < узлов=4
+--------------------------------------------------
+ТЕСТ: summa 720x720, P=2, узлы=1
+ОШИБКА: запуск не удался
+Вывод ошибки: [g1:25503] *** An error occurred in MPI_Bcast
+[g1:25503] *** reported by process [2071724105,0]
+[g1:25503] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:25503] *** MPI_ERR_ROOT: invalid root
+[g1:25503] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:25503] ***    and potentially your MPI job)
+[g1:25504] *** An error occurred in MPI_Bcast
+[g1:25504] *** reported by process [2071724105,1]
+[g1:25504] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:25504] *** MPI_ERR_ROOT: invalid root
+[g1:25504] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:25504] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+In: PMI_Abort(8, N/A)
+slurmstepd: error: *** STEP 31612.73 ON g1 CANCELLED AT 2025-12-15T18:26:05 ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: g1: tasks 0-1: Exited with exit code 8
+--------------------------------------------------
+ТЕСТ: summa 720x720, P=2, узлы=2
+ОШИБКА: запуск не удался
+Вывод ошибки: [g2:06961] *** An error occurred in MPI_Bcast
+[g2:06961] *** reported by process [2071724106,1]
+[g2:06961] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:06961] *** MPI_ERR_ROOT: invalid root
+[g2:06961] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:06961] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 31612.74 ON g1 CANCELLED AT 2025-12-15T18:26:07 ***
+[g1:25538] *** An error occurred in MPI_Bcast
+[g1:25538] *** reported by process [2071724106,0]
+[g1:25538] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:25538] *** MPI_ERR_ROOT: invalid root
+[g1:25538] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:25538] ***    and potentially your MPI job)
+srun: error: g2: task 1: Exited with exit code 8
+srun: error: g1: task 0: Killed
+  Пропуск: P=2 < узлов=4
+--------------------------------------------------
+ТЕСТ: summa 720x720, P=4, узлы=1
+УСПЕХ: время = 0.176494s, проверка = YES
+--------------------------------------------------
+ТЕСТ: summa 720x720, P=4, узлы=2
+УСПЕХ: время = 0.233044s, проверка = YES
+--------------------------------------------------
+ТЕСТ: summa 720x720, P=4, узлы=4
+УСПЕХ: время = 0.279129s, проверка = YES
+--------------------------------------------------
+ТЕСТ: summa 720x720, P=8, узлы=1
+ОШИБКА: запуск не удался
+Вывод ошибки: [g1:25689] *** An error occurred in MPI_Bcast
+[g1:25689] *** reported by process [2071724110,0]
+[g1:25689] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:25689] *** MPI_ERR_ROOT: invalid root
+[g1:25689] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:25689] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g1:25691] *** An error occurred in MPI_Bcast
+[g1:25691] *** reported by process [2071724110,2]
+[g1:25691] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:25691] *** MPI_ERR_ROOT: invalid root
+[g1:25691] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:25691] ***    and potentially your MPI job)
+[g1:25693] *** An error occurred in MPI_Bcast
+[g1:25693] *** reported by process [2071724110,4]
+[g1:25693] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:25693] *** MPI_ERR_ROOT: invalid root
+[g1:25693] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:25693] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+In: PMI_Abort(8, N/A)
+[g1:25692] *** An error occurred in MPI_Bcast
+[g1:25692] *** reported by process [2071724110,3]
+[g1:25692] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:25692] *** MPI_ERR_ROOT: invalid root
+[g1:25692] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:25692] ***    and potentially your MPI job)
+[g1:25695] *** An error occurred in MPI_Bcast
+[g1:25695] *** reported by process [2071724110,6]
+[g1:25695] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:25695] *** MPI_ERR_ROOT: invalid root
+[g1:25695] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:25695] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g1:25696] *** An error occurred in MPI_Bcast
+[g1:25696] *** reported by process [2071724110,7]
+[g1:25696] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:25696] *** MPI_ERR_ROOT: invalid root
+[g1:25696] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:25696] ***    and potentially your MPI job)
+[g1:25690] *** An error occurred in MPI_Bcast
+[g1:25690] *** reported by process [2071724110,1]
+[g1:25690] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:25690] *** MPI_ERR_ROOT: invalid root
+[g1:25690] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:25690] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+In: PMI_Abort(8, N/A)
+[g1:25694] *** An error occurred in MPI_Bcast
+[g1:25694] *** reported by process [2071724110,5]
+[g1:25694] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:25694] *** MPI_ERR_ROOT: invalid root
+[g1:25694] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:25694] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+In: PMI_Abort(8, N/A)
+slurmstepd: error: *** STEP 31612.78 ON g1 CANCELLED AT 2025-12-15T18:26:17 ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: g1: tasks 0-7: Exited with exit code 8
+--------------------------------------------------
+ТЕСТ: summa 720x720, P=8, узлы=2
+ОШИБКА: запуск не удался
+Вывод ошибки: [g2:07003] *** An error occurred in MPI_Bcast
+[g2:07003] *** reported by process [2071724111,5]
+[g2:07003] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:07003] *** MPI_ERR_ROOT: invalid root
+[g2:07003] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:07003] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g2:07002] *** An error occurred in MPI_Bcast
+[g2:07002] *** reported by process [2071724111,4]
+[g2:07002] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:07002] *** MPI_ERR_ROOT: invalid root
+[g2:07002] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:07002] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g2:07004] *** An error occurred in MPI_Bcast
+[g2:07004] *** reported by process [2071724111,6]
+[g2:07004] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:07004] *** MPI_ERR_ROOT: invalid root
+[g2:07004] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:07004] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g2:07005] *** An error occurred in MPI_Bcast
+[g2:07005] *** reported by process [2071724111,7]
+[g2:07005] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:07005] *** MPI_ERR_ROOT: invalid root
+[g2:07005] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:07005] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 31612.79 ON g1 CANCELLED AT 2025-12-15T18:26:19 ***
+srun: error: g2: tasks 4-7: Exited with exit code 8
+srun: error: g1: tasks 0-3: Killed
+--------------------------------------------------
+ТЕСТ: summa 720x720, P=8, узлы=4
+ОШИБКА: запуск не удался
+Вывод ошибки: [g4:16631] *** An error occurred in MPI_Bcast
+[g4:16631] *** reported by process [2071724112,7]
+[g4:16631] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g4:16631] *** MPI_ERR_ROOT: invalid root
+[g4:16631] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g4:16631] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+[g4:16630] *** An error occurred in MPI_Bcast
+[g4:16630] *** reported by process [2071724112,6]
+[g4:16630] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g4:16630] *** MPI_ERR_ROOT: invalid root
+[g4:16630] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g4:16630] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+slurmstepd: error: *** STEP 31612.80 ON g1 CANCELLED AT 2025-12-15T18:26:21 ***
+srun: error: g4: tasks 6-7: Exited with exit code 8
+srun: error: g2: tasks 2-3: Killed
+srun: error: g1: tasks 0-1: Killed
+srun: error: g3: tasks 4-5: Killed
+--------------------------------------------------
+ТЕСТ: summa 720x720, P=16, узлы=1
+УСПЕХ: время = 0.080168s, проверка = YES
+--------------------------------------------------
+ТЕСТ: summa 720x720, P=16, узлы=2
+УСПЕХ: время = 0.137693s, проверка = YES
+--------------------------------------------------
+ТЕСТ: summa 720x720, P=16, узлы=4
+УСПЕХ: время = 0.171943s, проверка = YES
+Размер матрицы: 960x960
+--------------------------------------------------
+ТЕСТ: summa 960x960, P=1, узлы=1
+УСПЕХ: время = 2.558119s, проверка = YES
+  Пропуск: P=1 < узлов=2
+  Пропуск: P=1 < узлов=4
+--------------------------------------------------
+ТЕСТ: summa 960x960, P=2, узлы=1
+ОШИБКА: запуск не удался
+Вывод ошибки: [g1:26040] *** An error occurred in MPI_Bcast
+[g1:26040] *** reported by process [2071724117,0]
+[g1:26040] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:26040] *** MPI_ERR_ROOT: invalid root
+[g1:26040] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:26040] ***    and potentially your MPI job)
+[g1:26041] *** An error occurred in MPI_Bcast
+[g1:26041] *** reported by process [2071724117,1]
+[g1:26041] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:26041] *** MPI_ERR_ROOT: invalid root
+[g1:26041] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:26041] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+In: PMI_Abort(8, N/A)
+slurmstepd: error: *** STEP 31612.85 ON g1 CANCELLED AT 2025-12-15T18:26:42 ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: g1: tasks 0-1: Exited with exit code 8
+--------------------------------------------------
+ТЕСТ: summa 960x960, P=2, узлы=2
+ОШИБКА: запуск не удался
+Вывод ошибки: [g2:07102] *** An error occurred in MPI_Bcast
+[g2:07102] *** reported by process [2071724118,1]
+[g2:07102] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:07102] *** MPI_ERR_ROOT: invalid root
+[g2:07102] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:07102] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 31612.86 ON g1 CANCELLED AT 2025-12-15T18:26:46 ***
+[g1:26075] *** An error occurred in MPI_Bcast
+[g1:26075] *** reported by process [2071724118,0]
+[g1:26075] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:26075] *** MPI_ERR_ROOT: invalid root
+[g1:26075] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:26075] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+srun: error: g2: task 1: Exited with exit code 8
+srun: error: g1: task 0: Killed
+  Пропуск: P=2 < узлов=4
+--------------------------------------------------
+ТЕСТ: summa 960x960, P=4, узлы=1
+УСПЕХ: время = 
+0.536022s, проверка = 
+NO
+--------------------------------------------------
+ТЕСТ: summa 960x960, P=4, узлы=2
+УСПЕХ: время = 0.681913s, проверка = YES
+--------------------------------------------------
+ТЕСТ: summa 960x960, P=4, узлы=4
+УСПЕХ: время = 0.735431s, проверка = YES
+--------------------------------------------------
+ТЕСТ: summa 960x960, P=8, узлы=1
+ОШИБКА: запуск не удался
+Вывод ошибки: [g1:26235] *** An error occurred in MPI_Bcast
+[g1:26235] *** reported by process [2071724122,4]
+[g1:26235] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:26235] *** MPI_ERR_ROOT: invalid root
+[g1:26235] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:26235] ***    and potentially your MPI job)
+[g1:26238] *** An error occurred in MPI_Bcast
+[g1:26238] *** reported by process [2071724122,7]
+[g1:26238] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:26238] *** MPI_ERR_ROOT: invalid root
+[g1:26238] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:26238] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+In: PMI_Abort(8, N/A)
+[g1:26237] *** An error occurred in MPI_Bcast
+[g1:26237] *** reported by process [2071724122,6]
+[g1:26237] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:26237] *** MPI_ERR_ROOT: invalid root
+[g1:26237] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:26237] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g1:26236] *** An error occurred in MPI_Bcast
+[g1:26236] *** reported by process [2071724122,5]
+[g1:26236] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:26236] *** MPI_ERR_ROOT: invalid root
+[g1:26236] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:26236] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g1:26231] *** An error occurred in MPI_Bcast
+[g1:26231] *** reported by process [2071724122,0]
+[g1:26231] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:26231] *** MPI_ERR_ROOT: invalid root
+[g1:26231] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:26231] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g1:26234] *** An error occurred in MPI_Bcast
+[g1:26234] *** reported by process [2071724122,3]
+[g1:26234] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:26234] *** MPI_ERR_ROOT: invalid root
+[g1:26234] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:26234] ***    and potentially your MPI job)
+[g1:26232] *** An error occurred in MPI_Bcast
+[g1:26232] *** reported by process [2071724122,1]
+[g1:26232] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:26232] *** MPI_ERR_ROOT: invalid root
+[g1:26232] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:26232] ***    and potentially your MPI job)
+[g1:26233] *** An error occurred in MPI_Bcast
+[g1:26233] *** reported by process [2071724122,2]
+[g1:26233] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g1:26233] *** MPI_ERR_ROOT: invalid root
+[g1:26233] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g1:26233] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+In: PMI_Abort(8, N/A)
+In: PMI_Abort(8, N/A)
+slurmstepd: error: *** STEP 31612.90 ON g1 CANCELLED AT 2025-12-15T18:27:05 ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: g1: tasks 0-7: Exited with exit code 8
+--------------------------------------------------
+ТЕСТ: summa 960x960, P=8, узлы=2
+ОШИБКА: запуск не удался
+Вывод ошибки: [g2:07153] *** An error occurred in MPI_Bcast
+[g2:07153] *** reported by process [2071724123,7]
+[g2:07153] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:07153] *** MPI_ERR_ROOT: invalid root
+[g2:07153] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:07153] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g2:07150] *** An error occurred in MPI_Bcast
+[g2:07150] *** reported by process [2071724123,4]
+[g2:07150] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:07150] *** MPI_ERR_ROOT: invalid root
+[g2:07150] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:07150] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g2:07151] *** An error occurred in MPI_Bcast
+[g2:07151] *** reported by process [2071724123,5]
+[g2:07151] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:07151] *** MPI_ERR_ROOT: invalid root
+[g2:07151] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:07151] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g2:07152] *** An error occurred in MPI_Bcast
+[g2:07152] *** reported by process [2071724123,6]
+[g2:07152] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:07152] *** MPI_ERR_ROOT: invalid root
+[g2:07152] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:07152] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 31612.91 ON g1 CANCELLED AT 2025-12-15T18:27:09 ***
+srun: error: g2: tasks 4-7: Exited with exit code 8
+srun: error: g1: tasks 0-3: Killed
+--------------------------------------------------
+ТЕСТ: summa 960x960, P=8, узлы=4
+ОШИБКА: запуск не удался
+Вывод ошибки: [g4:16688] *** An error occurred in MPI_Bcast
+[g4:16688] *** reported by process [2071724124,7]
+[g4:16688] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g4:16688] *** MPI_ERR_ROOT: invalid root
+[g4:16688] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g4:16688] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+[g2:07183] *** An error occurred in MPI_Bcast
+[g2:07183] *** reported by process [2071724124,3]
+[g2:07183] *** on communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+[g2:07183] *** MPI_ERR_ROOT: invalid root
+[g2:07183] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[g2:07183] ***    and potentially your MPI job)
+In: PMI_Abort(8, N/A)
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 31612.92 ON g1 CANCELLED AT 2025-12-15T18:27:13 ***
+srun: error: g4: task 6: Killed
+srun: error: g4: task 7: Exited with exit code 8
+srun: error: g2: task 2: Killed
+srun: error: g2: task 3: Exited with exit code 8
+srun: error: g3: tasks 4-5: Killed
+srun: error: g1: tasks 0-1: Killed
+--------------------------------------------------
+ТЕСТ: summa 960x960, P=16, узлы=1
+УСПЕХ: время = 
+0.279011s, проверка = 
+NO
+--------------------------------------------------
+ТЕСТ: summa 960x960, P=16, узлы=2
+УСПЕХ: время = 
+0.322818s, проверка = 
+NO
+--------------------------------------------------
+ТЕСТ: summa 960x960, P=16, узлы=4
+УСПЕХ: время = 0.286690s, проверка = YES
+
+=== ОБРАБОТКА РЕЗУЛЬТАТОВ ===
+Всего тестов: 96, Успешно: 76, Ошибок: 20
+
+==================================================
+СВОДКА РЕЗУЛЬТАТОВ (Band vs SUMMA)
+==================================================
+
+МАТРИЦА 240x240:
+--------------------------------------------------------------
+Алгоритм Процессы Узлы Время(с) Ускорение Эффективность Проверка
+--------------------------------------------------------------
+band       1        1      0.0313                             YES       
+band       2        1      0.0163                             YES       
+band       2        2      0.0131                             YES       
+band       4        1      0.0070                             YES       
+band       4        2      0.0066                             YES       
+band       4        4      0.0071                             YES       
+band       8        1      0.0084                             YES       
+band       8        2      0.0033                             YES       
+band       8        4      0.0033                             YES       
+band       16       1      0.0045                             YES       
+band       16       2      0.0044                             YES       
+band       16       4      0.0019                             YES       
+summa      1        1      0.0319                             YES       
+summa      4        1      0.0116                             YES       
+summa      4        2      0.0227                             YES       
+summa      4        4      0.0372                             YES       
+summa      16       1      0.0030                             YES       
+summa      16       2      1.0632                             YES       
+summa      16       4      0.0823                             YES       
+
+МАТРИЦА 480x480:
+--------------------------------------------------------------
+Алгоритм Процессы Узлы Время(с) Ускорение Эффективность Проверка
+--------------------------------------------------------------
+band       1        1      0.3005                             YES       
+band       2        1      0.1559                             YES       
+band       2        2      0.1577                             YES       
+band       4        1      0.0784                             YES       
+band       4        2      0.0772                             YES       
+band       4        4      0.0786                             YES       
+band       8        1      0.0450                             YES       
+band       8        2      0.0399                             YES       
+band       8        4      0.0378                             YES       
+band       16       1      0.1515                             YES       
+band       16       2      0.0219                             YES       
+band       16       4      0.0206                             YES       
+summa      1        1      0.2967                             YES       
+summa      4        1      0.0544                             YES       
+summa      4        2      0.1215                             YES       
+summa      4        4      0.1622                             YES       
+summa      16       1      0.0221                             YES       
+summa      16       2      0.0621                             YES       
+summa      16       4      0.0852                             YES       
+
+МАТРИЦА 720x720:
+--------------------------------------------------------------
+Алгоритм Процессы Узлы Время(с) Ускорение Эффективность Проверка
+--------------------------------------------------------------
+band       1        1      0.9397                             YES       
+band       2        1      0.4738                             YES       
+band       2        2      0.4736                             YES       
+band       4        1      0.8956                             YES       
+band       4        2      0.2369                             YES       
+band       4        4      0.2432                             YES       
+band       8        1      0.4804                             YES       
+band       8        2      0.4463                             YES       
+band       8        4      0.4980                             YES       
+band       16       1      0.3835                             YES       
+band       16       2      0.2527                             YES       
+band       16       4      0.3842                             YES       
+summa      1        1      0.9703                             YES       
+summa      4        1      0.1765                             YES       
+summa      4        2      0.2330                             YES       
+summa      4        4      0.2791                             YES       
+summa      16       1      0.0802                             YES       
+summa      16       2      0.1377                             YES       
+summa      16       4      0.1719                             YES       
+
+МАТРИЦА 960x960:
+--------------------------------------------------------------
+Алгоритм Процессы Узлы Время(с) Ускорение Эффективность Проверка
+--------------------------------------------------------------
+band       1        1      2.4813                             YES       
+band       2        1      1.2691                             YES       
+band       2        2      1.3308                             YES       
+band       4        1      0.8284                             YES       
+band       4        2      0.6987                             YES       
+band       4        4      0.6659                             YES       
+band       8        1      0.8235                             YES       
+band       8        2      0.4328                             YES       
+band       8        4      0.3492                             YES       
+band       16       1      0.8503                             YES       
+band       16       2      0.4244                             YES       
+band       16       4      0.2170                             YES       
+summa      1        1      2.5581                             YES       
+summa      4        2      0.6819                             YES       
+summa      4        4      0.7354                             YES       
+summa      16       4      0.2867                             YES       
+
+==================================================
+СРАВНЕНИЕ АЛГОРИТМОВ (лучшее время для одинаковых P и N)
+==================================================
+Для одинаковых P (процессы) и узлов:
+--------------------------------------------------------------
+P,Nodes  Размер Время_Band Время_SUMMA Выигрыш_SUMMA
+--------------------------------------------------------------
+4   ,1    240   x240    0.0070         0.0116          (Band)   
+4   ,1    480   x480    0.0784         0.0544          (Band)   
+4   ,1    720   x720    0.8956         0.1765          (Band)   
+4   ,2    240   x240    0.0066         0.0227          (Band)   
+4   ,2    480   x480    0.0772         0.1215          (Band)   
+4   ,2    720   x720    0.2369         0.2330          (Band)   
+4   ,2    960   x960    0.6987         0.6819          (Band)   
+4   ,4    240   x240    0.0071         0.0372          (Band)   
+4   ,4    480   x480    0.0786         0.1622          (Band)   
+4   ,4    720   x720    0.2432         0.2791          (Band)   
+4   ,4    960   x960    0.6659         0.7354          (Band)   
+16  ,1    240   x240    0.0045         0.0030          (Band)   
+16  ,1    480   x480    0.1515         0.0221          (Band)   
+16  ,1    720   x720    0.3835         0.0802          (Band)   
+16  ,2    240   x240    0.0044         1.0632          (Band)   
+16  ,2    480   x480    0.0219         0.0621          (Band)   
+16  ,2    720   x720    0.2527         0.1377          (Band)   
+16  ,4    240   x240    0.0019         0.0823          (Band)   
+16  ,4    480   x480    0.0206         0.0852          (Band)   
+16  ,4    720   x720    0.3842         0.1719          (Band)   
+16  ,4    960   x960    0.2170         0.2867          (Band)   
+
+=== СОЗДАНИЕ ФАЙЛОВ ДЛЯ ГРАФИКОВ ===
+
+==================================================
+ВСЁ ЗАВЕРШЕНО!
+==================================================
+Файлы с результатами:
+1. raw_results_band_vs_summa.csv - сырые данные
+2. comparison_results_band_vs_summa.csv - полные результаты с метриками
+3. speedup_data_band_vs_summa.csv - данные для построения графиков
+
+Для построения графиков в Python:
+import pandas as pd
+import matplotlib.pyplot as plt
+data = pd.read_csv('speedup_data_band_vs_summa.csv')
+
+Задание завершено. Проверьте файлы выше.

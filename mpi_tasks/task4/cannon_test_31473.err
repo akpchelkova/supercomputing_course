@@ -1,0 +1,2 @@
+/var/lib/slurm/spool/job31473/slurm_script: line 66: bc: command not found
+/var/lib/slurm/spool/job31473/slurm_script: line 67: SIZE % SQRT: division by 0 (error token is "SQRT")

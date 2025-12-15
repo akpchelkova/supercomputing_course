@@ -1,0 +1,7 @@
+/var/lib/slurm/spool/job31467/slurm_script: line 26: bc: command not found
+/var/lib/slurm/spool/job31467/slurm_script: line 28: bc: command not found
+/var/lib/slurm/spool/job31467/slurm_script: line 28: [: -eq: unary operator expected
+/var/lib/slurm/spool/job31467/slurm_script: line 26: bc: command not found
+/var/lib/slurm/spool/job31467/slurm_script: line 28: bc: command not found
+/var/lib/slurm/spool/job31467/slurm_script: line 28: [: -eq: unary operator expected
+slurmstepd: error: *** JOB 31467 ON g1 CANCELLED AT 2025-12-13T12:03:19 DUE TO TIME LIMIT ***

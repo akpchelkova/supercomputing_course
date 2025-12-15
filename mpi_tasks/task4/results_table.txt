@@ -1,0 +1,20 @@
+Алгоритм | Процессы | Размер | Время(с) | MFLOPS
+---------|----------|--------|----------|--------
+Band | 1 | 1024 | 3.3185 | 
+Cannon | 1 | 1024 | SKIP | SKIP
+Band | 1 | 2048 | 108.4917 | 
+Cannon | 1 | 2048 | SKIP | SKIP
+Band | 1 | 4096 | 1095.9173 | 
+Cannon | 1 | 4096 | SKIP | SKIP
+Band | 4 | 1024 | 1.1905 | 
+Cannon | 4 | 1024 | SKIP | SKIP
+Band | 4 | 2048 | 29.8231 | 
+Cannon | 4 | 2048 | SKIP | SKIP
+Band | 4 | 4096 | 303.1216 | 
+Cannon | 4 | 4096 | SKIP | SKIP
+Band | 16 | 1024 | 1.0977 | 
+Cannon | 16 | 1024 | SKIP | SKIP
+Band | 16 | 2048 | 21.9818 | 
+Cannon | 16 | 2048 | SKIP | SKIP
+Band | 16 | 4096 | 188.1917 | 
+Cannon | 16 | 4096 | SKIP | SKIP

@@ -1,0 +1,2 @@
+/var/lib/slurm/spool/job31477/slurm_script: line 71: bc: command not found
+/var/lib/slurm/spool/job31477/slurm_script: line 72: 2048 % sqrt_np: division by 0 (error token is "sqrt_np")

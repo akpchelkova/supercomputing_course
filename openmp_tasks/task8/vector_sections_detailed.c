@@ -6,20 +6,22 @@
 // параметры которые будем менять в экспериментах
 int NUM_VECTORS = 8;
 int VECTOR_SIZE = 1000000;
-int NUM_THREADS = 3;
+int NUM_THREADS = 4;  // увеличиваем для лучшего конвейера
 
-// глобальные флаги для синхронизации между секциями
-int vectors_loaded = 0;
-int computations_done = 0;
-
-// структура для хранения общих данных между задачами
+// структура для хранения пары векторов и их состояния
 typedef struct {
-    double *vectors_a;  // массив для хранения первых векторов
-    double *vectors_b;  // массив для хранения вторых векторов  
-    double *results;    // массив для хранения результатов скалярных произведений
-} SharedData;
+    double *vector_a;    // данные первого вектора
+    double *vector_b;    // данные второго вектора  
+    int a_loaded;        // флаг загрузки вектора a (0/1)
+    int b_loaded;        // флаг загрузки вектора b (0/1)
+    int computed;        // флаг вычислений (0/1)
+    double result;       // результат скалярного произведения
+} VectorPair;
 
-// генерация тестовых данных в файлы
+// глобальный массив пар векторов для конвейерной обработки
+VectorPair *vector_pairs = NULL;
+
+// функция для генерации тестовых данных в файлы
 void generate_test_data() {
     FILE *file_a, *file_b;
     
@@ -29,7 +31,7 @@ void generate_test_data() {
     file_a = fopen("vectors_a.dat", "wb");
     for (int i = 0; i < NUM_VECTORS; i++) {
         for (int j = 0; j < VECTOR_SIZE; j++) {
-            double value = (double)rand() / RAND_MAX * 10.0;  // случайные числа 0-10
+            double value = (double)rand() / RAND_MAX * 10.0;
             fwrite(&value, sizeof(double), 1, file_a);
         }
     }
@@ -39,7 +41,7 @@ void generate_test_data() {
     file_b = fopen("vectors_b.dat", "wb");
     for (int i = 0; i < NUM_VECTORS; i++) {
         for (int j = 0; j < VECTOR_SIZE; j++) {
-            double value = (double)rand() / RAND_MAX * 10.0;  // случайные числа 0-10
+            double value = (double)rand() / RAND_MAX * 10.0;
             fwrite(&value, sizeof(double), 1, file_b);
         }
     }
@@ -48,312 +50,436 @@ void generate_test_data() {
     printf("данные сгенерированы: %d векторов по %d элементов\n", NUM_VECTORS, VECTOR_SIZE);
 }
 
-// задача 1: чтение векторов из файла (выполняется в отдельной секции)
-void task_read_vectors(SharedData *data) {
-    FILE *file;
-    
-    // чтение vectors_a.dat
-    file = fopen("vectors_a.dat", "rb");
-    if (!file) {
-        printf("ошибка: не могу открыть vectors_a.dat\n");
-        return;
-    }
-    for (int i = 0; i < NUM_VECTORS; i++) {
-        for (int j = 0; j < VECTOR_SIZE; j++) {
-            fread(&data->vectors_a[i * VECTOR_SIZE + j], sizeof(double), 1, file);
-        }
-    }
-    fclose(file);
-    
-    // чтение vectors_b.dat
-    file = fopen("vectors_b.dat", "rb");
-    if (!file) {
-        printf("ошибка: не могу открыть vectors_b.dat\n");
-        return;
-    }
-    for (int i = 0; i < NUM_VECTORS; i++) {
-        for (int j = 0; j < VECTOR_SIZE; j++) {
-            fread(&data->vectors_b[i * VECTOR_SIZE + j], sizeof(double), 1, file);
-        }
-    }
-    fclose(file);
-    
-    // устанавливаем флаг загрузки данных для синхронизации с другими задачами
-    #pragma omp atomic write
-    vectors_loaded = 1;
-    #pragma omp flush(vectors_loaded)  // принудительная синхронизация памяти между потоками
-}
-
 // функция вычисления скалярного произведения для одного вектора
 double dot_product(double *a, double *b, int size) {
     double sum = 0.0;
+    // используем simd для векторизации вычислений внутри скалярного произведения
+    #pragma omp simd reduction(+:sum)
     for (int i = 0; i < size; i++) {
-        sum += a[i] * b[i];  // накапливаем сумму произведений элементов
+        sum += a[i] * b[i];
     }
     return sum;
 }
 
-// задача 2: вычисление скалярных произведений (выполняется в отдельной секции)
-void task_compute_products(SharedData *data) {
-    // ожидаем загрузки данных из файлов перед началом вычислений
-    while (1) {
-        #pragma omp flush(vectors_loaded)  // обновляем значение флага из памяти
-        if (vectors_loaded) break;  // выходим из цикла когда данные загружены
-        for (int i = 0; i < 1000; i++) {} // короткая пауза чтобы не нагружать cpu
-    }
-    
-    // вычисление скалярных произведений для всех пар векторов
-    for (int i = 0; i < NUM_VECTORS; i++) {
-        double *vec_a = &data->vectors_a[i * VECTOR_SIZE];  // указатель на i-й вектор A
-        double *vec_b = &data->vectors_b[i * VECTOR_SIZE];  // указатель на i-й вектор B
-        data->results[i] = dot_product(vec_a, vec_b, VECTOR_SIZE);  // вычисляем скалярное произведение
-    }
-    
-    // устанавливаем флаг завершения вычислений для синхронизации
-    #pragma omp atomic write
-    computations_done = 1;
-    #pragma omp flush(computations_done)  // принудительная синхронизация памяти
-}
-
-// задача 3: сохранение результатов в файл (выполняется в отдельной секции)
-void task_save_results(SharedData *data) {
-    // ожидаем завершения вычислений перед сохранением результатов
-    while (1) {
-        #pragma omp flush(computations_done)  // обновляем значение флага из памяти
-        if (computations_done) break;  // выходим из цикла когда вычисления завершены
-        for (int i = 0; i < 1000; i++) {} // короткая пауза
-    }
-    
-    FILE *file = fopen("results.dat", "w");
+// задача чтения одного вектора A из файла
+void read_vector_a(int pair_index) {
+    FILE *file = fopen("vectors_a.dat", "rb");
     if (!file) {
-        printf("ошибка: не могу создать results.dat\n");
+        printf("ошибка: не могу открыть vectors_a.dat\n");
         return;
     }
     
-    // записываем результаты в файл
-    for (int i = 0; i < NUM_VECTORS; i++) {
-        fprintf(file, "вектор %d: %.6f\n", i, data->results[i]);
+    // перемещаемся к позиции нужного вектора в файле
+    long offset = pair_index * VECTOR_SIZE * sizeof(double);
+    fseek(file, offset, SEEK_SET);
+    
+    // читаем данные вектора A
+    for (int j = 0; j < VECTOR_SIZE; j++) {
+        fread(&vector_pairs[pair_index].vector_a[j], sizeof(double), 1, file);
     }
+    
     fclose(file);
+    
+    // атомарно устанавливаем флаг что вектор A загружен
+    #pragma omp atomic write
+    vector_pairs[pair_index].a_loaded = 1;
+}
+
+// задача чтения одного вектора B из файла
+void read_vector_b(int pair_index) {
+    FILE *file = fopen("vectors_b.dat", "rb");
+    if (!file) {
+        printf("ошибка: не могу открыть vectors_b.dat\n");
+        return;
+    }
+    
+    // перемещаемся к позиции нужного вектора в файле
+    long offset = pair_index * VECTOR_SIZE * sizeof(double);
+    fseek(file, offset, SEEK_SET);
+    
+    // читаем данные вектора B
+    for (int j = 0; j < VECTOR_SIZE; j++) {
+        fread(&vector_pairs[pair_index].vector_b[j], sizeof(double), 1, file);
+    }
+    
+    fclose(file);
+    
+    // атомарно устанавливаем флаг что вектор B загружен
+    #pragma omp atomic write
+    vector_pairs[pair_index].b_loaded = 1;
+}
+
+// задача вычисления скалярного произведения для одной пары векторов
+void compute_vector_pair(int pair_index) {
+    // ожидаем пока оба вектора будут загружены
+    while (1) {
+        int a_loaded, b_loaded;
+        // атомарно читаем флаги загрузки
+        #pragma omp atomic read
+        a_loaded = vector_pairs[pair_index].a_loaded;
+        #pragma omp atomic read
+        b_loaded = vector_pairs[pair_index].b_loaded;
+        
+        if (a_loaded && b_loaded) break;  // выходим когда оба загружены
+        
+        // короткая активная пауза чтобы не нагружать cpu
+        for (int i = 0; i < 100; i++) {}
+    }
+    
+    // вычисляем скалярное произведение
+    vector_pairs[pair_index].result = dot_product(vector_pairs[pair_index].vector_a, 
+                                                  vector_pairs[pair_index].vector_b, 
+                                                  VECTOR_SIZE);
+    
+    // атомарно устанавливаем флаг что вычисления завершены
+    #pragma omp atomic write
+    vector_pairs[pair_index].computed = 1;
+}
+
+// задача сохранения одного результата в файл
+void save_single_result(int pair_index, FILE *file) {
+    // ожидаем пока вычисления для этой пары завершатся
+    while (1) {
+        int computed;
+        #pragma omp atomic read
+        computed = vector_pairs[pair_index].computed;
+        if (computed) break;
+        
+        // короткая активная пауза
+        for (int i = 0; i < 100; i++) {}
+    }
+    
+    // используем критическую секцию для безопасной записи в файл
+    #pragma omp critical
+    {
+        fprintf(file, "вектор %d: %.6f\n", pair_index, vector_pairs[pair_index].result);
+    }
+}
+
+// конвейерная версия с использованием задач openmp
+double pipeline_tasks_version(int num_threads) {
+    double start_time, end_time;
+    int error_flag = 0;  // флаг ошибки
+    
+    // выделение памяти для всех пар векторов
+    vector_pairs = (VectorPair*)malloc(NUM_VECTORS * sizeof(VectorPair));
+    if (vector_pairs == NULL) {
+        printf("ошибка выделения памяти\n");
+        return 0.0;
+    }
+    
+    for (int i = 0; i < NUM_VECTORS; i++) {
+        vector_pairs[i].vector_a = (double*)malloc(VECTOR_SIZE * sizeof(double));
+        vector_pairs[i].vector_b = (double*)malloc(VECTOR_SIZE * sizeof(double));
+        
+        if (vector_pairs[i].vector_a == NULL || vector_pairs[i].vector_b == NULL) {
+            printf("ошибка выделения памяти для вектора %d\n", i);
+            error_flag = 1;
+            break;
+        }
+        
+        vector_pairs[i].a_loaded = 0;
+        vector_pairs[i].b_loaded = 0;
+        vector_pairs[i].computed = 0;
+        vector_pairs[i].result = 0.0;
+    }
+    
+    if (error_flag) {
+        // освобождаем уже выделенную память
+        for (int i = 0; i < NUM_VECTORS; i++) {
+            if (vector_pairs[i].vector_a) free(vector_pairs[i].vector_a);
+            if (vector_pairs[i].vector_b) free(vector_pairs[i].vector_b);
+        }
+        free(vector_pairs);
+        return 0.0;
+    }
+    
+    start_time = omp_get_wtime();
+    
+    // создаем параллельную область с указанным количеством потоков
+    #pragma omp parallel num_threads(num_threads)
+    {
+        // только один поток будет создавать задачи
+        #pragma omp single
+        {
+            // открываем файл для записи результатов
+            FILE *results_file = fopen("results_pipeline.dat", "w");
+            if (!results_file) {
+                printf("ошибка создания файла результатов\n");
+                // устанавливаем флаг ошибки, но не выходим из блока
+                error_flag = 1;
+            } else {
+                // создаем задачи для конвейерной обработки каждой пары векторов
+                for (int i = 0; i < NUM_VECTORS; i++) {
+                    // задача на чтение вектора A
+                    #pragma omp task firstprivate(i)
+                    {
+                        read_vector_a(i);
+                    }
+                    
+                    // задача на чтение вектора B (может выполняться параллельно с чтением A)
+                    #pragma omp task firstprivate(i)
+                    {
+                        read_vector_b(i);
+                    }
+                    
+                    // задача на вычисления (зависит от завершения чтения обоих векторов)
+                    #pragma omp task firstprivate(i)
+                    {
+                        compute_vector_pair(i);
+                    }
+                    
+                    // задача на сохранение (зависит от завершения вычислений)
+                    #pragma omp task firstprivate(i)
+                    {
+                        save_single_result(i, results_file);
+                    }
+                }
+                
+                // ждем завершения всех созданных задач
+                #pragma omp taskwait
+                
+                fclose(results_file);
+            }
+        }
+    }
+    
+    end_time = omp_get_wtime();
+    
+    // освобождение памяти
+    for (int i = 0; i < NUM_VECTORS; i++) {
+        free(vector_pairs[i].vector_a);
+        free(vector_pairs[i].vector_b);
+    }
+    free(vector_pairs);
+    
+    if (error_flag) {
+        return 0.0;
+    }
+    
+    return end_time - start_time;
+}
+
+// экспериментальная версия с циклическим конвейером на трех потоках
+double circular_pipeline_version() {
+    double start_time, end_time;
+    
+    // глубина конвейера - количество одновременно обрабатываемых пар
+    #define PIPELINE_DEPTH 3
+    
+    // создаем буфер для конвейерной обработки
+    VectorPair pipeline[PIPELINE_DEPTH];
+    for (int i = 0; i < PIPELINE_DEPTH; i++) {
+        pipeline[i].vector_a = (double*)malloc(VECTOR_SIZE * sizeof(double));
+        pipeline[i].vector_b = (double*)malloc(VECTOR_SIZE * sizeof(double));
+        pipeline[i].a_loaded = 0;
+        pipeline[i].b_loaded = 0;
+        pipeline[i].computed = 0;
+    }
+    
+    FILE *results_file = fopen("results_circular.dat", "w");
+    
+    start_time = omp_get_wtime();
+    
+    // создаем три независимых потока для конвейера
+    #pragma omp parallel sections num_threads(3)
+    {
+        // поток 1: чтение данных
+        #pragma omp section
+        {
+            for (int i = 0; i < NUM_VECTORS; i++) {
+                int buffer_index = i % PIPELINE_DEPTH;  // циклическое использование буферов
+                
+                // ждем пока буфер освободится от предыдущей обработки
+                while (pipeline[buffer_index].a_loaded || pipeline[buffer_index].b_loaded) {
+                    for (int j = 0; j < 100; j++) {}  // активное ожидание
+                }
+                
+                // читаем вектор A
+                FILE *file_a = fopen("vectors_a.dat", "rb");
+                long offset = i * VECTOR_SIZE * sizeof(double);
+                fseek(file_a, offset, SEEK_SET);
+                for (int j = 0; j < VECTOR_SIZE; j++) {
+                    fread(&pipeline[buffer_index].vector_a[j], sizeof(double), 1, file_a);
+                }
+                fclose(file_a);
+                pipeline[buffer_index].a_loaded = 1;
+                
+                // читаем вектор B (может начаться сразу после начала чтения A)
+                FILE *file_b = fopen("vectors_b.dat", "rb");
+                fseek(file_b, offset, SEEK_SET);
+                for (int j = 0; j < VECTOR_SIZE; j++) {
+                    fread(&pipeline[buffer_index].vector_b[j], sizeof(double), 1, file_b);
+                }
+                fclose(file_b);
+                pipeline[buffer_index].b_loaded = 1;
+            }
+        }
+        
+        // поток 2: вычисления
+        #pragma omp section
+        {
+            for (int i = 0; i < NUM_VECTORS; i++) {
+                int buffer_index = i % PIPELINE_DEPTH;
+                
+                // ждем пока оба вектора будут загружены
+                while (!pipeline[buffer_index].a_loaded || !pipeline[buffer_index].b_loaded) {
+                    for (int j = 0; j < 100; j++) {}
+                }
+                
+                // вычисляем скалярное произведение
+                pipeline[buffer_index].result = dot_product(pipeline[buffer_index].vector_a,
+                                                          pipeline[buffer_index].vector_b,
+                                                          VECTOR_SIZE);
+                pipeline[buffer_index].computed = 1;
+            }
+        }
+        
+        // поток 3: сохранение результатов
+        #pragma omp section
+        {
+            for (int i = 0; i < NUM_VECTORS; i++) {
+                int buffer_index = i % PIPELINE_DEPTH;
+                
+                // ждем пока вычисления завершатся
+                while (!pipeline[buffer_index].computed) {
+                    for (int j = 0; j < 100; j++) {}
+                }
+                
+                // сохраняем результат
+                fprintf(results_file, "вектор %d: %.6f\n", i, pipeline[buffer_index].result);
+                
+                // сбрасываем флаги для повторного использования буфера
+                pipeline[buffer_index].a_loaded = 0;
+                pipeline[buffer_index].b_loaded = 0;
+                pipeline[buffer_index].computed = 0;
+            }
+        }
+    }
+    
+    end_time = omp_get_wtime();
+    
+    fclose(results_file);
+    
+    // освобождение памяти буфера
+    for (int i = 0; i < PIPELINE_DEPTH; i++) {
+        free(pipeline[i].vector_a);
+        free(pipeline[i].vector_b);
+    }
+    
+    return end_time - start_time;
 }
 
 // последовательная версия для сравнения производительности
 double sequential_version() {
-    SharedData data;
     double start_time, end_time;
     
-    // выделение памяти для данных
-    data.vectors_a = (double*)malloc(NUM_VECTORS * VECTOR_SIZE * sizeof(double));
-    data.vectors_b = (double*)malloc(NUM_VECTORS * VECTOR_SIZE * sizeof(double));
-    data.results = (double*)malloc(NUM_VECTORS * sizeof(double));
-    
-    start_time = omp_get_wtime();  // засекаем время начала
-    
-    // последовательно выполняем все задачи одна за другой
-    task_read_vectors(&data);
-    task_compute_products(&data); 
-    task_save_results(&data);
-    
-    end_time = omp_get_wtime();  // засекаем время окончания
-    
-    free(data.vectors_a);
-    free(data.vectors_b);
-    free(data.results);
-    
-    return end_time - start_time;  // возвращаем общее время выполнения
-}
-
-// параллельная версия с использованием sections
-double parallel_sections_version(int num_threads) {
-    SharedData data;
-    double start_time, end_time;
-    
-    // инициализация флагов синхронизации
-    vectors_loaded = 0;
-    computations_done = 0;
-    
-    // выделение памяти для данных
-    data.vectors_a = (double*)malloc(NUM_VECTORS * VECTOR_SIZE * sizeof(double));
-    data.vectors_b = (double*)malloc(NUM_VECTORS * VECTOR_SIZE * sizeof(double));
-    data.results = (double*)malloc(NUM_VECTORS * sizeof(double));
-    
-    start_time = omp_get_wtime();  // засекаем время начала
-    
-    // разделение на три независимые задачи с помощью директивы sections
-    #pragma omp parallel sections num_threads(num_threads)
-    {
-        #pragma omp section
-        {
-            // задача 1: чтение данных из файлов (выполняется в одном потоке)
-            task_read_vectors(&data);
-        }
-        
-        #pragma omp section
-        {
-            // задача 2: вычисления (выполняется в другом потоке)
-            task_compute_products(&data);
-        }
-        
-        #pragma omp section
-        {
-            // задача 3: сохранение результатов (выполняется в третьем потоке)
-            task_save_results(&data);
-        }
+    // выделение памяти
+    VectorPair local_pairs[NUM_VECTORS];
+    for (int i = 0; i < NUM_VECTORS; i++) {
+        local_pairs[i].vector_a = (double*)malloc(VECTOR_SIZE * sizeof(double));
+        local_pairs[i].vector_b = (double*)malloc(VECTOR_SIZE * sizeof(double));
     }
     
-    end_time = omp_get_wtime();  // засекаем время окончания
+    start_time = omp_get_wtime();
     
-    free(data.vectors_a);
-    free(data.vectors_b);
-    free(data.results);
+    FILE *results_file = fopen("results_sequential.dat", "w");
     
-    return end_time - start_time;  // возвращаем общее время выполнения
-}
-
-// эксперимент 1: исследование зависимости производительности от количества потоков
-void experiment_threads() {
-    printf("\nэксперимент 1: зависимость от количества потоков\n");
-    printf("================================================\n");
-    printf("параметры: %d векторов по %d элементов\n\n", NUM_VECTORS, VECTOR_SIZE);
-    
-    int thread_counts[] = {1, 2, 3, 4, 6, 8};  // тестируемые количества потоков
-    int num_experiments = 6;
-    
-    printf("результаты:\n");
-    printf("==============\n\n");
-    
-    // заголовок таблицы для вывода результатов
-    printf("threads | sequential | parallel | speedup | efficiency\n");
-    printf("--------|------------|----------|---------|-----------\n");
-    
-    // сначала получаем время последовательной версии для сравнения
-    double seq_time = sequential_version();
-    
-    // тестируем параллельные версии с разным количеством потоков
-    for (int i = 0; i < num_experiments; i++) {
-        int threads = thread_counts[i];
-        double par_time = parallel_sections_version(threads);
-        double speedup = seq_time / par_time;  // вычисляем ускорение
-        double efficiency = speedup / threads * 100;  // вычисляем эффективность
+    // последовательная обработка каждой пары
+    for (int i = 0; i < NUM_VECTORS; i++) {
+        // чтение вектора A
+        FILE *file_a = fopen("vectors_a.dat", "rb");
+        long offset = i * VECTOR_SIZE * sizeof(double);
+        fseek(file_a, offset, SEEK_SET);
+        for (int j = 0; j < VECTOR_SIZE; j++) {
+            fread(&local_pairs[i].vector_a[j], sizeof(double), 1, file_a);
+        }
+        fclose(file_a);
         
-        printf("%7d | %10.4f | %8.4f | %7.2fx | %6.1f%%\n", 
-               threads, seq_time, par_time, speedup, efficiency);
+        // чтение вектора B
+        FILE *file_b = fopen("vectors_b.dat", "rb");
+        fseek(file_b, offset, SEEK_SET);
+        for (int j = 0; j < VECTOR_SIZE; j++) {
+            fread(&local_pairs[i].vector_b[j], sizeof(double), 1, file_b);
+        }
+        fclose(file_b);
+        
+        // вычисления
+        local_pairs[i].result = dot_product(local_pairs[i].vector_a, local_pairs[i].vector_b, VECTOR_SIZE);
+        
+        // сохранение
+        fprintf(results_file, "вектор %d: %.6f\n", i, local_pairs[i].result);
     }
-}
-
-// эксперимент 2: исследование зависимости от размера векторов
-void experiment_sizes() {
-    printf("\nэксперимент 2: зависимость от размера векторов\n");
-    printf("================================================\n");
-    printf("параметры: %d векторов, %d потоков\n\n", NUM_VECTORS, NUM_THREADS);
     
-    int sizes[] = {100000, 500000, 1000000, 2000000};  // тестируемые размеры векторов
-    int num_experiments = 4;
+    fclose(results_file);
     
-    printf("результаты:\n");
-    printf("==============\n\n");
+    end_time = omp_get_wtime();
     
-    // заголовок таблицы для вывода результатов
-    printf("size    | sequential | parallel | speedup | efficiency\n");
-    printf("--------|------------|----------|---------|-----------\n");
-    
-    for (int i = 0; i < num_experiments; i++) {
-        // сохраняем оригинальный размер
-        int original_size = VECTOR_SIZE;
-        VECTOR_SIZE = sizes[i];  // устанавливаем новый размер для эксперимента
-        
-        // генерируем данные нового размера
-        generate_test_data();
-        
-        // замеряем время выполнения для нового размера
-        double seq_time = sequential_version();
-        double par_time = parallel_sections_version(NUM_THREADS);
-        double speedup = seq_time / par_time;
-        double efficiency = speedup / NUM_THREADS * 100;
-        
-        printf("%7d | %10.4f | %8.4f | %7.2fx | %6.1f%%\n", 
-               sizes[i], seq_time, par_time, speedup, efficiency);
-        
-        // восстанавливаем оригинальный размер
-        VECTOR_SIZE = original_size;
+    // освобождение памяти
+    for (int i = 0; i < NUM_VECTORS; i++) {
+        free(local_pairs[i].vector_a);
+        free(local_pairs[i].vector_b);
     }
+    
+    return end_time - start_time;
 }
 
-// эксперимент 3: анализ времени выполнения отдельных задач
-void experiment_tasks() {
-    printf("\nэксперимент 3: время выполнения отдельных задач\n");
-    printf("==================================================\n");
-    printf("параметры: %d векторов по %d элементов, %d потоков\n\n", 
-           NUM_VECTORS, VECTOR_SIZE, NUM_THREADS);
+// эксперимент: сравнение разных версий
+void run_comparison_experiment() {
+    printf("\nсравнение конвейерной обработки\n");
+    printf("===============================\n");
     
     // генерируем тестовые данные
     generate_test_data();
     
-    SharedData data;
-    double start_time, end_time;
+    printf("\nпараметры эксперимента:\n");
+    printf("- количество векторов: %d\n", NUM_VECTORS);
+    printf("- размер вектора: %d элементов\n", VECTOR_SIZE);
+    printf("- объем данных: %.2f MB на файл\n", 
+           (double)NUM_VECTORS * VECTOR_SIZE * sizeof(double) / (1024*1024));
     
-    // выделение памяти для данных
-    data.vectors_a = (double*)malloc(NUM_VECTORS * VECTOR_SIZE * sizeof(double));
-    data.vectors_b = (double*)malloc(NUM_VECTORS * VECTOR_SIZE * sizeof(double));
-    data.results = (double*)malloc(NUM_VECTORS * sizeof(double));
+    printf("\nзапуск тестов...\n\n");
     
-    printf("время выполнения задач:\n");
-    printf("==========================\n\n");
+    // запускаем разные версии и замеряем время
+    double time_seq = sequential_version();
+    double time_tasks = pipeline_tasks_version(4);
+    double time_circular = circular_pipeline_version();
     
-    // задача 1: чтение данных
-    vectors_loaded = 0;
-    start_time = omp_get_wtime();
-    task_read_vectors(&data);
-    end_time = omp_get_wtime();
-    double read_time = end_time - start_time;
-    printf("задача 1 (чтение): %.4f сек\n", read_time);
+    printf("результаты:\n");
+    printf("------------\n");
+    printf("последовательная версия:          %.4f секунд\n", time_seq);
+    printf("конвейерная версия (tasks):       %.4f секунд\n", time_tasks);
+    printf("циклический конвейер (sections):  %.4f секунд\n", time_circular);
     
-    // задача 2: вычисления
-    computations_done = 0;
-    start_time = omp_get_wtime();
-    task_compute_products(&data);
-    end_time = omp_get_wtime();
-    double compute_time = end_time - start_time;
-    printf("задача 2 (вычисления): %.4f сек\n", compute_time);
+    printf("\nускорение:\n");
+    printf("----------\n");
+    printf("tasks vs последовательная:    %.2fx\n", time_seq / time_tasks);
+    printf("circular vs последовательная: %.2fx\n", time_seq / time_circular);
+    printf("circular vs tasks:            %.2fx\n", time_tasks / time_circular);
     
-    // задача 3: сохранение
-    start_time = omp_get_wtime();
-    task_save_results(&data);
-    end_time = omp_get_wtime();
-    double save_time = end_time - start_time;
-    printf("задача 3 (сохранение): %.4f сек\n", save_time);
-    
-    // общее время выполнения всех задач
-    double total_time = read_time + compute_time + save_time;
-    printf("общее время (сумма): %.4f сек\n", total_time);
-    
-    // процентное соотношение времени выполнения задач
-    printf("\nраспределение времени:\n");
-    printf("загрузка: %.1f%%, вычисления: %.1f%%, сохранение: %.1f%%\n",
-           read_time/total_time*100, compute_time/total_time*100, save_time/total_time*100);
-    
-    free(data.vectors_a);
-    free(data.vectors_b);
-    free(data.results);
+    printf("\nэффективность конвейера:\n");
+    printf("-----------------------\n");
+    printf("идеальное ускорение для 4 потоков: 4.00x\n");
+    printf("достигнутое ускорение:             %.2fx\n", time_seq / time_tasks);
+    printf("эффективность:                     %.1f%%\n", 
+           (time_seq / time_tasks) / 4 * 100);
 }
 
 int main(int argc, char *argv[]) {
-    printf("автоматическое тестирование разделения задач\n");
-    printf("===============================================\n");
+    printf("конвейерная обработка скалярных произведений векторов\n");
+    printf("=====================================================\n");
     
     // инициализация генератора случайных чисел
     srand(time(NULL));
     
-    // генерируем основные тестовые данные
-    generate_test_data();
+    // запускаем эксперимент сравнения
+    run_comparison_experiment();
     
-    // запускаем все эксперименты
-    experiment_threads();    // зависимость от количества потоков
-    experiment_sizes();      // зависимость от размера векторов
-    experiment_tasks();      // анализ времени выполнения отдельных задач
-    
-    printf("\nвсе эксперименты завершены!\n");
-    printf("данные готовы для построения графиков и анализа.\n");
+    printf("\nэксперимент завершен!\n");
+    printf("файлы результатов:\n");
+    printf("- results_sequential.dat: последовательная версия\n");
+    printf("- results_pipeline.dat: конвейерная версия (tasks)\n");
+    printf("- results_circular.dat: циклический конвейер (sections)\n");
     
     return 0;
 }
