@@ -1,0 +1,28 @@
+srun: Warning: can't run 1 processes on 2 nodes, setting nnodes to 1
+=============================================================
+MPI Min/Max Search Performance Test
+Total available processes: 1
+=============================================================
+
+=== SEQUENTIAL VERSION (Baseline) ===
+SEQUENTIAL: processes= 1, vector_size=100         , time= 0.000011 sec
+SEQUENTIAL: processes= 1, vector_size=1000        , time= 0.000041 sec
+SEQUENTIAL: processes= 1, vector_size=10000       , time= 0.000423 sec
+SEQUENTIAL: processes= 1, vector_size=100000      , time= 0.004017 sec
+SEQUENTIAL: processes= 1, vector_size=1000000     , time= 0.035407 sec
+SEQUENTIAL: processes= 1, vector_size=5000000     , time= 0.147404 sec
+
+=== PARALLEL VERSION (MPI) ===
+
+--- Testing with  1 processes ---
+PARALLEL: processes= 1, vector_size=100         , time= 0.000022 sec
+PARALLEL: processes= 1, vector_size=1000        , time= 0.000014 sec
+PARALLEL: processes= 1, vector_size=10000       , time= 0.000135 sec
+PARALLEL: processes= 1, vector_size=100000      , time= 0.001598 sec
+PARALLEL: processes= 1, vector_size=1000000     , time= 0.013807 sec
+PARALLEL: processes= 1, vector_size=5000000     , time= 0.073137 sec
+PARALLEL: processes= 1, vector_size=10000000    , time= 0.145341 sec
+
+=============================================================
+All experiments completed successfully!
+=============================================================

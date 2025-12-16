@@ -2,157 +2,196 @@
 #include <stdlib.h>
 #include <mpi.h>        
 #include <time.h>
-#include <math.h>       
+#include <math.h>
 
-// функция генерации случайного вектора
-void generate_vector(double *vector, int size, int seed) {
-    // инициализируем генератор случайных чисел с разным seed для разных векторов
-    srand(time(NULL) + seed);
+// Функция генерации случайной части вектора (каждый процесс генерирует свою часть)
+void generate_vector_part(double *vector, int size, int seed_offset) {
+    unsigned int seed = time(NULL) + seed_offset * 12345;
     for (int i = 0; i < size; i++) {
-        // заполняем вектор случайными числами от 0 до 10
-        vector[i] = (double)rand() / RAND_MAX * 10.0;
+        vector[i] = (double)rand_r(&seed) / RAND_MAX * 10.0;
     }
 }
 
-// функция вычисления локального скалярного произведения для части векторов
+// Функция вычисления локального скалярного произведения
 double compute_local_dot_product(double *vec1, double *vec2, int local_size) {
-    double local_dot = 0.0;  // инициализируем локальную сумму
-    // проходим по всем элементам локальных частей векторов
+    double local_dot = 0.0;
+    // Используем цикл с автовекторизацией
     for (int i = 0; i < local_size; i++) {
-        // прибавляем произведение соответствующих элементов к локальной сумме
         local_dot += vec1[i] * vec2[i];
     }
-    return local_dot;  // возвращаем вычисленное локальное скалярное произведение
+    return local_dot;
 }
 
-// функция проведения одного эксперимента с заданными параметрами
+// Функция проведения эксперимента с правильным замером времени
 void run_experiment(int vector_size, int use_processes, int world_rank, int world_size) {
     MPI_Comm comm;
-    // определяем цвет для разделения коммуникатора: процессы с rank < use_processes попадают в группу 0
     int color = (world_rank < use_processes) ? 0 : MPI_UNDEFINED;
-    // разделяем общий коммуникатор на группы
     MPI_Comm_split(MPI_COMM_WORLD, color, world_rank, &comm);
     
-    // только процессы из созданной группы (color == 0) участвуют в вычислениях
     if (color == 0) {
         int rank, size;
-        MPI_Comm_rank(comm, &rank);    // получаем rank в новом коммуникаторе
-        MPI_Comm_size(comm, &size);    // получаем размер нового коммуникатора
+        MPI_Comm_rank(comm, &rank);
+        MPI_Comm_size(comm, &size);
         
-        // начинаем замер времени выполнения
-        double start_time = MPI_Wtime();
-        
-        // вычисляем размер локальной части векторов для текущего процесса
-        // распределяем остаток от деления по первым процессам
+        // Вычисляем размер локальной части
         int local_size = vector_size / size;
         int remainder = vector_size % size;
         if (rank < remainder) local_size++;
         
-        // выделяем память под локальные части двух векторов
+        // Выделяем память под локальные части
         double *local_vec1 = (double *)malloc(local_size * sizeof(double));
         double *local_vec2 = (double *)malloc(local_size * sizeof(double));
         
-        // процесс с rank 0 в новом коммуникаторе генерирует и распределяет данные
-        if (rank == 0) {
-            // выделяем память под полные векторы
-            double *full_vec1 = (double *)malloc(vector_size * sizeof(double));
-            double *full_vec2 = (double *)malloc(vector_size * sizeof(double));
-            // генерируем два случайных вектора с разными seed
-            generate_vector(full_vec1, vector_size, 1);
-            generate_vector(full_vec2, vector_size, 2);
-            
-            // распределяем части векторов по процессам
-            int current_offset = 0;
-            for (int i = 0; i < size; i++) {
-                // вычисляем размер части для i-го процесса
-                int proc_size = vector_size / size + (i < remainder ? 1 : 0);
-                if (i == 0) {
-                    // для процесса 0 просто копируем данные
-                    for (int j = 0; j < proc_size; j++) {
-                        local_vec1[j] = full_vec1[current_offset + j];
-                        local_vec2[j] = full_vec2[current_offset + j];
-                    }
-                } else {
-                    // для остальных процессов отправляем данные двух векторов с разными тегами
-                    MPI_Send(&full_vec1[current_offset], proc_size, MPI_DOUBLE, i, 0, comm);
-                    MPI_Send(&full_vec2[current_offset], proc_size, MPI_DOUBLE, i, 1, comm);
-                }
-                current_offset += proc_size;
-            }
-            // освобождаем память полных векторов
-            free(full_vec1);
-            free(full_vec2);
-        } else {
-            // процессы-получатели принимают свои части двух векторов
-            MPI_Recv(local_vec1, local_size, MPI_DOUBLE, 0, 0, comm, MPI_STATUS_IGNORE);
-            MPI_Recv(local_vec2, local_size, MPI_DOUBLE, 0, 1, comm, MPI_STATUS_IGNORE);
+        if (local_vec1 == NULL || local_vec2 == NULL) {
+            fprintf(stderr, "Process %d: Memory allocation failed!\n", rank);
+            MPI_Abort(MPI_COMM_WORLD, 1);
         }
         
-        // вычисляем локальное скалярное произведение для своей части векторов
+        // СИНХРОНИЗИРУЕМ ПЕРЕД НАЧАЛОМ ИЗМЕРЕНИЯ ВРЕМЕНИ
+        MPI_Barrier(comm);
+        double start_time = MPI_Wtime();
+        
+        // Каждый процесс генерирует СВОЮ часть независимо
+        generate_vector_part(local_vec1, local_size, rank * 2);       // Разные seed
+        generate_vector_part(local_vec2, local_size, rank * 2 + 1);
+        
+        // Вычисляем локальное скалярное произведение
         double local_dot = compute_local_dot_product(local_vec1, local_vec2, local_size);
         
-        // собираем глобальное скалярное произведение из всех локальных
+        // Собираем глобальный результат
         double global_dot;
-        // операция MPI_SUM суммирует все локальные скалярные произведения
         MPI_Reduce(&local_dot, &global_dot, 1, MPI_DOUBLE, MPI_SUM, 0, comm);
         
-        // замеряем время окончания вычислений
         double end_time = MPI_Wtime();
+        double elapsed_time = end_time - start_time;
         
-        // процесс 0 выводит результаты эксперимента
+        // Находим максимальное время среди всех процессов
+        double max_time;
+        MPI_Reduce(&elapsed_time, &max_time, 1, MPI_DOUBLE, MPI_MAX, 0, comm);
+        
+        // Процесс 0 выводит результаты
         if (rank == 0) {
-            printf("PROCESSES: %d, SIZE: %d, TIME: %.6f\n", use_processes, vector_size, end_time - start_time);
+            printf("PARALLEL: processes=%2d, vector_size=%-10d, time=%9.6f sec, dot=%.2f\n", 
+                   size, vector_size, max_time, global_dot);
         }
         
-        // освобождаем память и коммуникатор
         free(local_vec1);
         free(local_vec2);
         MPI_Comm_free(&comm);
     }
     
-    // синхронизируем все процессы перед следующим экспериментом
+    // Синхронизация перед следующим экспериментом
     MPI_Barrier(MPI_COMM_WORLD);
+}
+
+// Последовательная версия для сравнения
+void run_sequential_experiment(int vector_size, int world_rank) {
+    if (world_rank == 0) {
+        printf("\n=== SEQUENTIAL DOT PRODUCT ===\n");
+        
+        // Тестируем разные размеры
+        int seq_sizes[] = {1000, 10000, 100000, 1000000, 5000000, 10000000};
+        int num_seq_tests = sizeof(seq_sizes) / sizeof(seq_sizes[0]);
+        
+        for (int j = 0; j < num_seq_tests; j++) {
+            int size = seq_sizes[j];
+            double *vec1 = (double *)malloc(size * sizeof(double));
+            double *vec2 = (double *)malloc(size * sizeof(double));
+            
+            if (vec1 == NULL || vec2 == NULL) {
+                fprintf(stderr, "Sequential: Memory allocation failed for size %d\n", size);
+                continue;
+            }
+            
+            double start_time = MPI_Wtime();
+            
+            // Генерация данных
+            srand(time(NULL));
+            for (int i = 0; i < size; i++) {
+                vec1[i] = (double)rand() / RAND_MAX * 10.0;
+                vec2[i] = (double)rand() / RAND_MAX * 10.0;
+            }
+            
+            // Вычисление скалярного произведения
+            double dot = 0.0;
+            for (int i = 0; i < size; i++) {
+                dot += vec1[i] * vec2[i];
+            }
+            
+            double end_time = MPI_Wtime();
+            
+            printf("SEQUENTIAL: processes= 1, vector_size=%-10d, time=%9.6f sec\n", 
+                   size, end_time - start_time);
+            
+            free(vec1);
+            free(vec2);
+        }
+        printf("\n=== PARALLEL DOT PRODUCT (MPI) ===\n");
+    }
 }
 
 int main(int argc, char *argv[]) {
     int world_rank, world_size;
     
-    // инициализируем mpi
     MPI_Init(&argc, &argv);
-    // получаем глобальный rank и размер коммуникатора
     MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
     
-    // процесс 0 выводит сообщение о начале экспериментов
     if (world_rank == 0) {
-        printf("Starting MPI Dot Product experiments...\n");
+        printf("=============================================================\n");
+        printf("MPI Dot Product Performance Test\n");
+        printf("Total available processes: %d\n", world_size);
+        printf("=============================================================\n");
     }
     
-    // массив с количеством процессов для тестирования
-    int processes_to_test[] = {1, 2, 4, 8, 16};
-    // массив с размерами векторов для тестирования
-    int vector_sizes[] = {1000, 10000, 100000, 1000000};
+    // Широкий диапазон размеров векторов для лучшего анализа ускорения
+    long vector_sizes[] = {
+        1000,          // Маленький
+        10000,         // Средний
+        100000,        // Большой
+        1000000,       // 1 миллион
+        5000000,       // 5 миллионов
+        10000000,      // 10 миллионов
+        25000000,      // 25 миллионов
+        50000000       // 50 миллионов
+    };
     
-    // вычисляем количество тестов
-    int num_proc_tests = sizeof(processes_to_test) / sizeof(processes_to_test[0]);
+    int processes_to_test[] = {1, 2, 4, 8, 16, 32};
+    
     int num_size_tests = sizeof(vector_sizes) / sizeof(vector_sizes[0]);
+    int num_proc_tests = sizeof(processes_to_test) / sizeof(processes_to_test[0]);
     
-    // запускаем все комбинации тестов
+    // Запускаем последовательную версию
+    run_sequential_experiment(0, world_rank);
+    MPI_Barrier(MPI_COMM_WORLD);
+    
+    // Запускаем параллельные эксперименты
     for (int i = 0; i < num_proc_tests; i++) {
-        for (int j = 0; j < num_size_tests; j++) {
-            // проверяем, что запрашиваемое количество процессов не превышает доступное
-            if (processes_to_test[i] <= world_size) {
-                run_experiment(vector_sizes[j], processes_to_test[i], world_rank, world_size);
+        int num_procs = processes_to_test[i];
+        
+        if (num_procs <= world_size) {
+            if (world_rank == 0) {
+                printf("\n--- Testing with %2d processes ---\n", num_procs);
+            }
+            
+            for (int j = 0; j < num_size_tests; j++) {
+                long vec_size = vector_sizes[j];
+                
+                // Пропускаем слишком большие размеры для малого числа процессов
+                if (num_procs == 1 && vec_size > 10000000) continue;
+                if (num_procs == 2 && vec_size > 50000000) continue;
+                
+                run_experiment(vec_size, num_procs, world_rank, world_size);
             }
         }
     }
     
-    // процесс 0 выводит сообщение о завершении
     if (world_rank == 0) {
-        printf("All experiments completed.\n");
+        printf("\n=============================================================\n");
+        printf("All experiments completed successfully!\n");
+        printf("=============================================================\n");
     }
     
-    // завершаем mpi
     MPI_Finalize();
     return 0;
 }

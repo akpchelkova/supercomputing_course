@@ -1,0 +1,50 @@
+=============================================================
+MPI Min/Max Search Performance Test
+Total available processes: 4
+=============================================================
+
+=== SEQUENTIAL VERSION (Baseline) ===
+SEQUENTIAL: processes= 1, vector_size=100         , time= 0.000009 sec
+SEQUENTIAL: processes= 1, vector_size=1000        , time= 0.000031 sec
+SEQUENTIAL: processes= 1, vector_size=10000       , time= 0.000298 sec
+SEQUENTIAL: processes= 1, vector_size=100000      , time= 0.003033 sec
+SEQUENTIAL: processes= 1, vector_size=1000000     , time= 0.029920 sec
+SEQUENTIAL: processes= 1, vector_size=5000000     , time= 0.147222 sec
+
+=== PARALLEL VERSION (MPI) ===
+
+--- Testing with  1 processes ---
+PARALLEL: processes= 1, vector_size=100         , time= 0.000022 sec
+PARALLEL: processes= 1, vector_size=1000        , time= 0.000021 sec
+PARALLEL: processes= 1, vector_size=10000       , time= 0.000176 sec
+PARALLEL: processes= 1, vector_size=100000      , time= 0.001562 sec
+PARALLEL: processes= 1, vector_size=1000000     , time= 0.014406 sec
+PARALLEL: processes= 1, vector_size=5000000     , time= 0.073321 sec
+PARALLEL: processes= 1, vector_size=10000000    , time= 0.145496 sec
+
+--- Testing with  2 processes ---
+PARALLEL: processes= 2, vector_size=100         , time= 0.000033 sec
+PARALLEL: processes= 2, vector_size=1000        , time= 0.000016 sec
+PARALLEL: processes= 2, vector_size=10000       , time= 0.000099 sec
+PARALLEL: processes= 2, vector_size=100000      , time= 0.000844 sec
+PARALLEL: processes= 2, vector_size=1000000     , time= 0.007471 sec
+PARALLEL: processes= 2, vector_size=5000000     , time= 0.038779 sec
+PARALLEL: processes= 2, vector_size=10000000    , time= 0.077540 sec
+PARALLEL: processes= 2, vector_size=25000000    , time= 0.194394 sec
+PARALLEL: processes= 2, vector_size=50000000    , time= 0.380622 sec
+
+--- Testing with  4 processes ---
+PARALLEL: processes= 4, vector_size=100         , time= 0.006856 sec
+PARALLEL: processes= 4, vector_size=1000        , time= 0.000234 sec
+PARALLEL: processes= 4, vector_size=10000       , time= 0.000267 sec
+PARALLEL: processes= 4, vector_size=100000      , time= 0.000591 sec
+PARALLEL: processes= 4, vector_size=1000000     , time= 0.004966 sec
+PARALLEL: processes= 4, vector_size=5000000     , time= 0.019264 sec
+PARALLEL: processes= 4, vector_size=10000000    , time= 0.037440 sec
+PARALLEL: processes= 4, vector_size=25000000    , time= 0.097224 sec
+PARALLEL: processes= 4, vector_size=50000000    , time= 0.194567 sec
+PARALLEL: processes= 4, vector_size=100000000   , time= 0.391284 sec
+
+=============================================================
+All experiments completed successfully!
+=============================================================

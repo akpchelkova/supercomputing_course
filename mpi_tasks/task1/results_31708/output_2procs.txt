@@ -1,0 +1,38 @@
+=============================================================
+MPI Min/Max Search Performance Test
+Total available processes: 2
+=============================================================
+
+=== SEQUENTIAL VERSION (Baseline) ===
+SEQUENTIAL: processes= 1, vector_size=100         , time= 0.000009 sec
+SEQUENTIAL: processes= 1, vector_size=1000        , time= 0.000031 sec
+SEQUENTIAL: processes= 1, vector_size=10000       , time= 0.000316 sec
+SEQUENTIAL: processes= 1, vector_size=100000      , time= 0.003082 sec
+SEQUENTIAL: processes= 1, vector_size=1000000     , time= 0.029706 sec
+SEQUENTIAL: processes= 1, vector_size=5000000     , time= 0.147100 sec
+
+=== PARALLEL VERSION (MPI) ===
+
+--- Testing with  1 processes ---
+PARALLEL: processes= 1, vector_size=100         , time= 0.000023 sec
+PARALLEL: processes= 1, vector_size=1000        , time= 0.000022 sec
+PARALLEL: processes= 1, vector_size=10000       , time= 0.000172 sec
+PARALLEL: processes= 1, vector_size=100000      , time= 0.001638 sec
+PARALLEL: processes= 1, vector_size=1000000     , time= 0.014369 sec
+PARALLEL: processes= 1, vector_size=5000000     , time= 0.073748 sec
+PARALLEL: processes= 1, vector_size=10000000    , time= 0.146562 sec
+
+--- Testing with  2 processes ---
+PARALLEL: processes= 2, vector_size=100         , time= 0.000085 sec
+PARALLEL: processes= 2, vector_size=1000        , time= 0.000138 sec
+PARALLEL: processes= 2, vector_size=10000       , time= 0.000167 sec
+PARALLEL: processes= 2, vector_size=100000      , time= 0.000981 sec
+PARALLEL: processes= 2, vector_size=1000000     , time= 0.008425 sec
+PARALLEL: processes= 2, vector_size=5000000     , time= 0.037055 sec
+PARALLEL: processes= 2, vector_size=10000000    , time= 0.072853 sec
+PARALLEL: processes= 2, vector_size=25000000    , time= 0.185241 sec
+PARALLEL: processes= 2, vector_size=50000000    , time= 0.372572 sec
+
+=============================================================
+All experiments completed successfully!
+=============================================================

@@ -1,0 +1,27 @@
+srun: Warning: can't run 1 processes on 2 nodes, setting nnodes to 1
+=============================================================
+MPI Dot Product Performance Test
+Total available processes: 1
+=============================================================
+
+=== SEQUENTIAL DOT PRODUCT ===
+SEQUENTIAL: processes= 1, vector_size=1000      , time= 0.000087 sec
+SEQUENTIAL: processes= 1, vector_size=10000     , time= 0.000834 sec
+SEQUENTIAL: processes= 1, vector_size=100000    , time= 0.008384 sec
+SEQUENTIAL: processes= 1, vector_size=1000000   , time= 0.066286 sec
+SEQUENTIAL: processes= 1, vector_size=5000000   , time= 0.306980 sec
+SEQUENTIAL: processes= 1, vector_size=10000000  , time= 0.614905 sec
+
+=== PARALLEL DOT PRODUCT (MPI) ===
+
+--- Testing with  1 processes ---
+PARALLEL: processes= 1, vector_size=1000      , time= 0.000031 sec, dot=26310.38
+PARALLEL: processes= 1, vector_size=10000     , time= 0.000214 sec, dot=248230.33
+PARALLEL: processes= 1, vector_size=100000    , time= 0.002358 sec, dot=2491739.84
+PARALLEL: processes= 1, vector_size=1000000   , time= 0.022642 sec, dot=25001501.38
+PARALLEL: processes= 1, vector_size=5000000   , time= 0.113970 sec, dot=125009794.37
+PARALLEL: processes= 1, vector_size=10000000  , time= 0.227510 sec, dot=250040504.26
+
+=============================================================
+All experiments completed successfully!
+=============================================================

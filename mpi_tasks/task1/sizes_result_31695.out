@@ -1,0 +1,19 @@
+Testing different vector sizes with 8 processes:
+Size: 1000
+8 total processes failed to start
+---
+Size: 10000
+8 total processes failed to start
+---
+Size: 100000
+8 total processes failed to start
+---
+Size: 1000000
+8 total processes failed to start
+---
+Size: 5000000
+8 total processes failed to start
+---
+Size: 10000000
+8 total processes failed to start
+---

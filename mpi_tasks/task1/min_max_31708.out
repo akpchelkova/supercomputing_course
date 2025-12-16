@@ -1,0 +1,141 @@
+=========================================
+Job ID: 31708
+Start time: Tue 16 Dec 2025 09:44:10 PM MSK
+Number of nodes: 2
+Total tasks: 32
+=========================================
+
+Loading modules...
+
+Loaded modules:
+
+Compiler info:
+/gnu/store/qb89jbj6fpzj2m2yyqvdaz0b9m30wx6j-profile/bin/mpicc
+gcc (GCC) 9.4.0
+Copyright (C) 2019 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+Compiling MPI program...
+Compilation successful.
+-rwxr-xr-x 1 Beelike Beelike 18K Dec 16 21:44 ./min_max
+
+Running experiments...
+=========================================
+
+--- Running with 1 processes ---
+Run completed successfully.
+Timing results:
+PARALLEL: processes= 1, vector_size=10000       , time= 0.000135 sec
+PARALLEL: processes= 1, vector_size=100000      , time= 0.001598 sec
+PARALLEL: processes= 1, vector_size=1000000     , time= 0.013807 sec
+PARALLEL: processes= 1, vector_size=5000000     , time= 0.073137 sec
+PARALLEL: processes= 1, vector_size=10000000    , time= 0.145341 sec
+
+--- Running with 2 processes ---
+Run completed successfully.
+Timing results:
+PARALLEL: processes= 2, vector_size=1000000     , time= 0.008425 sec
+PARALLEL: processes= 2, vector_size=5000000     , time= 0.037055 sec
+PARALLEL: processes= 2, vector_size=10000000    , time= 0.072853 sec
+PARALLEL: processes= 2, vector_size=25000000    , time= 0.185241 sec
+PARALLEL: processes= 2, vector_size=50000000    , time= 0.372572 sec
+
+--- Running with 4 processes ---
+Run completed successfully.
+Timing results:
+PARALLEL: processes= 4, vector_size=5000000     , time= 0.019264 sec
+PARALLEL: processes= 4, vector_size=10000000    , time= 0.037440 sec
+PARALLEL: processes= 4, vector_size=25000000    , time= 0.097224 sec
+PARALLEL: processes= 4, vector_size=50000000    , time= 0.194567 sec
+PARALLEL: processes= 4, vector_size=100000000   , time= 0.391284 sec
+
+--- Running with 8 processes ---
+Run completed successfully.
+Timing results:
+PARALLEL: processes= 8, vector_size=5000000     , time= 0.009744 sec
+PARALLEL: processes= 8, vector_size=10000000    , time= 0.019678 sec
+PARALLEL: processes= 8, vector_size=25000000    , time= 0.050263 sec
+PARALLEL: processes= 8, vector_size=50000000    , time= 0.099312 sec
+PARALLEL: processes= 8, vector_size=100000000   , time= 0.189099 sec
+
+--- Running with 16 processes ---
+Run completed successfully.
+Timing results:
+PARALLEL: processes=16, vector_size=5000000     , time= 0.005093 sec
+PARALLEL: processes=16, vector_size=10000000    , time= 0.010531 sec
+PARALLEL: processes=16, vector_size=25000000    , time= 0.027790 sec
+PARALLEL: processes=16, vector_size=50000000    , time= 0.058402 sec
+PARALLEL: processes=16, vector_size=100000000   , time= 0.122913 sec
+
+--- Running with 32 processes ---
+Run completed successfully.
+Timing results:
+PARALLEL: processes=32, vector_size=5000000     , time= 0.004207 sec
+PARALLEL: processes=32, vector_size=10000000    , time= 0.009734 sec
+PARALLEL: processes=32, vector_size=25000000    , time= 0.024661 sec
+PARALLEL: processes=32, vector_size=50000000    , time= 0.052632 sec
+PARALLEL: processes=32, vector_size=100000000   , time= 0.106559 sec
+
+Generating summary report...
+
+=========================================
+Job completed!
+Results saved in: results_31708
+
+Quick summary:
+PARALLEL: processes= 1, vector_size=10000000    , time= 0.166948 sec
+PARALLEL: processes= 2, vector_size=100         , time= 0.000034 sec
+PARALLEL: processes= 2, vector_size=1000        , time= 0.000015 sec
+PARALLEL: processes= 2, vector_size=10000       , time= 0.000137 sec
+PARALLEL: processes= 2, vector_size=100000      , time= 0.001098 sec
+PARALLEL: processes= 2, vector_size=1000000     , time= 0.008848 sec
+PARALLEL: processes= 2, vector_size=5000000     , time= 0.042668 sec
+PARALLEL: processes= 2, vector_size=10000000    , time= 0.083875 sec
+PARALLEL: processes= 2, vector_size=25000000    , time= 0.209353 sec
+PARALLEL: processes= 2, vector_size=50000000    , time= 0.419995 sec
+PARALLEL: processes= 4, vector_size=100         , time= 0.000323 sec
+PARALLEL: processes= 4, vector_size=1000        , time= 0.000019 sec
+PARALLEL: processes= 4, vector_size=10000       , time= 0.000065 sec
+PARALLEL: processes= 4, vector_size=100000      , time= 0.000639 sec
+PARALLEL: processes= 4, vector_size=1000000     , time= 0.004814 sec
+PARALLEL: processes= 4, vector_size=5000000     , time= 0.021810 sec
+PARALLEL: processes= 4, vector_size=10000000    , time= 0.042199 sec
+PARALLEL: processes= 4, vector_size=25000000    , time= 0.110360 sec
+PARALLEL: processes= 4, vector_size=50000000    , time= 0.218360 sec
+PARALLEL: processes= 4, vector_size=100000000   , time= 0.427258 sec
+PARALLEL: processes= 8, vector_size=100         , time= 0.000158 sec
+PARALLEL: processes= 8, vector_size=1000        , time= 0.000018 sec
+PARALLEL: processes= 8, vector_size=10000       , time= 0.000049 sec
+PARALLEL: processes= 8, vector_size=100000      , time= 0.000396 sec
+PARALLEL: processes= 8, vector_size=1000000     , time= 0.003361 sec
+PARALLEL: processes= 8, vector_size=5000000     , time= 0.016462 sec
+PARALLEL: processes= 8, vector_size=10000000    , time= 0.033642 sec
+PARALLEL: processes= 8, vector_size=25000000    , time= 0.089082 sec
+PARALLEL: processes= 8, vector_size=50000000    , time= 0.179637 sec
+PARALLEL: processes= 8, vector_size=100000000   , time= 0.361651 sec
+PARALLEL: processes=16, vector_size=100         , time= 0.000165 sec
+PARALLEL: processes=16, vector_size=1000        , time= 0.000023 sec
+PARALLEL: processes=16, vector_size=10000       , time= 0.000049 sec
+PARALLEL: processes=16, vector_size=100000      , time= 0.000280 sec
+PARALLEL: processes=16, vector_size=1000000     , time= 0.001731 sec
+PARALLEL: processes=16, vector_size=5000000     , time= 0.008958 sec
+PARALLEL: processes=16, vector_size=10000000    , time= 0.017670 sec
+PARALLEL: processes=16, vector_size=25000000    , time= 0.048432 sec
+PARALLEL: processes=16, vector_size=50000000    , time= 0.099177 sec
+PARALLEL: processes=16, vector_size=100000000   , time= 0.233818 sec
+PARALLEL: processes=32, vector_size=100         , time= 0.000139 sec
+PARALLEL: processes=32, vector_size=1000        , time= 0.000374 sec
+PARALLEL: processes=32, vector_size=10000       , time= 0.000337 sec
+PARALLEL: processes=32, vector_size=100000      , time= 0.000442 sec
+PARALLEL: processes=32, vector_size=1000000     , time= 0.001233 sec
+PARALLEL: processes=32, vector_size=5000000     , time= 0.004207 sec
+PARALLEL: processes=32, vector_size=10000000    , time= 0.009734 sec
+PARALLEL: processes=32, vector_size=25000000    , time= 0.024661 sec
+PARALLEL: processes=32, vector_size=50000000    , time= 0.052632 sec
+PARALLEL: processes=32, vector_size=100000000   , time= 0.106559 sec
+
+To view full results:
+cat results_31708/summary_report.txt
+=========================================

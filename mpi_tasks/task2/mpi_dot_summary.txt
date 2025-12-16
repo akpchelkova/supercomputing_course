@@ -1,0 +1,216 @@
+=========================================
+MPI Dot Product Performance Summary
+Job ID: 31709
+Date: Tue 16 Dec 2025 10:15:10 PM MSK
+=========================================
+
+--- 1 processes ---
+SEQUENTIAL: processes= 1, vector_size=1000      , time= 0.000087 sec
+SEQUENTIAL: processes= 1, vector_size=10000     , time= 0.000834 sec
+SEQUENTIAL: processes= 1, vector_size=100000    , time= 0.008384 sec
+SEQUENTIAL: processes= 1, vector_size=1000000   , time= 0.066286 sec
+SEQUENTIAL: processes= 1, vector_size=5000000   , time= 0.306980 sec
+SEQUENTIAL: processes= 1, vector_size=10000000  , time= 0.614905 sec
+PARALLEL: processes= 1, vector_size=1000      , time= 0.000031 sec, dot=26310.38
+PARALLEL: processes= 1, vector_size=10000     , time= 0.000214 sec, dot=248230.33
+PARALLEL: processes= 1, vector_size=100000    , time= 0.002358 sec, dot=2491739.84
+PARALLEL: processes= 1, vector_size=1000000   , time= 0.022642 sec, dot=25001501.38
+PARALLEL: processes= 1, vector_size=5000000   , time= 0.113970 sec, dot=125009794.37
+PARALLEL: processes= 1, vector_size=10000000  , time= 0.227510 sec, dot=250040504.26
+
+--- 2 processes ---
+SEQUENTIAL: processes= 1, vector_size=1000      , time= 0.000072 sec
+SEQUENTIAL: processes= 1, vector_size=10000     , time= 0.000666 sec
+SEQUENTIAL: processes= 1, vector_size=100000    , time= 0.006360 sec
+SEQUENTIAL: processes= 1, vector_size=1000000   , time= 0.061905 sec
+SEQUENTIAL: processes= 1, vector_size=5000000   , time= 0.306850 sec
+SEQUENTIAL: processes= 1, vector_size=10000000  , time= 0.614653 sec
+PARALLEL: processes= 1, vector_size=1000      , time= 0.000030 sec, dot=25552.28
+PARALLEL: processes= 1, vector_size=10000     , time= 0.000229 sec, dot=254122.91
+PARALLEL: processes= 1, vector_size=100000    , time= 0.002457 sec, dot=2500627.33
+PARALLEL: processes= 1, vector_size=1000000   , time= 0.022952 sec, dot=25001167.33
+PARALLEL: processes= 1, vector_size=5000000   , time= 0.113373 sec, dot=125032285.47
+PARALLEL: processes= 1, vector_size=10000000  , time= 0.227365 sec, dot=250050612.69
+PARALLEL: processes= 2, vector_size=1000      , time= 0.000064 sec, dot=24630.45
+PARALLEL: processes= 2, vector_size=10000     , time= 0.000192 sec, dot=250416.13
+PARALLEL: processes= 2, vector_size=100000    , time= 0.001362 sec, dot=2503583.48
+PARALLEL: processes= 2, vector_size=1000000   , time= 0.012401 sec, dot=25026368.77
+PARALLEL: processes= 2, vector_size=5000000   , time= 0.058160 sec, dot=125068265.89
+PARALLEL: processes= 2, vector_size=10000000  , time= 0.114545 sec, dot=250105918.11
+PARALLEL: processes= 2, vector_size=25000000  , time= 0.284723 sec, dot=625042507.84
+PARALLEL: processes= 2, vector_size=50000000  , time= 0.568677 sec, dot=1249923160.78
+
+--- 4 processes ---
+SEQUENTIAL: processes= 1, vector_size=1000      , time= 0.000071 sec
+SEQUENTIAL: processes= 1, vector_size=10000     , time= 0.000670 sec
+SEQUENTIAL: processes= 1, vector_size=100000    , time= 0.006784 sec
+SEQUENTIAL: processes= 1, vector_size=1000000   , time= 0.064634 sec
+SEQUENTIAL: processes= 1, vector_size=5000000   , time= 0.307969 sec
+SEQUENTIAL: processes= 1, vector_size=10000000  , time= 0.614770 sec
+PARALLEL: processes= 1, vector_size=1000      , time= 0.000038 sec, dot=24959.33
+PARALLEL: processes= 1, vector_size=10000     , time= 0.000248 sec, dot=246768.74
+PARALLEL: processes= 1, vector_size=100000    , time= 0.002463 sec, dot=2493869.91
+PARALLEL: processes= 1, vector_size=1000000   , time= 0.023002 sec, dot=24955595.34
+PARALLEL: processes= 1, vector_size=5000000   , time= 0.113694 sec, dot=124918306.85
+PARALLEL: processes= 1, vector_size=10000000  , time= 0.226985 sec, dot=249928646.10
+PARALLEL: processes= 2, vector_size=1000      , time= 0.000040 sec, dot=24380.86
+PARALLEL: processes= 2, vector_size=10000     , time= 0.000127 sec, dot=250698.91
+PARALLEL: processes= 2, vector_size=100000    , time= 0.001295 sec, dot=2494814.27
+PARALLEL: processes= 2, vector_size=1000000   , time= 0.012207 sec, dot=24973592.35
+PARALLEL: processes= 2, vector_size=5000000   , time= 0.057687 sec, dot=124947611.29
+PARALLEL: processes= 2, vector_size=10000000  , time= 0.114700 sec, dot=249935415.44
+PARALLEL: processes= 2, vector_size=25000000  , time= 0.285447 sec, dot=625166049.13
+PARALLEL: processes= 2, vector_size=50000000  , time= 0.569676 sec, dot=1250260184.70
+PARALLEL: processes= 4, vector_size=1000      , time= 0.006932 sec, dot=25684.66
+PARALLEL: processes= 4, vector_size=10000     , time= 0.000195 sec, dot=253856.88
+PARALLEL: processes= 4, vector_size=100000    , time= 0.000675 sec, dot=2490134.45
+PARALLEL: processes= 4, vector_size=1000000   , time= 0.006502 sec, dot=25004849.82
+PARALLEL: processes= 4, vector_size=5000000   , time= 0.029554 sec, dot=125060305.42
+PARALLEL: processes= 4, vector_size=10000000  , time= 0.057710 sec, dot=249992586.31
+PARALLEL: processes= 4, vector_size=25000000  , time= 0.143687 sec, dot=625068842.92
+PARALLEL: processes= 4, vector_size=50000000  , time= 0.284641 sec, dot=1250089812.40
+
+--- 8 processes ---
+SEQUENTIAL: processes= 1, vector_size=1000      , time= 0.000078 sec
+SEQUENTIAL: processes= 1, vector_size=10000     , time= 0.000756 sec
+SEQUENTIAL: processes= 1, vector_size=100000    , time= 0.007529 sec
+SEQUENTIAL: processes= 1, vector_size=1000000   , time= 0.067105 sec
+SEQUENTIAL: processes= 1, vector_size=5000000   , time= 0.307934 sec
+SEQUENTIAL: processes= 1, vector_size=10000000  , time= 0.615198 sec
+PARALLEL: processes= 1, vector_size=1000      , time= 0.000039 sec, dot=24964.44
+PARALLEL: processes= 1, vector_size=10000     , time= 0.000246 sec, dot=249331.87
+PARALLEL: processes= 1, vector_size=100000    , time= 0.002465 sec, dot=2494196.73
+PARALLEL: processes= 1, vector_size=1000000   , time= 0.023016 sec, dot=24993415.22
+PARALLEL: processes= 1, vector_size=5000000   , time= 0.114176 sec, dot=125037360.29
+PARALLEL: processes= 1, vector_size=10000000  , time= 0.227821 sec, dot=250008469.13
+PARALLEL: processes= 2, vector_size=1000      , time= 0.000040 sec, dot=25965.39
+PARALLEL: processes= 2, vector_size=10000     , time= 0.000126 sec, dot=254248.82
+PARALLEL: processes= 2, vector_size=100000    , time= 0.001294 sec, dot=2499292.76
+PARALLEL: processes= 2, vector_size=1000000   , time= 0.011594 sec, dot=25004099.84
+PARALLEL: processes= 2, vector_size=5000000   , time= 0.057828 sec, dot=125016559.20
+PARALLEL: processes= 2, vector_size=10000000  , time= 0.114835 sec, dot=250034668.41
+PARALLEL: processes= 2, vector_size=25000000  , time= 0.286022 sec, dot=624978402.54
+PARALLEL: processes= 2, vector_size=50000000  , time= 0.545535 sec, dot=1250041354.26
+PARALLEL: processes= 4, vector_size=1000      , time= 0.000105 sec, dot=26413.33
+PARALLEL: processes= 4, vector_size=10000     , time= 0.000059 sec, dot=248442.10
+PARALLEL: processes= 4, vector_size=100000    , time= 0.000628 sec, dot=2495686.16
+PARALLEL: processes= 4, vector_size=1000000   , time= 0.005852 sec, dot=24991711.53
+PARALLEL: processes= 4, vector_size=5000000   , time= 0.028330 sec, dot=124969330.25
+PARALLEL: processes= 4, vector_size=10000000  , time= 0.054063 sec, dot=249951958.76
+PARALLEL: processes= 4, vector_size=25000000  , time= 0.150505 sec, dot=624970726.82
+PARALLEL: processes= 4, vector_size=50000000  , time= 0.304761 sec, dot=1250028891.93
+PARALLEL: processes= 8, vector_size=1000      , time= 0.000101 sec, dot=26268.85
+PARALLEL: processes= 8, vector_size=10000     , time= 0.000118 sec, dot=254104.67
+PARALLEL: processes= 8, vector_size=100000    , time= 0.000452 sec, dot=2502734.08
+PARALLEL: processes= 8, vector_size=1000000   , time= 0.003102 sec, dot=25004484.38
+PARALLEL: processes= 8, vector_size=5000000   , time= 0.015039 sec, dot=125053024.48
+PARALLEL: processes= 8, vector_size=10000000  , time= 0.028603 sec, dot=250037197.65
+PARALLEL: processes= 8, vector_size=25000000  , time= 0.074230 sec, dot=625085146.36
+PARALLEL: processes= 8, vector_size=50000000  , time= 0.150158 sec, dot=1249934941.96
+
+--- 16 processes ---
+SEQUENTIAL: processes= 1, vector_size=1000      , time= 0.000082 sec
+SEQUENTIAL: processes= 1, vector_size=10000     , time= 0.000785 sec
+SEQUENTIAL: processes= 1, vector_size=100000    , time= 0.007824 sec
+SEQUENTIAL: processes= 1, vector_size=1000000   , time= 0.071060 sec
+SEQUENTIAL: processes= 1, vector_size=5000000   , time= 0.306861 sec
+SEQUENTIAL: processes= 1, vector_size=10000000  , time= 0.615818 sec
+PARALLEL: processes= 1, vector_size=1000      , time= 0.000031 sec, dot=25180.19
+PARALLEL: processes= 1, vector_size=10000     , time= 0.000247 sec, dot=250103.56
+PARALLEL: processes= 1, vector_size=100000    , time= 0.002477 sec, dot=2508410.84
+PARALLEL: processes= 1, vector_size=1000000   , time= 0.023213 sec, dot=24981368.87
+PARALLEL: processes= 1, vector_size=5000000   , time= 0.114961 sec, dot=125000200.16
+PARALLEL: processes= 1, vector_size=10000000  , time= 0.229429 sec, dot=249987650.25
+PARALLEL: processes= 2, vector_size=1000      , time= 0.000070 sec, dot=24396.98
+PARALLEL: processes= 2, vector_size=10000     , time= 0.000230 sec, dot=252454.16
+PARALLEL: processes= 2, vector_size=100000    , time= 0.001361 sec, dot=2511940.81
+PARALLEL: processes= 2, vector_size=1000000   , time= 0.012993 sec, dot=25007973.90
+PARALLEL: processes= 2, vector_size=5000000   , time= 0.062009 sec, dot=124994343.97
+PARALLEL: processes= 2, vector_size=10000000  , time= 0.124939 sec, dot=249928184.71
+PARALLEL: processes= 2, vector_size=25000000  , time= 0.310532 sec, dot=624856984.28
+PARALLEL: processes= 2, vector_size=50000000  , time= 0.619834 sec, dot=1249977854.10
+PARALLEL: processes= 4, vector_size=1000      , time= 0.000070 sec, dot=24513.63
+PARALLEL: processes= 4, vector_size=10000     , time= 0.000060 sec, dot=247150.26
+PARALLEL: processes= 4, vector_size=100000    , time= 0.000644 sec, dot=2501237.53
+PARALLEL: processes= 4, vector_size=1000000   , time= 0.006163 sec, dot=25004099.38
+PARALLEL: processes= 4, vector_size=5000000   , time= 0.029812 sec, dot=124998380.06
+PARALLEL: processes= 4, vector_size=10000000  , time= 0.060050 sec, dot=250022001.30
+PARALLEL: processes= 4, vector_size=25000000  , time= 0.157235 sec, dot=625003572.91
+PARALLEL: processes= 4, vector_size=50000000  , time= 0.316711 sec, dot=1249916882.28
+PARALLEL: processes= 8, vector_size=1000      , time= 0.000030 sec, dot=24159.49
+PARALLEL: processes= 8, vector_size=10000     , time= 0.000035 sec, dot=252032.39
+PARALLEL: processes= 8, vector_size=100000    , time= 0.000342 sec, dot=2494289.15
+PARALLEL: processes= 8, vector_size=1000000   , time= 0.003199 sec, dot=24974912.22
+PARALLEL: processes= 8, vector_size=5000000   , time= 0.017893 sec, dot=125046495.65
+PARALLEL: processes= 8, vector_size=10000000  , time= 0.034444 sec, dot=250105609.63
+PARALLEL: processes= 8, vector_size=25000000  , time= 0.100599 sec, dot=625142700.74
+PARALLEL: processes= 8, vector_size=50000000  , time= 0.212637 sec, dot=1250200788.35
+PARALLEL: processes=16, vector_size=1000      , time= 0.000114 sec, dot=26837.99
+PARALLEL: processes=16, vector_size=10000     , time= 0.000082 sec, dot=253705.04
+PARALLEL: processes=16, vector_size=100000    , time= 0.000182 sec, dot=2522259.69
+PARALLEL: processes=16, vector_size=1000000   , time= 0.001630 sec, dot=25006389.53
+PARALLEL: processes=16, vector_size=5000000   , time= 0.009183 sec, dot=124979023.33
+PARALLEL: processes=16, vector_size=10000000  , time= 0.018383 sec, dot=250019397.81
+PARALLEL: processes=16, vector_size=25000000  , time= 0.049636 sec, dot=625020224.46
+PARALLEL: processes=16, vector_size=50000000  , time= 0.104209 sec, dot=1249971317.33
+
+--- 32 processes ---
+SEQUENTIAL: processes= 1, vector_size=1000      , time= 0.000082 sec
+SEQUENTIAL: processes= 1, vector_size=10000     , time= 0.000739 sec
+SEQUENTIAL: processes= 1, vector_size=100000    , time= 0.007543 sec
+SEQUENTIAL: processes= 1, vector_size=1000000   , time= 0.077889 sec
+SEQUENTIAL: processes= 1, vector_size=5000000   , time= 0.341552 sec
+SEQUENTIAL: processes= 1, vector_size=10000000  , time= 0.685031 sec
+PARALLEL: processes= 1, vector_size=1000      , time= 0.000045 sec, dot=24882.17
+PARALLEL: processes= 1, vector_size=10000     , time= 0.000305 sec, dot=248823.64
+PARALLEL: processes= 1, vector_size=100000    , time= 0.003022 sec, dot=2504662.14
+PARALLEL: processes= 1, vector_size=1000000   , time= 0.027747 sec, dot=24982505.26
+PARALLEL: processes= 1, vector_size=5000000   , time= 0.135444 sec, dot=125006998.78
+PARALLEL: processes= 1, vector_size=10000000  , time= 0.270845 sec, dot=249969515.20
+PARALLEL: processes= 2, vector_size=1000      , time= 0.000054 sec, dot=24231.19
+PARALLEL: processes= 2, vector_size=10000     , time= 0.000170 sec, dot=248234.83
+PARALLEL: processes= 2, vector_size=100000    , time= 0.001678 sec, dot=2505341.06
+PARALLEL: processes= 2, vector_size=1000000   , time= 0.016587 sec, dot=24970285.38
+PARALLEL: processes= 2, vector_size=5000000   , time= 0.086975 sec, dot=125003088.15
+PARALLEL: processes= 2, vector_size=10000000  , time= 0.174305 sec, dot=249966450.36
+PARALLEL: processes= 2, vector_size=25000000  , time= 0.427764 sec, dot=625058617.50
+PARALLEL: processes= 2, vector_size=50000000  , time= 0.789518 sec, dot=1250162056.48
+PARALLEL: processes= 4, vector_size=1000      , time= 0.000095 sec, dot=25144.22
+PARALLEL: processes= 4, vector_size=10000     , time= 0.000081 sec, dot=253141.57
+PARALLEL: processes= 4, vector_size=100000    , time= 0.000840 sec, dot=2488363.46
+PARALLEL: processes= 4, vector_size=1000000   , time= 0.008458 sec, dot=24987729.79
+PARALLEL: processes= 4, vector_size=5000000   , time= 0.040016 sec, dot=125040849.95
+PARALLEL: processes= 4, vector_size=10000000  , time= 0.077207 sec, dot=249992158.79
+PARALLEL: processes= 4, vector_size=25000000  , time= 0.222779 sec, dot=624826745.30
+PARALLEL: processes= 4, vector_size=50000000  , time= 0.404528 sec, dot=1249975549.05
+PARALLEL: processes= 8, vector_size=1000      , time= 0.000055 sec, dot=25672.43
+PARALLEL: processes= 8, vector_size=10000     , time= 0.000049 sec, dot=251309.74
+PARALLEL: processes= 8, vector_size=100000    , time= 0.000417 sec, dot=2496653.21
+PARALLEL: processes= 8, vector_size=1000000   , time= 0.004287 sec, dot=25007174.45
+PARALLEL: processes= 8, vector_size=5000000   , time= 0.021423 sec, dot=125062916.09
+PARALLEL: processes= 8, vector_size=10000000  , time= 0.041412 sec, dot=250157492.16
+PARALLEL: processes= 8, vector_size=25000000  , time= 0.117954 sec, dot=625057353.09
+PARALLEL: processes= 8, vector_size=50000000  , time= 0.235144 sec, dot=1250076835.49
+PARALLEL: processes=16, vector_size=1000      , time= 0.000059 sec, dot=25148.15
+PARALLEL: processes=16, vector_size=10000     , time= 0.000037 sec, dot=250508.74
+PARALLEL: processes=16, vector_size=100000    , time= 0.000393 sec, dot=2510164.61
+PARALLEL: processes=16, vector_size=1000000   , time= 0.002300 sec, dot=25016866.93
+PARALLEL: processes=16, vector_size=5000000   , time= 0.012992 sec, dot=125052972.69
+PARALLEL: processes=16, vector_size=10000000  , time= 0.028591 sec, dot=249994242.26
+PARALLEL: processes=16, vector_size=25000000  , time= 0.075776 sec, dot=624886248.95
+PARALLEL: processes=16, vector_size=50000000  , time= 0.161768 sec, dot=1249987588.60
+PARALLEL: processes=32, vector_size=1000      , time= 0.000092 sec, dot=23932.25
+PARALLEL: processes=32, vector_size=10000     , time= 0.000416 sec, dot=248932.68
+PARALLEL: processes=32, vector_size=100000    , time= 0.000155 sec, dot=2509285.93
+PARALLEL: processes=32, vector_size=1000000   , time= 0.001216 sec, dot=24996167.35
+PARALLEL: processes=32, vector_size=5000000   , time= 0.006869 sec, dot=125040650.01
+PARALLEL: processes=32, vector_size=10000000  , time= 0.014426 sec, dot=250092541.01
+PARALLEL: processes=32, vector_size=25000000  , time= 0.038900 sec, dot=625168589.74
+PARALLEL: processes=32, vector_size=50000000  , time= 0.085287 sec, dot=1249873097.38
+
+Speedup Analysis:
+Vector Size | 1 proc -> 2 procs | 1 proc -> 4 procs | 1 proc -> 8 procs | 1 proc -> 16 procs
+-------------------------------------------------------------------------------------------
+1000000 | x | x | x | x
+5000000 | x | x | x | x
+10000000 | x | x | x | x

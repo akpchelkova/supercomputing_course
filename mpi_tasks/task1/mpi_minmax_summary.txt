@@ -1,0 +1,240 @@
+=========================================
+MPI Min/Max Performance Summary
+Job ID: 31708
+Date: Tue 16 Dec 2025 09:44:26 PM MSK
+=========================================
+
+--- 1 processes ---
+SEQUENTIAL: processes= 1, vector_size=100         , time= 0.000011 sec
+SEQUENTIAL: processes= 1, vector_size=1000        , time= 0.000041 sec
+SEQUENTIAL: processes= 1, vector_size=10000       , time= 0.000423 sec
+SEQUENTIAL: processes= 1, vector_size=100000      , time= 0.004017 sec
+SEQUENTIAL: processes= 1, vector_size=1000000     , time= 0.035407 sec
+SEQUENTIAL: processes= 1, vector_size=5000000     , time= 0.147404 sec
+PARALLEL: processes= 1, vector_size=100         , time= 0.000022 sec
+PARALLEL: processes= 1, vector_size=1000        , time= 0.000014 sec
+PARALLEL: processes= 1, vector_size=10000       , time= 0.000135 sec
+PARALLEL: processes= 1, vector_size=100000      , time= 0.001598 sec
+PARALLEL: processes= 1, vector_size=1000000     , time= 0.013807 sec
+PARALLEL: processes= 1, vector_size=5000000     , time= 0.073137 sec
+PARALLEL: processes= 1, vector_size=10000000    , time= 0.145341 sec
+
+--- 2 processes ---
+SEQUENTIAL: processes= 1, vector_size=100         , time= 0.000009 sec
+SEQUENTIAL: processes= 1, vector_size=1000        , time= 0.000031 sec
+SEQUENTIAL: processes= 1, vector_size=10000       , time= 0.000316 sec
+SEQUENTIAL: processes= 1, vector_size=100000      , time= 0.003082 sec
+SEQUENTIAL: processes= 1, vector_size=1000000     , time= 0.029706 sec
+SEQUENTIAL: processes= 1, vector_size=5000000     , time= 0.147100 sec
+PARALLEL: processes= 1, vector_size=100         , time= 0.000023 sec
+PARALLEL: processes= 1, vector_size=1000        , time= 0.000022 sec
+PARALLEL: processes= 1, vector_size=10000       , time= 0.000172 sec
+PARALLEL: processes= 1, vector_size=100000      , time= 0.001638 sec
+PARALLEL: processes= 1, vector_size=1000000     , time= 0.014369 sec
+PARALLEL: processes= 1, vector_size=5000000     , time= 0.073748 sec
+PARALLEL: processes= 1, vector_size=10000000    , time= 0.146562 sec
+PARALLEL: processes= 2, vector_size=100         , time= 0.000085 sec
+PARALLEL: processes= 2, vector_size=1000        , time= 0.000138 sec
+PARALLEL: processes= 2, vector_size=10000       , time= 0.000167 sec
+PARALLEL: processes= 2, vector_size=100000      , time= 0.000981 sec
+PARALLEL: processes= 2, vector_size=1000000     , time= 0.008425 sec
+PARALLEL: processes= 2, vector_size=5000000     , time= 0.037055 sec
+PARALLEL: processes= 2, vector_size=10000000    , time= 0.072853 sec
+PARALLEL: processes= 2, vector_size=25000000    , time= 0.185241 sec
+PARALLEL: processes= 2, vector_size=50000000    , time= 0.372572 sec
+
+--- 4 processes ---
+SEQUENTIAL: processes= 1, vector_size=100         , time= 0.000009 sec
+SEQUENTIAL: processes= 1, vector_size=1000        , time= 0.000031 sec
+SEQUENTIAL: processes= 1, vector_size=10000       , time= 0.000298 sec
+SEQUENTIAL: processes= 1, vector_size=100000      , time= 0.003033 sec
+SEQUENTIAL: processes= 1, vector_size=1000000     , time= 0.029920 sec
+SEQUENTIAL: processes= 1, vector_size=5000000     , time= 0.147222 sec
+PARALLEL: processes= 1, vector_size=100         , time= 0.000022 sec
+PARALLEL: processes= 1, vector_size=1000        , time= 0.000021 sec
+PARALLEL: processes= 1, vector_size=10000       , time= 0.000176 sec
+PARALLEL: processes= 1, vector_size=100000      , time= 0.001562 sec
+PARALLEL: processes= 1, vector_size=1000000     , time= 0.014406 sec
+PARALLEL: processes= 1, vector_size=5000000     , time= 0.073321 sec
+PARALLEL: processes= 1, vector_size=10000000    , time= 0.145496 sec
+PARALLEL: processes= 2, vector_size=100         , time= 0.000033 sec
+PARALLEL: processes= 2, vector_size=1000        , time= 0.000016 sec
+PARALLEL: processes= 2, vector_size=10000       , time= 0.000099 sec
+PARALLEL: processes= 2, vector_size=100000      , time= 0.000844 sec
+PARALLEL: processes= 2, vector_size=1000000     , time= 0.007471 sec
+PARALLEL: processes= 2, vector_size=5000000     , time= 0.038779 sec
+PARALLEL: processes= 2, vector_size=10000000    , time= 0.077540 sec
+PARALLEL: processes= 2, vector_size=25000000    , time= 0.194394 sec
+PARALLEL: processes= 2, vector_size=50000000    , time= 0.380622 sec
+PARALLEL: processes= 4, vector_size=100         , time= 0.006856 sec
+PARALLEL: processes= 4, vector_size=1000        , time= 0.000234 sec
+PARALLEL: processes= 4, vector_size=10000       , time= 0.000267 sec
+PARALLEL: processes= 4, vector_size=100000      , time= 0.000591 sec
+PARALLEL: processes= 4, vector_size=1000000     , time= 0.004966 sec
+PARALLEL: processes= 4, vector_size=5000000     , time= 0.019264 sec
+PARALLEL: processes= 4, vector_size=10000000    , time= 0.037440 sec
+PARALLEL: processes= 4, vector_size=25000000    , time= 0.097224 sec
+PARALLEL: processes= 4, vector_size=50000000    , time= 0.194567 sec
+PARALLEL: processes= 4, vector_size=100000000   , time= 0.391284 sec
+
+--- 8 processes ---
+SEQUENTIAL: processes= 1, vector_size=100         , time= 0.000010 sec
+SEQUENTIAL: processes= 1, vector_size=1000        , time= 0.000031 sec
+SEQUENTIAL: processes= 1, vector_size=10000       , time= 0.000300 sec
+SEQUENTIAL: processes= 1, vector_size=100000      , time= 0.003124 sec
+SEQUENTIAL: processes= 1, vector_size=1000000     , time= 0.029826 sec
+SEQUENTIAL: processes= 1, vector_size=5000000     , time= 0.148913 sec
+PARALLEL: processes= 1, vector_size=100         , time= 0.000017 sec
+PARALLEL: processes= 1, vector_size=1000        , time= 0.000024 sec
+PARALLEL: processes= 1, vector_size=10000       , time= 0.000171 sec
+PARALLEL: processes= 1, vector_size=100000      , time= 0.001605 sec
+PARALLEL: processes= 1, vector_size=1000000     , time= 0.014933 sec
+PARALLEL: processes= 1, vector_size=5000000     , time= 0.073239 sec
+PARALLEL: processes= 1, vector_size=10000000    , time= 0.145434 sec
+PARALLEL: processes= 2, vector_size=100         , time= 0.000033 sec
+PARALLEL: processes= 2, vector_size=1000        , time= 0.000013 sec
+PARALLEL: processes= 2, vector_size=10000       , time= 0.000096 sec
+PARALLEL: processes= 2, vector_size=100000      , time= 0.000832 sec
+PARALLEL: processes= 2, vector_size=1000000     , time= 0.007632 sec
+PARALLEL: processes= 2, vector_size=5000000     , time= 0.036371 sec
+PARALLEL: processes= 2, vector_size=10000000    , time= 0.072584 sec
+PARALLEL: processes= 2, vector_size=25000000    , time= 0.191650 sec
+PARALLEL: processes= 2, vector_size=50000000    , time= 0.389542 sec
+PARALLEL: processes= 4, vector_size=100         , time= 0.000227 sec
+PARALLEL: processes= 4, vector_size=1000        , time= 0.000016 sec
+PARALLEL: processes= 4, vector_size=10000       , time= 0.000074 sec
+PARALLEL: processes= 4, vector_size=100000      , time= 0.000468 sec
+PARALLEL: processes= 4, vector_size=1000000     , time= 0.004087 sec
+PARALLEL: processes= 4, vector_size=5000000     , time= 0.019162 sec
+PARALLEL: processes= 4, vector_size=10000000    , time= 0.037962 sec
+PARALLEL: processes= 4, vector_size=25000000    , time= 0.099179 sec
+PARALLEL: processes= 4, vector_size=50000000    , time= 0.198584 sec
+PARALLEL: processes= 4, vector_size=100000000   , time= 0.397722 sec
+PARALLEL: processes= 8, vector_size=100         , time= 0.000114 sec
+PARALLEL: processes= 8, vector_size=1000        , time= 0.000090 sec
+PARALLEL: processes= 8, vector_size=10000       , time= 0.000111 sec
+PARALLEL: processes= 8, vector_size=100000      , time= 0.000299 sec
+PARALLEL: processes= 8, vector_size=1000000     , time= 0.002230 sec
+PARALLEL: processes= 8, vector_size=5000000     , time= 0.009744 sec
+PARALLEL: processes= 8, vector_size=10000000    , time= 0.019678 sec
+PARALLEL: processes= 8, vector_size=25000000    , time= 0.050263 sec
+PARALLEL: processes= 8, vector_size=50000000    , time= 0.099312 sec
+PARALLEL: processes= 8, vector_size=100000000   , time= 0.189099 sec
+
+--- 16 processes ---
+SEQUENTIAL: processes= 1, vector_size=100         , time= 0.000010 sec
+SEQUENTIAL: processes= 1, vector_size=1000        , time= 0.000033 sec
+SEQUENTIAL: processes= 1, vector_size=10000       , time= 0.000318 sec
+SEQUENTIAL: processes= 1, vector_size=100000      , time= 0.003230 sec
+SEQUENTIAL: processes= 1, vector_size=1000000     , time= 0.032076 sec
+SEQUENTIAL: processes= 1, vector_size=5000000     , time= 0.147681 sec
+PARALLEL: processes= 1, vector_size=100         , time= 0.000018 sec
+PARALLEL: processes= 1, vector_size=1000        , time= 0.000021 sec
+PARALLEL: processes= 1, vector_size=10000       , time= 0.000176 sec
+PARALLEL: processes= 1, vector_size=100000      , time= 0.001536 sec
+PARALLEL: processes= 1, vector_size=1000000     , time= 0.014842 sec
+PARALLEL: processes= 1, vector_size=5000000     , time= 0.074057 sec
+PARALLEL: processes= 1, vector_size=10000000    , time= 0.146180 sec
+PARALLEL: processes= 2, vector_size=100         , time= 0.000034 sec
+PARALLEL: processes= 2, vector_size=1000        , time= 0.000014 sec
+PARALLEL: processes= 2, vector_size=10000       , time= 0.000086 sec
+PARALLEL: processes= 2, vector_size=100000      , time= 0.000851 sec
+PARALLEL: processes= 2, vector_size=1000000     , time= 0.007450 sec
+PARALLEL: processes= 2, vector_size=5000000     , time= 0.037837 sec
+PARALLEL: processes= 2, vector_size=10000000    , time= 0.077897 sec
+PARALLEL: processes= 2, vector_size=25000000    , time= 0.194978 sec
+PARALLEL: processes= 2, vector_size=50000000    , time= 0.391005 sec
+PARALLEL: processes= 4, vector_size=100         , time= 0.000221 sec
+PARALLEL: processes= 4, vector_size=1000        , time= 0.000015 sec
+PARALLEL: processes= 4, vector_size=10000       , time= 0.000054 sec
+PARALLEL: processes= 4, vector_size=100000      , time= 0.000438 sec
+PARALLEL: processes= 4, vector_size=1000000     , time= 0.004095 sec
+PARALLEL: processes= 4, vector_size=5000000     , time= 0.019364 sec
+PARALLEL: processes= 4, vector_size=10000000    , time= 0.037632 sec
+PARALLEL: processes= 4, vector_size=25000000    , time= 0.109862 sec
+PARALLEL: processes= 4, vector_size=50000000    , time= 0.219707 sec
+PARALLEL: processes= 4, vector_size=100000000   , time= 0.439737 sec
+PARALLEL: processes= 8, vector_size=100         , time= 0.000177 sec
+PARALLEL: processes= 8, vector_size=1000        , time= 0.000014 sec
+PARALLEL: processes= 8, vector_size=10000       , time= 0.000042 sec
+PARALLEL: processes= 8, vector_size=100000      , time= 0.000301 sec
+PARALLEL: processes= 8, vector_size=1000000     , time= 0.002067 sec
+PARALLEL: processes= 8, vector_size=5000000     , time= 0.010516 sec
+PARALLEL: processes= 8, vector_size=10000000    , time= 0.019877 sec
+PARALLEL: processes= 8, vector_size=25000000    , time= 0.057813 sec
+PARALLEL: processes= 8, vector_size=50000000    , time= 0.119465 sec
+PARALLEL: processes= 8, vector_size=100000000   , time= 0.246708 sec
+PARALLEL: processes=16, vector_size=100         , time= 0.000112 sec
+PARALLEL: processes=16, vector_size=1000        , time= 0.000079 sec
+PARALLEL: processes=16, vector_size=10000       , time= 0.000073 sec
+PARALLEL: processes=16, vector_size=100000      , time= 0.000224 sec
+PARALLEL: processes=16, vector_size=1000000     , time= 0.001088 sec
+PARALLEL: processes=16, vector_size=5000000     , time= 0.005093 sec
+PARALLEL: processes=16, vector_size=10000000    , time= 0.010531 sec
+PARALLEL: processes=16, vector_size=25000000    , time= 0.027790 sec
+PARALLEL: processes=16, vector_size=50000000    , time= 0.058402 sec
+PARALLEL: processes=16, vector_size=100000000   , time= 0.122913 sec
+
+--- 32 processes ---
+SEQUENTIAL: processes= 1, vector_size=100         , time= 0.000014 sec
+SEQUENTIAL: processes= 1, vector_size=1000        , time= 0.000037 sec
+SEQUENTIAL: processes= 1, vector_size=10000       , time= 0.000364 sec
+SEQUENTIAL: processes= 1, vector_size=100000      , time= 0.003726 sec
+SEQUENTIAL: processes= 1, vector_size=1000000     , time= 0.036803 sec
+SEQUENTIAL: processes= 1, vector_size=5000000     , time= 0.169487 sec
+PARALLEL: processes= 1, vector_size=100         , time= 0.000022 sec
+PARALLEL: processes= 1, vector_size=1000        , time= 0.000024 sec
+PARALLEL: processes= 1, vector_size=10000       , time= 0.000213 sec
+PARALLEL: processes= 1, vector_size=100000      , time= 0.001873 sec
+PARALLEL: processes= 1, vector_size=1000000     , time= 0.016662 sec
+PARALLEL: processes= 1, vector_size=5000000     , time= 0.084743 sec
+PARALLEL: processes= 1, vector_size=10000000    , time= 0.166948 sec
+PARALLEL: processes= 2, vector_size=100         , time= 0.000034 sec
+PARALLEL: processes= 2, vector_size=1000        , time= 0.000015 sec
+PARALLEL: processes= 2, vector_size=10000       , time= 0.000137 sec
+PARALLEL: processes= 2, vector_size=100000      , time= 0.001098 sec
+PARALLEL: processes= 2, vector_size=1000000     , time= 0.008848 sec
+PARALLEL: processes= 2, vector_size=5000000     , time= 0.042668 sec
+PARALLEL: processes= 2, vector_size=10000000    , time= 0.083875 sec
+PARALLEL: processes= 2, vector_size=25000000    , time= 0.209353 sec
+PARALLEL: processes= 2, vector_size=50000000    , time= 0.419995 sec
+PARALLEL: processes= 4, vector_size=100         , time= 0.000323 sec
+PARALLEL: processes= 4, vector_size=1000        , time= 0.000019 sec
+PARALLEL: processes= 4, vector_size=10000       , time= 0.000065 sec
+PARALLEL: processes= 4, vector_size=100000      , time= 0.000639 sec
+PARALLEL: processes= 4, vector_size=1000000     , time= 0.004814 sec
+PARALLEL: processes= 4, vector_size=5000000     , time= 0.021810 sec
+PARALLEL: processes= 4, vector_size=10000000    , time= 0.042199 sec
+PARALLEL: processes= 4, vector_size=25000000    , time= 0.110360 sec
+PARALLEL: processes= 4, vector_size=50000000    , time= 0.218360 sec
+PARALLEL: processes= 4, vector_size=100000000   , time= 0.427258 sec
+PARALLEL: processes= 8, vector_size=100         , time= 0.000158 sec
+PARALLEL: processes= 8, vector_size=1000        , time= 0.000018 sec
+PARALLEL: processes= 8, vector_size=10000       , time= 0.000049 sec
+PARALLEL: processes= 8, vector_size=100000      , time= 0.000396 sec
+PARALLEL: processes= 8, vector_size=1000000     , time= 0.003361 sec
+PARALLEL: processes= 8, vector_size=5000000     , time= 0.016462 sec
+PARALLEL: processes= 8, vector_size=10000000    , time= 0.033642 sec
+PARALLEL: processes= 8, vector_size=25000000    , time= 0.089082 sec
+PARALLEL: processes= 8, vector_size=50000000    , time= 0.179637 sec
+PARALLEL: processes= 8, vector_size=100000000   , time= 0.361651 sec
+PARALLEL: processes=16, vector_size=100         , time= 0.000165 sec
+PARALLEL: processes=16, vector_size=1000        , time= 0.000023 sec
+PARALLEL: processes=16, vector_size=10000       , time= 0.000049 sec
+PARALLEL: processes=16, vector_size=100000      , time= 0.000280 sec
+PARALLEL: processes=16, vector_size=1000000     , time= 0.001731 sec
+PARALLEL: processes=16, vector_size=5000000     , time= 0.008958 sec
+PARALLEL: processes=16, vector_size=10000000    , time= 0.017670 sec
+PARALLEL: processes=16, vector_size=25000000    , time= 0.048432 sec
+PARALLEL: processes=16, vector_size=50000000    , time= 0.099177 sec
+PARALLEL: processes=16, vector_size=100000000   , time= 0.233818 sec
+PARALLEL: processes=32, vector_size=100         , time= 0.000139 sec
+PARALLEL: processes=32, vector_size=1000        , time= 0.000374 sec
+PARALLEL: processes=32, vector_size=10000       , time= 0.000337 sec
+PARALLEL: processes=32, vector_size=100000      , time= 0.000442 sec
+PARALLEL: processes=32, vector_size=1000000     , time= 0.001233 sec
+PARALLEL: processes=32, vector_size=5000000     , time= 0.004207 sec
+PARALLEL: processes=32, vector_size=10000000    , time= 0.009734 sec
+PARALLEL: processes=32, vector_size=25000000    , time= 0.024661 sec
+PARALLEL: processes=32, vector_size=50000000    , time= 0.052632 sec
+PARALLEL: processes=32, vector_size=100000000   , time= 0.106559 sec

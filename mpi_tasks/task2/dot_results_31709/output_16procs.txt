@@ -1,0 +1,66 @@
+=============================================================
+MPI Dot Product Performance Test
+Total available processes: 16
+=============================================================
+
+=== SEQUENTIAL DOT PRODUCT ===
+SEQUENTIAL: processes= 1, vector_size=1000      , time= 0.000082 sec
+SEQUENTIAL: processes= 1, vector_size=10000     , time= 0.000785 sec
+SEQUENTIAL: processes= 1, vector_size=100000    , time= 0.007824 sec
+SEQUENTIAL: processes= 1, vector_size=1000000   , time= 0.071060 sec
+SEQUENTIAL: processes= 1, vector_size=5000000   , time= 0.306861 sec
+SEQUENTIAL: processes= 1, vector_size=10000000  , time= 0.615818 sec
+
+=== PARALLEL DOT PRODUCT (MPI) ===
+
+--- Testing with  1 processes ---
+PARALLEL: processes= 1, vector_size=1000      , time= 0.000031 sec, dot=25180.19
+PARALLEL: processes= 1, vector_size=10000     , time= 0.000247 sec, dot=250103.56
+PARALLEL: processes= 1, vector_size=100000    , time= 0.002477 sec, dot=2508410.84
+PARALLEL: processes= 1, vector_size=1000000   , time= 0.023213 sec, dot=24981368.87
+PARALLEL: processes= 1, vector_size=5000000   , time= 0.114961 sec, dot=125000200.16
+PARALLEL: processes= 1, vector_size=10000000  , time= 0.229429 sec, dot=249987650.25
+
+--- Testing with  2 processes ---
+PARALLEL: processes= 2, vector_size=1000      , time= 0.000070 sec, dot=24396.98
+PARALLEL: processes= 2, vector_size=10000     , time= 0.000230 sec, dot=252454.16
+PARALLEL: processes= 2, vector_size=100000    , time= 0.001361 sec, dot=2511940.81
+PARALLEL: processes= 2, vector_size=1000000   , time= 0.012993 sec, dot=25007973.90
+PARALLEL: processes= 2, vector_size=5000000   , time= 0.062009 sec, dot=124994343.97
+PARALLEL: processes= 2, vector_size=10000000  , time= 0.124939 sec, dot=249928184.71
+PARALLEL: processes= 2, vector_size=25000000  , time= 0.310532 sec, dot=624856984.28
+PARALLEL: processes= 2, vector_size=50000000  , time= 0.619834 sec, dot=1249977854.10
+
+--- Testing with  4 processes ---
+PARALLEL: processes= 4, vector_size=1000      , time= 0.000070 sec, dot=24513.63
+PARALLEL: processes= 4, vector_size=10000     , time= 0.000060 sec, dot=247150.26
+PARALLEL: processes= 4, vector_size=100000    , time= 0.000644 sec, dot=2501237.53
+PARALLEL: processes= 4, vector_size=1000000   , time= 0.006163 sec, dot=25004099.38
+PARALLEL: processes= 4, vector_size=5000000   , time= 0.029812 sec, dot=124998380.06
+PARALLEL: processes= 4, vector_size=10000000  , time= 0.060050 sec, dot=250022001.30
+PARALLEL: processes= 4, vector_size=25000000  , time= 0.157235 sec, dot=625003572.91
+PARALLEL: processes= 4, vector_size=50000000  , time= 0.316711 sec, dot=1249916882.28
+
+--- Testing with  8 processes ---
+PARALLEL: processes= 8, vector_size=1000      , time= 0.000030 sec, dot=24159.49
+PARALLEL: processes= 8, vector_size=10000     , time= 0.000035 sec, dot=252032.39
+PARALLEL: processes= 8, vector_size=100000    , time= 0.000342 sec, dot=2494289.15
+PARALLEL: processes= 8, vector_size=1000000   , time= 0.003199 sec, dot=24974912.22
+PARALLEL: processes= 8, vector_size=5000000   , time= 0.017893 sec, dot=125046495.65
+PARALLEL: processes= 8, vector_size=10000000  , time= 0.034444 sec, dot=250105609.63
+PARALLEL: processes= 8, vector_size=25000000  , time= 0.100599 sec, dot=625142700.74
+PARALLEL: processes= 8, vector_size=50000000  , time= 0.212637 sec, dot=1250200788.35
+
+--- Testing with 16 processes ---
+PARALLEL: processes=16, vector_size=1000      , time= 0.000114 sec, dot=26837.99
+PARALLEL: processes=16, vector_size=10000     , time= 0.000082 sec, dot=253705.04
+PARALLEL: processes=16, vector_size=100000    , time= 0.000182 sec, dot=2522259.69
+PARALLEL: processes=16, vector_size=1000000   , time= 0.001630 sec, dot=25006389.53
+PARALLEL: processes=16, vector_size=5000000   , time= 0.009183 sec, dot=124979023.33
+PARALLEL: processes=16, vector_size=10000000  , time= 0.018383 sec, dot=250019397.81
+PARALLEL: processes=16, vector_size=25000000  , time= 0.049636 sec, dot=625020224.46
+PARALLEL: processes=16, vector_size=50000000  , time= 0.104209 sec, dot=1249971317.33
+
+=============================================================
+All experiments completed successfully!
+=============================================================

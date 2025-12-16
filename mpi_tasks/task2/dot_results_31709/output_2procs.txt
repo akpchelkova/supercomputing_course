@@ -1,0 +1,36 @@
+=============================================================
+MPI Dot Product Performance Test
+Total available processes: 2
+=============================================================
+
+=== SEQUENTIAL DOT PRODUCT ===
+SEQUENTIAL: processes= 1, vector_size=1000      , time= 0.000072 sec
+SEQUENTIAL: processes= 1, vector_size=10000     , time= 0.000666 sec
+SEQUENTIAL: processes= 1, vector_size=100000    , time= 0.006360 sec
+SEQUENTIAL: processes= 1, vector_size=1000000   , time= 0.061905 sec
+SEQUENTIAL: processes= 1, vector_size=5000000   , time= 0.306850 sec
+SEQUENTIAL: processes= 1, vector_size=10000000  , time= 0.614653 sec
+
+=== PARALLEL DOT PRODUCT (MPI) ===
+
+--- Testing with  1 processes ---
+PARALLEL: processes= 1, vector_size=1000      , time= 0.000030 sec, dot=25552.28
+PARALLEL: processes= 1, vector_size=10000     , time= 0.000229 sec, dot=254122.91
+PARALLEL: processes= 1, vector_size=100000    , time= 0.002457 sec, dot=2500627.33
+PARALLEL: processes= 1, vector_size=1000000   , time= 0.022952 sec, dot=25001167.33
+PARALLEL: processes= 1, vector_size=5000000   , time= 0.113373 sec, dot=125032285.47
+PARALLEL: processes= 1, vector_size=10000000  , time= 0.227365 sec, dot=250050612.69
+
+--- Testing with  2 processes ---
+PARALLEL: processes= 2, vector_size=1000      , time= 0.000064 sec, dot=24630.45
+PARALLEL: processes= 2, vector_size=10000     , time= 0.000192 sec, dot=250416.13
+PARALLEL: processes= 2, vector_size=100000    , time= 0.001362 sec, dot=2503583.48
+PARALLEL: processes= 2, vector_size=1000000   , time= 0.012401 sec, dot=25026368.77
+PARALLEL: processes= 2, vector_size=5000000   , time= 0.058160 sec, dot=125068265.89
+PARALLEL: processes= 2, vector_size=10000000  , time= 0.114545 sec, dot=250105918.11
+PARALLEL: processes= 2, vector_size=25000000  , time= 0.284723 sec, dot=625042507.84
+PARALLEL: processes= 2, vector_size=50000000  , time= 0.568677 sec, dot=1249923160.78
+
+=============================================================
+All experiments completed successfully!
+=============================================================

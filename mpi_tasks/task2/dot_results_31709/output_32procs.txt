@@ -1,0 +1,76 @@
+=============================================================
+MPI Dot Product Performance Test
+Total available processes: 32
+=============================================================
+
+=== SEQUENTIAL DOT PRODUCT ===
+SEQUENTIAL: processes= 1, vector_size=1000      , time= 0.000082 sec
+SEQUENTIAL: processes= 1, vector_size=10000     , time= 0.000739 sec
+SEQUENTIAL: processes= 1, vector_size=100000    , time= 0.007543 sec
+SEQUENTIAL: processes= 1, vector_size=1000000   , time= 0.077889 sec
+SEQUENTIAL: processes= 1, vector_size=5000000   , time= 0.341552 sec
+SEQUENTIAL: processes= 1, vector_size=10000000  , time= 0.685031 sec
+
+=== PARALLEL DOT PRODUCT (MPI) ===
+
+--- Testing with  1 processes ---
+PARALLEL: processes= 1, vector_size=1000      , time= 0.000045 sec, dot=24882.17
+PARALLEL: processes= 1, vector_size=10000     , time= 0.000305 sec, dot=248823.64
+PARALLEL: processes= 1, vector_size=100000    , time= 0.003022 sec, dot=2504662.14
+PARALLEL: processes= 1, vector_size=1000000   , time= 0.027747 sec, dot=24982505.26
+PARALLEL: processes= 1, vector_size=5000000   , time= 0.135444 sec, dot=125006998.78
+PARALLEL: processes= 1, vector_size=10000000  , time= 0.270845 sec, dot=249969515.20
+
+--- Testing with  2 processes ---
+PARALLEL: processes= 2, vector_size=1000      , time= 0.000054 sec, dot=24231.19
+PARALLEL: processes= 2, vector_size=10000     , time= 0.000170 sec, dot=248234.83
+PARALLEL: processes= 2, vector_size=100000    , time= 0.001678 sec, dot=2505341.06
+PARALLEL: processes= 2, vector_size=1000000   , time= 0.016587 sec, dot=24970285.38
+PARALLEL: processes= 2, vector_size=5000000   , time= 0.086975 sec, dot=125003088.15
+PARALLEL: processes= 2, vector_size=10000000  , time= 0.174305 sec, dot=249966450.36
+PARALLEL: processes= 2, vector_size=25000000  , time= 0.427764 sec, dot=625058617.50
+PARALLEL: processes= 2, vector_size=50000000  , time= 0.789518 sec, dot=1250162056.48
+
+--- Testing with  4 processes ---
+PARALLEL: processes= 4, vector_size=1000      , time= 0.000095 sec, dot=25144.22
+PARALLEL: processes= 4, vector_size=10000     , time= 0.000081 sec, dot=253141.57
+PARALLEL: processes= 4, vector_size=100000    , time= 0.000840 sec, dot=2488363.46
+PARALLEL: processes= 4, vector_size=1000000   , time= 0.008458 sec, dot=24987729.79
+PARALLEL: processes= 4, vector_size=5000000   , time= 0.040016 sec, dot=125040849.95
+PARALLEL: processes= 4, vector_size=10000000  , time= 0.077207 sec, dot=249992158.79
+PARALLEL: processes= 4, vector_size=25000000  , time= 0.222779 sec, dot=624826745.30
+PARALLEL: processes= 4, vector_size=50000000  , time= 0.404528 sec, dot=1249975549.05
+
+--- Testing with  8 processes ---
+PARALLEL: processes= 8, vector_size=1000      , time= 0.000055 sec, dot=25672.43
+PARALLEL: processes= 8, vector_size=10000     , time= 0.000049 sec, dot=251309.74
+PARALLEL: processes= 8, vector_size=100000    , time= 0.000417 sec, dot=2496653.21
+PARALLEL: processes= 8, vector_size=1000000   , time= 0.004287 sec, dot=25007174.45
+PARALLEL: processes= 8, vector_size=5000000   , time= 0.021423 sec, dot=125062916.09
+PARALLEL: processes= 8, vector_size=10000000  , time= 0.041412 sec, dot=250157492.16
+PARALLEL: processes= 8, vector_size=25000000  , time= 0.117954 sec, dot=625057353.09
+PARALLEL: processes= 8, vector_size=50000000  , time= 0.235144 sec, dot=1250076835.49
+
+--- Testing with 16 processes ---
+PARALLEL: processes=16, vector_size=1000      , time= 0.000059 sec, dot=25148.15
+PARALLEL: processes=16, vector_size=10000     , time= 0.000037 sec, dot=250508.74
+PARALLEL: processes=16, vector_size=100000    , time= 0.000393 sec, dot=2510164.61
+PARALLEL: processes=16, vector_size=1000000   , time= 0.002300 sec, dot=25016866.93
+PARALLEL: processes=16, vector_size=5000000   , time= 0.012992 sec, dot=125052972.69
+PARALLEL: processes=16, vector_size=10000000  , time= 0.028591 sec, dot=249994242.26
+PARALLEL: processes=16, vector_size=25000000  , time= 0.075776 sec, dot=624886248.95
+PARALLEL: processes=16, vector_size=50000000  , time= 0.161768 sec, dot=1249987588.60
+
+--- Testing with 32 processes ---
+PARALLEL: processes=32, vector_size=1000      , time= 0.000092 sec, dot=23932.25
+PARALLEL: processes=32, vector_size=10000     , time= 0.000416 sec, dot=248932.68
+PARALLEL: processes=32, vector_size=100000    , time= 0.000155 sec, dot=2509285.93
+PARALLEL: processes=32, vector_size=1000000   , time= 0.001216 sec, dot=24996167.35
+PARALLEL: processes=32, vector_size=5000000   , time= 0.006869 sec, dot=125040650.01
+PARALLEL: processes=32, vector_size=10000000  , time= 0.014426 sec, dot=250092541.01
+PARALLEL: processes=32, vector_size=25000000  , time= 0.038900 sec, dot=625168589.74
+PARALLEL: processes=32, vector_size=50000000  , time= 0.085287 sec, dot=1249873097.38
+
+=============================================================
+All experiments completed successfully!
+=============================================================
