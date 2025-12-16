@@ -1,4 +1,0 @@
-srun: got SIGCONT
-slurmstepd: error: *** STEP 31717.1 ON g5 CANCELLED AT 2025-12-16T22:51:36 ***
-srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
-srun: forcing job termination

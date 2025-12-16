@@ -1,3 +1,0 @@
-MsgSize(B)  Processes  AvgTime(ms)  MinTime(ms)  MaxTime(ms)  Bandwidth(MB/s)
-Processes  AvgTime(ms)  Bandwidth(MB/s)  Efficiency(%)
-Processes  AvgTime(ms)  Bandwidth(MB/s)  PerProcess(MB/s)
